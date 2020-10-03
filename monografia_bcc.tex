@@ -27,11 +27,18 @@
   \usepackage{datatool}
   
   
-  \usepackage{pgfplotstable,filecontents}
+  \usepackage{booktabs} % For \toprule, \midrule and \bottomrule
+  \usepackage{siunitx} % Formats the units and values
+  \usepackage{pgfplotstable} % Generates table from .csv
 % --- 
 % CONFIGURAÇÕES DE PACOTES
 % --- 
-\pgfplotsset{compat=1.9}% supress warning
+% Setup siunitx:
+\sisetup{
+  round-mode          = places, % Rounds numbers
+  round-precision     = 2, % to 2 places
+}
+
 % ---
 % Configurações do pacote backref
 % Usado sem a opção hyperpageref de backref
@@ -1006,7 +1013,7 @@
           		\includegraphics[width=0.65\textwidth]
           		{15-rna-lopes.png}
           	}
-          	\caption{Rede Neural Perceptron de Múltiplas Camadas. Retirado de \cite{Lopes2008}.\label{fig:Rna-Perceptron-MultiLayer}}
+          	\caption{Rede Neural Perceptron de Múltiplas Camadas. Retirado de \cite{Lopes2008}.\label{fig:mlp-lopes}}
            \end{figure}
             
            Em \cite{Rocha2011} o trabalho realizado com neurônios artificiais para prever a demanda do R.U da UNESP, envolve apenas uma única camada de entrada e uma segunda camada para saída, porém com uma diversidade maior de variáveis de entrada correlacionadas com o consumo do restaurante. 
@@ -1192,72 +1199,63 @@
        
        \subsection{Revisão bibliográfica de diversos métodos de previsão de demanda}
         \paragraph*{} \cite{Junior2007} realiza um trabalho de comparação entre diversos métodos estocásticos e  Redes Neurais Artificiais (RNA) para a previsão da demanda de produtos cosméticos distribuídos em séries temporais. Entre as Redes Neurais, encontramos redes do tipo feedforward com o algoritmo de treino por backpropagation que foi o principal foco no trabalho de previsão do R.U na Universidade Federal de Viçosa e na Universidade Estadual Paulista Júlio de Mesquita Filho.
-        
-  % entre os dados previstos e observados.
   % ----------------------------------------------------------
   % \chapter{METODOLOGIA}
   % ----------------------------------------------------------
   \chapter{Metodologia Experimental}
-	% ----------------------------------------------------------
-	% DADOS
-	% ----------------------------------------------------------
-	\section{Coleta de dados}
+	\section{Pré-processamento}
+	    \subsection{Coleta de dados endógenos.}
+        	Os dados históricos de consumo no restaurante foram retirados do atual sistema banco de dados de refeições subsidiadas do Hospital São Paulo, que gerencia os dados dos refeitórios de todos as unidades da Unifesp. É importante ressaltar que tais dados são apenas de funcionários, docentes e discentes da instituição. Eventuais compras de refeições realizadas por visitantes que não possuem vínculo com a instituição não são registradas pelo sistema. 
+        	
+        	Apenas alguns funcionários autorizados tem acesso ao banco de dados do sistema de refeições da instituição, entre eles o fiscal de contrato do restaurante universitário. Para obter tais dados neste trabalho, foi necessário obter uma autorização com a direção do campus ICT - UNIFESP e em seguida solicitar a exportação dos dados ao fiscal. Os parâmetros dos quais o mesmo consegue realizar a exportação de dados são diversos, porém foi solicitado o formato de valores separados por vírgula que compreendem o ano de 2017 a 2018.
+    
+        	O modelo exportado segue o seguinte da seguinte forma abaixo, contendo o exemplo de 2 datas: \\
+        	\begin{algorithm}[H]
+        		"
+        		CONSULTA POR PERÍODO                    ",,,,,,,,,,
+        		"
+        		CAMPUS: SÃO JOSÉ DOS CAMPOS                    ",,,"
+        		RU: TODOS                    ",,,"
+        		VINCULO: ALUNO                    ",,"
+        		PERÍODO DE: 01/01/2017 A 31/10/2018                        ",,
+        		DATA,VENDAS CAFÉ,VENDAS ALMOÇO,VENDAS JANTAR,VENDAS REFEIÇÃO*,TOTAL VENDAS,ENTR. CAFÉ,ENTR. ALMOÇO,ENTR. JANTAR,TOTAL ENTR. REFEIÇÃO*,TOTAL ENTRADA
+        		(31/10/2018),0,395,0,395,395,0,362,0,362,362
+        		(30/10/2018),0,667,0,667,667,0,437,256,693,693
+        	\end{algorithm}
+        
+        \subsection{Dados Climáticos}
+        	Também serão analisadas variáveis climáticas juntos com os dados de consumo, de forma a analisar a influência de fatores externos como temperatura média ambiente e precipitação. Tais dados podem ser obtidos de forma gratuita pelo BDMEP - Banco de Dados Meteorológicos para Ensino e Pesquisa, pertencente à instituição pública INMET - Instituto Nacional de Meteorologia, pertencente ao MINISTÉRIO DA AGRICULTURA, PECUÁRIA E ABASTECIMENTO do Governo Brasileiro. 
+        	
+        	É necessário um cadastro no site http://www.inmet.gov.br/portal/index.php?r=bdmep/bdmep para a obtenção dos dados. 
+        	
+        	A instituição contêm dados registrados de forma digital desde 1961 no país inteiro, os dados históricos referentes a períodos anteriores a 1961 ainda não estão em forma digital e, portanto, estão indisponíveis no BDMEP.
+        	
+        	O BDMEP pode fornecer os registros de Precipitação(mm), Temp Máxima(ºC), Temp Mínima(ºC), Insolação(horas)
+        	Evaporação do Piche(mm), Temperatura Compensada Média(ºC), Umidade Relativa Média(\%), Velocidade Vento Média(mps).
+        	
+        	Importante ressaltar que o BDMEP leva 90 dias para registrar cada nova data.
+        	
+        	Serão analisadas a temperatura máxima do dia que tem registro em momento próximo à frequência de refeições no horário de almoço, umidade, pressão atmosférica e velocidade do vento em metros por segundo.
+        	
+        	\subsection{Enriquecimento dos Dados}
+            	A informação de data, irá gerar informações derivadas da data tais como: 
+            	Semestre 1 ou 2 em formato categórico e binário.
+            	Dia da semana em formato categórico e binário.
+            	Distancia em dias até o registro anterior e posterior.
+            	
+            	 
+            	O dia da semana seguirá o modelo binário de acordo com os trabalho de previsão de demanda em R.U realizados por \cite{Lopes2008} e \cite{Rocha2011}.
+        
+        \begin{figure}[!ht]
+        	\center{
+        		\includegraphics[width=0.40\textwidth]
+        		{04-lopes-entradas-dia-semana.png}
+        	}
+        	\caption{Entradas de dia da semana em cofatores. Retirado de \cite{Lopes2008}.\label{fig:entradasSemanais}}
+        \end{figure}
 	
-	\subsection{Coleta de dados endógenos.}
-    	Os dados históricos de consumo no restaurante foram retirados do atual sistema banco de dados de refeições subsidiadas do Hospital São Paulo, que gerencia os dados dos refeitórios de todos as unidades da Unifesp. É importante ressaltar que tais dados são apenas de funcionários, docentes e discentes da instituição. Eventuais compras de refeições realizadas por visitantes que não possuem vínculo com a instituição não são registradas pelo sistema. 
-    	
-    	Apenas alguns funcionários autorizados tem acesso ao banco de dados do sistema de refeições da instituição, entre eles o fiscal de contrato do restaurante universitário. Para obter tais dados neste trabalho, foi necessário obter uma autorização com a direção do campus ICT - UNIFESP e em seguida solicitar a exportação dos dados ao fiscal. Os parâmetros dos quais o mesmo consegue realizar a exportação de dados são diversos, porém foi solicitado o formato de valores separados por vírgula que compreendem o ano de 2017 a 2018.
-	
-	O modelo exportado segue o seguinte da seguinte forma abaixo, contendo o exemplo de 2 datas: \\
-	\begin{algorithm}[H]
-		"
-		CONSULTA POR PERÍODO                    ",,,,,,,,,,
-		"
-		CAMPUS: SÃO JOSÉ DOS CAMPOS                    ",,,"
-		RU: TODOS                    ",,,"
-		VINCULO: ALUNO                    ",,"
-		PERÍODO DE: 01/01/2017 A 31/10/2018                        ",,
-		DATA,VENDAS CAFÉ,VENDAS ALMOÇO,VENDAS JANTAR,VENDAS REFEIÇÃO*,TOTAL VENDAS,ENTR. CAFÉ,ENTR. ALMOÇO,ENTR. JANTAR,TOTAL ENTR. REFEIÇÃO*,TOTAL ENTRADA
-		(31/10/2018),0,395,0,395,395,0,362,0,362,362
-		(30/10/2018),0,667,0,667,667,0,437,256,693,693
-	\end{algorithm}
-	
-	
-	\subsection{Dados Climáticos}
-    	Também serão analisadas variáveis climáticas juntos com os dados de consumo, de forma a analisar a influência de fatores externos como temperatura média ambiente e precipitação. Tais dados podem ser obtidos de forma gratuita pelo BDMEP - Banco de Dados Meteorológicos para Ensino e Pesquisa, pertencente à instituição pública INMET - Instituto Nacional de Meteorologia, pertencente ao MINISTÉRIO DA AGRICULTURA, PECUÁRIA E ABASTECIMENTO do Governo Brasileiro. 
-    	
-    	É necessário um cadastro no site http://www.inmet.gov.br/portal/index.php?r=bdmep/bdmep para a obtenção dos dados. 
-    	
-    	A instituição contêm dados registrados de forma digital desde 1961 no país inteiro, os dados históricos referentes a períodos anteriores a 1961 ainda não estão em forma digital e, portanto, estão indisponíveis no BDMEP.
-    	
-    	O BDMEP pode fornecer os registros de Precipitação(mm), Temp Máxima(ºC), Temp Mínima(ºC), Insolação(horas)
-    	Evaporação do Piche(mm), Temperatura Compensada Média(ºC), Umidade Relativa Média(\%), Velocidade Vento Média(mps).
-    	
-    	Importante ressaltar que o BDMEP leva 90 dias para registrar cada nova data.
-    	
-    	Serão analisadas a temperatura máxima do dia que tem registro em momento próximo à frequência de refeições no horário de almoço, umidade, pressão atmosférica e velocidade do vento em metros por segundo.
-    	
-    	\subsection{Enriquecimento dos Dados}
-    	
-    	A informação de data, irá gerar informações derivadas da data tais como: 
-    	Semestre 1 ou 2 em formato categórico e binário.
-    	Dia da semana em formato categórico e binário.
-    	Distancia em dias até o registro anterior e posterior.
-    	
-    	 
-    	O dia da semana seguirá o modelo binário de acordo com os trabalho de previsão de demanda em R.U realizados por \cite{Lopes2008} e \cite{Rocha2011}.
-	
-	\begin{figure}[!ht]
-		\center{
-			\includegraphics[width=0.40\textwidth]
-			{04-lopes-entradas-dia-semana.png}
-		}
-		\caption{Entradas de dia da semana em cofatores. Retirado de \cite{Lopes2008}.\label{fig:entradasSemanais}}
-	\end{figure}
-	
-	\subsection{Temporização dos dados endógenas}
+	\subsection{Temporização dos dados endógenos}
         Os dados endógenos obtidos de forma discreta no conjunto de dados fornecidos pela Unifesp devem passar pelo processo de temporização em um intervalo de 5 dias, em cada registro de venda deverão ser acrescentados 5 novos atributos contendo os dados de consumo dos 5 dias anteriores. Este processo adapta o conjunto de dados para um processo de memorização das entradas que será o formato compatível de leitura nos modelos de redes neurais a serem desenvolvidos.
-        %TODO : INCLUIR IMAGEM DE OFFSET DOS DADOS : \Figuras\ap\entr_almoco_offset.png
         \begin{figure}[!ht]
     		\center{
     			\includegraphics[width=0.80\textwidth]
@@ -1265,61 +1263,135 @@
     		}
     		\caption{Registros de consumo de refeições com intervalo temporal de 5 dias.\label{fig:entr_almoco_offset}}
 	    \end{figure}
-        Estrutura final do conjunto de dados:
-        %TODO: INCLUIR TABELA COM O DATAFRAME COMPLETO: (\Tabelas\Todos.csv)
-        % \pgfplotstabletypeset[col sep=comma,
-        %     columns={ID,FEATURE,TYPE},
-        %     ]{Todos.csv}
-	    Estrutura final do conjunto de dados:
+        Estrutura final do conjunto de dados indexados por data:
+        
+        %TODO: INCLUIR TABELA COM O DATAFRAME COMPLETO: (./Tabelas/Todos.csv)
+        % PERDI HORAS NESSA DISGRAÇA DE IMPORTAÇÃO DE TABELA.... DESISTO
+        % \begin{table}[h!]
+        %     \caption{FEATURES DO CONJUNTO DE DADOS}
+        %     \label{dataset_amostra}
+        %     \pgfplotstabletypeset[col sep=comma,
+        %         columns={id,variavel},
+        %         ]{./Tabelas/dataset_amostra.csv}
+        % \end{table}
+        
+        % \begin{table}[h!]
+        %     %\begin{center}
+        %     \caption{FEATURES DO CONJUNTO DE DADOS}
+        %     \label{dataset_amostra}
+        %     \pgfplotstabletypeset[
+        %       multicolumn names, % allows to have multicolumn names
+        %       col sep = comma, % the seperator in our .csv file
+        %       display columns/0/.style={
+        %     	column name=$id$, % name of first column
+        %     	column type={S},string type},  % use siunitx for formatting
+        %       display columns/1/.style={
+        %     	column name=$variavel$,
+        %     	column type={S},string type},
+        %     ]{./Tabelas/dataset_amostra.csv}% filename/path to file
+        %     %\end{center}
+        % \end{table}
 	
-	\subsection{Pré-processamento – Divisão dos Conjuntos}
-        O processo experimental será realizado em 2 roteiros distintos de divisão do conjunto de dados, e os resultados obtidos entre os 2 roteiros serão comparados.
-        O conjunto de dados contemplando o período de 2017 a 2019, será dividido em conjunto de treino, validação e teste da seguinte maneira: 
-        - 1º Roteiro com validação e teste de semestres iguais: 
-        Neste roteiro o semestre de validação será o primeiro semestre de 2018 e o conjunto de teste será no primeiro semestre de 2019, os dados de 2017, e 2018 – 2º semestre serão usados para treino. Os resultados obtidos nesta divisão irão validar a hipótese de que os modelos aprenderão especificamente a sazonalidade de consumo no primeiro semestre, se saindo melhor nos testes no primeiro semestre em comparação aos outros modelos treinados com validação no ano todo.
-        \begin{itemize}
-                \item 2º Roteiro com treino, validação e teste de anos completos.
-                \item 2º Roteiro com treino, validação e teste de anos completos.
-                \item Validação com o ano de 2018
-                \item Teste com o ano de 2019             
-        \end{itemize}
-
-        \subsection{Pré-processamento – Tratamento das Features}
-         	Nas features endógenas (dados de venda e consumo):
-         	\begin{itemize}
-                \item	Normalizar os dados de venda e consumo para o máximo e mínimo de 3x o desvio padrão. 
-                \item	Escalar os dados entre 0 e 1
-                \item	Nas features exógenas:
-                \item	Escalar os dados entre 0 e 1
-                \item	As features categóricas binárias (dias da semana e semestre) já estarão escaladas
-                \item   Plotar gráficos de comportamento da feature com correlação do comportamento de consumo de refeições.
+    	\subsection{Divisão dos Conjuntos}
+            O processo experimental será realizado em 2 roteiros distintos de divisão do conjunto de dados, e os resultados obtidos entre os 2 roteiros serão comparados.
+            O conjunto de dados contemplando o período de 2017 a 2019, será dividido em conjunto de treino, validação e teste da seguinte maneira: 
+            - 1º Roteiro com validação e teste de semestres iguais: 
+            Neste roteiro o semestre de validação será o primeiro semestre de 2018 e o conjunto de teste será no primeiro semestre de 2019, os dados de 2017, e 2018 – 2º semestre serão usados para treino. Os resultados obtidos nesta divisão irão validar a hipótese de que os modelos aprenderão especificamente a sazonalidade de consumo no primeiro semestre, se saindo melhor nos testes no primeiro semestre em comparação aos outros modelos treinados com validação no ano todo.
+            \begin{itemize}
+                    \item 2º Roteiro com treino, validação e teste de anos completos.
+                    \item 2º Roteiro com treino, validação e teste de anos completos.
+                    \item Validação com o ano de 2018
+                    \item Teste com o ano de 2019             
             \end{itemize}
-        \subsection{Pré-processamento – Definição dos modelos}
-         	Nos modelos endógenos: 
+    
+            \subsection{Tratamento das Features}
+             	Nas features endógenas (dados de venda e consumo):
+             	\begin{itemize}
+                    \item	Normalizar os dados de venda e consumo para o máximo e mínimo de 3x o desvio padrão. 
+                    \item	Escalar os dados entre 0 e 1
+                \end{itemize}
+                Nas features exógenas:
+                \begin{itemize}
+                    
+                    \item	Escalar os dados entre 0 e 1
+                    \item	As features categóricas binárias (dias da semana e semestre) já estarão escaladas
+                    \item   Plotar gráficos de comportamento da feature com correlação do comportamento de consumo de refeições.
+                \end{itemize}
+    \section{Definição e treino dos modelos}
+        \subsection{Avaliação de modelos modernos}
+         	De acordo com \cite{DLB} no capítulo de arquitetura de redes neurais gated recurrent unit gru, as redes recorrentes GRU são uma melhoria das redes recorrentes padrão clássicas encontradas na literatura, pois utilizam elementos que decidem o valores de saída das unidades, e que podem memorizar informações de entrada dadas por um grande intervalo de tempo, sem sofrer dissipação destes valores, com o aproveitamento de recursos de memória computacionais. Logo serão indicadas na aplicação deste trabalho para a memorização da sazonalidade semestral e anual dos dados do restaurante universitário.
+            \begin{figure}[!ht]
+            	\center{
+            		\includegraphics[width=0.80\textwidth]
+            		{./Figuras/gru_arch.jpg}
+            	}
+            	\caption{Arquitetura do modelo GRU, extraído de http://deeplearningbook.com.br/arquitetura-de-redes-neurais-gated-recurrent-unit-gru/ \label{fig:gru-arch}}
+            \end{figure}
+        \subsection{Topologia}
+            \paragraph{Sobre a necessidade de se implementar modelos mistos}
+                No conjunto de dados deste trabalho, os dados obtidos se dividem em dados temporais (onde cada registro de consumo e venda trás a informação de seu domínio em um intervalo de 5 dias anteriores) e dados discretos onde temos variáveis categóricas de data para cada registro, e variáveis climáticas, porém sem a aplicação de um intervalo temporal, ou seja, os dados exógenos são discretos, e os endógenos contínuos.
+                Portanto é necessária a implementação de modelos específicos para entradas temporais e discretas.
+                Para a saída final pode ser implementado um comitê de redes neurais endógenas e exógenas, com um neurônio perceptron na saída, recebendo os 2 valores dos modelos endógenos e exógenos e regredindo ao valor de saída que será a predição do consumo.
+         	\subsubsection{Modelos endógenos}
          	\begin{itemize}
-             	\item   Adaptar as entradas da rede neural para leitura dos valores temporais, onde cada linha de entrada trará os dados de consumo das 5 linhas anteriores. 
-                \item	Desenvolver redes perceptron de baixa profundidade para avaliar o aprendizado da rede
+             	\item   Adaptar o conjunto de entrada para entradas compatíveis do modelo de rede neural GRU e do modelo fundamentado em \cite{Lopes2008} conforme a figura \ref{fig:mlp-lopes} da rede neural para leitura dos valores temporais, onde cada linha de entrada trará os dados de consumo das 5 linhas anteriores.
+                \item	Desenvolver as redes perceptron de baixa profundidade para avaliar o aprendizado da rede
                 \item	Aumentar a profundidade da rede e avaliar as mudanças da função de perda rmse
-                \item	Implementar e avaliar modelos com redes recorrentes GRU, que são especialmente desenvolvidos para o aprendizado com memorização de dados, e no caso deste trabalho, poderão memorizar as sazonalidades semanais de consumo (de até 5 dias, dado a temporização do conjunto em 5 dias).
+                \item	Implementar e avaliar modelos com redes recorrentes GRU, conforme a figura \ref{fig:gru-arch} que são especialmente desenvolvidos para o aprendizado com memorização de dados, e no caso deste trabalho, poderão memorizar as sazonalidades semanais de consumo (de até 5 dias, dado a temporização do conjunto em 5 dias).
             \end{itemize}
-            De acordo com http://deeplearningbook.com.br/arquitetura-de-redes-neurais-gated-recurrent-unit-gru/,  “As GRUs são uma versão melhorada da rede neural recorrente padrão, Para resolver o problema da dissipação do gradiente de uma RNN padrão, a GRU usa dois portões, reset e update gate. Basicamente, eles são dois vetores que decidem quais informações devem ser passadas para a saída. O que há de especial neles é que eles podem ser treinados para manter informações de muito tempo atrás, sem dissipá-las com o tempo ou remover informações irrelevantes para a previsão. A estrutura da GRU permite capturar adaptativamente dependências de grandes sequências de dados sem descartar informações de partes anteriores da sequência.”
+            \subsubsection{Modelos Mistos : Endógenos e Exógenos}
+                \begin{itemize}
+                    \item Para os dados temporais (consumo e venda) utilizar os melhores modelos endógenos dos experimentos anteriores para as entradas endógenas. 
+                    \item Para os dados discretos e categóricos adaptar a entrada destes dados para rede perceptron
+                    \item  Concatenar a saída das 2 redes neurais em um neurônio percetron criando um comitê de redes neurais para obter a saída final prevista.
+                \end{itemize}
+	\subsection{Função de ativação}
+	    \begin{figure}[!ht]
+        	\center{
+        		\includegraphics[width=0.80\textwidth]
+        		{./Figuras/mc_ai/activation_functions.png}
+        	}
+        	\caption{Funções de Ativação, imagem extraída de : \cite{MCAI} https://mc.ai/complete-guide-of-activation-functions/ \label{fig:activation_functions}}
+        \end{figure}
+	    \subsubsection{Para a entrada e camadas ocultas}
+    	    A função ReLu será simples e eficiente para a aplicação nos experimentos, visto que na fase feed-forward terá efeito parecido com a função identidade, e na fase feed-backward durante o reajuste dos pesos pelo otimizador, irá produzir efeito degrau zerando valores negativos sendo adequada na aplicação do domínio de entrada deste trabalho, visto que todas as variáveis endógenas e exógenas não possuem valores negativos.
+    	\subsubsection{Para a saída}
+    	    Para os valores previstos a função escolhida será a linear, pois na fase feed-backward do reajuste dos pesos pelo algoritmo de treino backpropagation, a derivada da função linear será zero, portanto os valores e peso de saída não sofrerão reajustes, mantendo a execução do algoritmo de treino apenas nos valores de entrada e nas camadas ocultas das redes.
+    	
+    \subsection{Otimizador}
         \begin{figure}[!ht]
-    		\center{
-    			\includegraphics[width=0.80\textwidth]
-    			{./Figuras/gru_arch.jpg}
-    		}
-    		\caption{Arquitetura do modelo GRU.\label{fig:gru-arch}}
-	    \end{figure}
-        Nos modelos mistos – endógenos e exógenos: 
-            Para os dados temporais (consumo e venda)
-            Utilizar os melhores modelos endógenos dos experimentos anteriores para as entradas endógenas. 
-            Para os dados discretos e categóricos :
-            Adaptar a entrada destes dados para rede perceptron
-            Concatenar a saída das 2 redes neurais em uma nova rede percetron criando um comitê de redes neurais para obter a saída final prevista.
+        	\center{
+        		\includegraphics[width=0.80\textwidth]
+        		{./Figuras/MLM/optimizers.png}
+        	}
+        	\caption{Comparison of Adam to Other Optimization Algorithms Training a Multilayer Perceptron, imagem extraída de : \cite{MLM} https://machinelearningmastery.com/adam-optimization-algorithm-for-deep-learning/ \label{fig:otimizadores}}
+        \end{figure}
+        Para este trabalho será escolhido o otimizador ADAM no treino de backpropagation.
+        A vantagem deste otimizador é a fusão das melhores características de 2 otimizadores : 
+        \newline Momenum e RMSProp. 
+        \newline O Momentum acelera o reajuste dos pesos em busca dos erros globais mínimos.
+        \newline O RMSProp impede a busca na direção das oscilações.
+        \newline Adam ou Adaptive Moment otimization combina estas 2 heurísticas.
+        O coeficiente de aprendizado escolhido para o otimizador, ou conhecido como "learning rate", será definido para a constante alpha, com valor 0.001.
+        Esta constante tem produzido resultados positivos em problemas de forecast (predições) de acordo com \cite{MLM}
 
-	
-	
-
+    \section{Teste e Métricas}
+       As principal métrica de avaliação dos modelos, é a Raiz do Erro Quadrático Médio, obtido pela chamada de função "mean\_squared\_error"\ do framework Tensorflow.Keras utilizado para a modelagem,treino e predição dos modelos de redes neurais. Citado como "Loss Function" nos diversos frameworks de machine learning como TensorFlow, Matlab, Weeka entre outros) do treino dos modelos.
+       
+       \newline O coeficiente de correlação de Pearson, obtido pela biblioteca scipy na chamada de função "\scipy.stats.pearsonr(true,pred)"\ e o coeficiente "chi-quadrado" definido como $R^2$ obtido na chamada de função "\scipy.stats.linregress"\ será utilizado nas etapas de teste para avaliar a proximidade das predições do modelo com o comportamento real de consumo (Se acompanha as quedas e subidas de consumo ao longo do tempo).
+       
+       \newline Serão documentados outras métricas estatísticas obtidas por esta chamada de função como os valores de slope, intercept, p\_value, std\_err.
+       
+       \newline A chamada de função sns.regplot(x=arr\_true,y=arr\_pred,data=df) da biblioteca seaborn irá retornar um gráfico scatter dos valores preditos e reais para a avaliação dos erros, médias e tendencia de previsão.
+       
+       \newline Serão avaliados também os erros positivos e negativos entre os valores previstos e reais, para representar quantas refeições seriam descartadas e quantas estariam em falta se a produção de refeições fosse de acordo com as predições do modelo.
+       
+  % ----------------------------------------------------------
+  % \chapter{METODOLOGIA}
+  % ----------------------------------------------------------
+  \chapter{Experimentos e discussão dos resultados}
+	\section{Pré-processamento}
+	    \subsection{Coleta de dados endógenos.}
   % ----------------------------------------------------------
   % \chapter{Plano de atividades para o TCC II}
   % ----------------------------------------------------------

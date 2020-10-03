@@ -25,10 +25,13 @@
   \usepackage[brazilian,hyperpageref]{backref}	 % Paginas com as citações na bibl
   \usepackage[alf]{abntex2cite}	% Citações padrão ABNT
   \usepackage{datatool}
+  
+  
+  \usepackage{pgfplotstable,filecontents}
 % --- 
 % CONFIGURAÇÕES DE PACOTES
 % --- 
-
+\pgfplotsset{compat=1.9}% supress warning
 % ---
 % Configurações do pacote backref
 % Usado sem a opção hyperpageref de backref
@@ -226,8 +229,8 @@
 
   % resumo em português
     \begin{resumo}
- O presente trabalho tem como objetivo o estudo de métodos para a previsão de vendas do restaurante universitário da Unifesp para evitar super-projeção de demanda com consequência de desperdício de alimentos, ou subprojeção com consequência de docentes ou discentes sem refeições.
- Em uma investigação anterior, realizada como trabalho de disciplina, o autor deste trabalho empregou métodos estatísticos para a construção do modelo de previsão. Neste trabalho, será empregado um método de aprendizado de máquina, mais especificamente, uma rede neural artificial do tipo Perceptron de Múltiplas Camadas. Na investigação anterior, verificou-se que a temperatura da região onde se localiza o campus do restaurante foi analisada por recorrência via \textit{bootstrap} como um fator que exerce impacto sobre as vendas do restaurante em certos períodos do semestre. Assim,  neste trabalho de conclusão de curso serão obtidas novas variáveis e um intervalo maior de amostragem na análise da previsão de demanda.
+         O presente trabalho tem como objetivo o estudo de métodos para a previsão de vendas do restaurante universitário da Unifesp para evitar super-projeção de demanda com consequência de desperdício de alimentos, ou subprojeção com consequência de docentes ou discentes sem refeições.
+         Em uma investigação anterior, realizada como trabalho de disciplina, o autor deste trabalho empregou métodos estatísticos para a construção do modelo de previsão. Neste trabalho, será empregado um método de aprendizado de máquina, mais especificamente, uma rede neural artificial do tipo Perceptron de Múltiplas Camadas. Na investigação anterior, verificou-se que a temperatura da região onde se localiza o campus do restaurante foi analisada por recorrência via \textit{bootstrap} como um fator que exerce impacto sobre as vendas do restaurante em certos períodos do semestre. Assim,  neste trabalho de conclusão de curso serão obtidas novas variáveis e um intervalo maior de amostragem na análise da previsão de demanda.
  
     %O presente trabalho tem como objetivo a comparação com o método de análise da previsão de vendas do restaurante universitário da Unifesp, previamente feito pelo autor deste trabalho com aplicação de métodos estatísticos, e atualmente com métodos de aprendizado de máquina. Tal análise por aprendizado de máquina foi apontado como relevante solução no fim da análise estatística do trabalho anterior. A temperatura da região onde se localiza o campus do restaurante foi analisada por recorrência via bootstrap como um fator que exerce impacto sobre as vendas do restaurante em certos períodos do semestre, e neste trabalho de conclusão de curso serão obtidas novas variáveis e um intervalo maior de amostragem na análise da previsão de demanda de refeições do restaurante em um novo modelo com aprendizado de máquina a fim de que seja obtido um modelo de previsão viável para evitar super-projeção de demanda com consequência de desperdício de alimentos, ou subprojeção com consequência de docentes ou discentes sem refeições.
      
@@ -244,8 +247,8 @@
 
 % TRADUZIR NOVAMENTE DO RESUMO ALTERADO
 
-This work has the objective of studying methods to forecast meals demand on Unifesp's university restaurant to avoid overprojection of demand as a result of food wastage, or underproduction with the consequence of teachers or students without meals.
- In an earlier research, carried out as a discipline work, the author of this paper used statistical methods for the construction of the prediction model. In this work, a machine learning method will be employed, more specifically, an artificial neural network of the Perceptron type of Multiple Layers. In the previous investigation, it was verified that the temperature of the region where the restaurant's campus is located was analyzed by recurrence via bootstrap as a factor that has an impact on restaurant sales in certain periods of the semester. Thus, in this work of conclusion of course will be obtained new variables and a greater interval of sampling in the analysis of the forecast of demand..
+        This work has the objective of studying methods to forecast meals demand on Unifesp's university restaurant to avoid overprojection of demand as a result of food wastage, or underproduction with the consequence of teachers or students without meals.
+        In an earlier research, carried out as a discipline work, the author of this paper used statistical methods for the construction of the prediction model. In this work, a machine learning method will be employed, more specifically, an artificial neural network of the Perceptron type of Multiple Layers. In the previous investigation, it was verified that the temperature of the region where the restaurant's campus is located was analyzed by recurrence via bootstrap as a factor that has an impact on restaurant sales in certain periods of the semester. Thus, in this work of conclusion of course will be obtained new variables and a greater interval of sampling in the analysis of the forecast of demand.
 
        \vspace{\onelineskip}
      
@@ -1201,9 +1204,9 @@ This work has the objective of studying methods to forecast meals demand on Unif
 	\section{Coleta de dados}
 	
 	\subsection{Coleta de dados endógenos.}
-	Os dados históricos de consumo no restaurante foram retirados do atual sistema banco de dados de refeições subsidiadas do Hospital São Paulo, que gerencia os dados dos refeitórios de todos as unidades da Unifesp. É importante ressaltar que tais dados são apenas de funcionários, docentes e discentes da instituição. Eventuais compras de refeições realizadas por visitantes que não possuem vínculo com a instituição não são registradas pelo sistema. 
-	
-	Apenas alguns funcionários autorizados tem acesso ao banco de dados do sistema de refeições da instituição, entre eles o fiscal de contrato do restaurante universitário. Para obter tais dados neste trabalho, foi necessário obter uma autorização com a direção do campus ICT - UNIFESP e em seguida solicitar a exportação dos dados ao fiscal. Os parâmetros dos quais o mesmo consegue realizar a exportação de dados são diversos, porém foi solicitado o formato de valores separados por vírgula que compreendem o ano de 2017 a 2018.
+    	Os dados históricos de consumo no restaurante foram retirados do atual sistema banco de dados de refeições subsidiadas do Hospital São Paulo, que gerencia os dados dos refeitórios de todos as unidades da Unifesp. É importante ressaltar que tais dados são apenas de funcionários, docentes e discentes da instituição. Eventuais compras de refeições realizadas por visitantes que não possuem vínculo com a instituição não são registradas pelo sistema. 
+    	
+    	Apenas alguns funcionários autorizados tem acesso ao banco de dados do sistema de refeições da instituição, entre eles o fiscal de contrato do restaurante universitário. Para obter tais dados neste trabalho, foi necessário obter uma autorização com a direção do campus ICT - UNIFESP e em seguida solicitar a exportação dos dados ao fiscal. Os parâmetros dos quais o mesmo consegue realizar a exportação de dados são diversos, porém foi solicitado o formato de valores separados por vírgula que compreendem o ano de 2017 a 2018.
 	
 	O modelo exportado segue o seguinte da seguinte forma abaixo, contendo o exemplo de 2 datas: \\
 	\begin{algorithm}[H]
@@ -1221,28 +1224,28 @@ This work has the objective of studying methods to forecast meals demand on Unif
 	
 	
 	\subsection{Dados Climáticos}
-	Também serão analisadas variáveis climáticas juntos com os dados de consumo, de forma a analisar a influência de fatores externos como temperatura média ambiente e precipitação. Tais dados podem ser obtidos de forma gratuita pelo BDMEP - Banco de Dados Meteorológicos para Ensino e Pesquisa, pertencente à instituição pública INMET - Instituto Nacional de Meteorologia, pertencente ao MINISTÉRIO DA AGRICULTURA, PECUÁRIA E ABASTECIMENTO do Governo Brasileiro. 
-	
-	É necessário um cadastro no site http://www.inmet.gov.br/portal/index.php?r=bdmep/bdmep para a obtenção dos dados. 
-	
-	A instituição contêm dados registrados de forma digital desde 1961 no país inteiro, os dados históricos referentes a períodos anteriores a 1961 ainda não estão em forma digital e, portanto, estão indisponíveis no BDMEP.
-	
-	O BDMEP pode fornecer os registros de Precipitação(mm), Temp Máxima(ºC), Temp Mínima(ºC), Insolação(horas)
-	Evaporação do Piche(mm), Temperatura Compensada Média(ºC), Umidade Relativa Média(\%), Velocidade Vento Média(mps).
-	
-	Importante ressaltar que o BDMEP leva 90 dias para registrar cada nova data.
-	
-	Serão analisadas a temperatura máxima do dia que tem registro em momento próximo à frequência de refeições no horário de almoço, umidade, pressão atmosférica e velocidade do vento em metros por segundo.
-	
-	\subsection{Enriquecimento dos Dados}
-	
-	A informação de data, irá gerar informações derivadas da data tais como: 
-	Semestre 1 ou 2 em formato categórico e binário.
-	Dia da semana em formato categórico e binário.
-	Distancia em dias até o registro anterior e posterior.
-	
-	 
-	O dia da semana seguirá o modelo binário de acordo com os trabalho de previsão de demanda em R.U realizados por \cite{Lopes2008} e \cite{Rocha2011}.
+    	Também serão analisadas variáveis climáticas juntos com os dados de consumo, de forma a analisar a influência de fatores externos como temperatura média ambiente e precipitação. Tais dados podem ser obtidos de forma gratuita pelo BDMEP - Banco de Dados Meteorológicos para Ensino e Pesquisa, pertencente à instituição pública INMET - Instituto Nacional de Meteorologia, pertencente ao MINISTÉRIO DA AGRICULTURA, PECUÁRIA E ABASTECIMENTO do Governo Brasileiro. 
+    	
+    	É necessário um cadastro no site http://www.inmet.gov.br/portal/index.php?r=bdmep/bdmep para a obtenção dos dados. 
+    	
+    	A instituição contêm dados registrados de forma digital desde 1961 no país inteiro, os dados históricos referentes a períodos anteriores a 1961 ainda não estão em forma digital e, portanto, estão indisponíveis no BDMEP.
+    	
+    	O BDMEP pode fornecer os registros de Precipitação(mm), Temp Máxima(ºC), Temp Mínima(ºC), Insolação(horas)
+    	Evaporação do Piche(mm), Temperatura Compensada Média(ºC), Umidade Relativa Média(\%), Velocidade Vento Média(mps).
+    	
+    	Importante ressaltar que o BDMEP leva 90 dias para registrar cada nova data.
+    	
+    	Serão analisadas a temperatura máxima do dia que tem registro em momento próximo à frequência de refeições no horário de almoço, umidade, pressão atmosférica e velocidade do vento em metros por segundo.
+    	
+    	\subsection{Enriquecimento dos Dados}
+    	
+    	A informação de data, irá gerar informações derivadas da data tais como: 
+    	Semestre 1 ou 2 em formato categórico e binário.
+    	Dia da semana em formato categórico e binário.
+    	Distancia em dias até o registro anterior e posterior.
+    	
+    	 
+    	O dia da semana seguirá o modelo binário de acordo com os trabalho de previsão de demanda em R.U realizados por \cite{Lopes2008} e \cite{Rocha2011}.
 	
 	\begin{figure}[!ht]
 		\center{
@@ -1252,8 +1255,68 @@ This work has the objective of studying methods to forecast meals demand on Unif
 		\caption{Entradas de dia da semana em cofatores. Retirado de \cite{Lopes2008}.\label{fig:entradasSemanais}}
 	\end{figure}
 	
-	Estrutura final do conjunto de dados:
+	\subsection{Temporização dos dados endógenas}
+        Os dados endógenos obtidos de forma discreta no conjunto de dados fornecidos pela Unifesp devem passar pelo processo de temporização em um intervalo de 5 dias, em cada registro de venda deverão ser acrescentados 5 novos atributos contendo os dados de consumo dos 5 dias anteriores. Este processo adapta o conjunto de dados para um processo de memorização das entradas que será o formato compatível de leitura nos modelos de redes neurais a serem desenvolvidos.
+        %TODO : INCLUIR IMAGEM DE OFFSET DOS DADOS : \Figuras\ap\entr_almoco_offset.png
+        \begin{figure}[!ht]
+    		\center{
+    			\includegraphics[width=0.80\textwidth]
+    			{./Figuras/entr_almoco_offset.png}
+    		}
+    		\caption{Registros de consumo de refeições com intervalo temporal de 5 dias.\label{fig:entr_almoco_offset}}
+	    \end{figure}
+        Estrutura final do conjunto de dados:
+        %TODO: INCLUIR TABELA COM O DATAFRAME COMPLETO: (\Tabelas\Todos.csv)
+        % \pgfplotstabletypeset[col sep=comma,
+        %     columns={ID,FEATURE,TYPE},
+        %     ]{Todos.csv}
+	    Estrutura final do conjunto de dados:
 	
+	\subsection{Pré-processamento – Divisão dos Conjuntos}
+        O processo experimental será realizado em 2 roteiros distintos de divisão do conjunto de dados, e os resultados obtidos entre os 2 roteiros serão comparados.
+        O conjunto de dados contemplando o período de 2017 a 2019, será dividido em conjunto de treino, validação e teste da seguinte maneira: 
+        - 1º Roteiro com validação e teste de semestres iguais: 
+        Neste roteiro o semestre de validação será o primeiro semestre de 2018 e o conjunto de teste será no primeiro semestre de 2019, os dados de 2017, e 2018 – 2º semestre serão usados para treino. Os resultados obtidos nesta divisão irão validar a hipótese de que os modelos aprenderão especificamente a sazonalidade de consumo no primeiro semestre, se saindo melhor nos testes no primeiro semestre em comparação aos outros modelos treinados com validação no ano todo.
+        \begin{itemize}
+                \item 2º Roteiro com treino, validação e teste de anos completos.
+                \item 2º Roteiro com treino, validação e teste de anos completos.
+                \item Validação com o ano de 2018
+                \item Teste com o ano de 2019             
+        \end{itemize}
+
+        \subsection{Pré-processamento – Tratamento das Features}
+         	Nas features endógenas (dados de venda e consumo):
+         	\begin{itemize}
+                \item	Normalizar os dados de venda e consumo para o máximo e mínimo de 3x o desvio padrão. 
+                \item	Escalar os dados entre 0 e 1
+                \item	Nas features exógenas:
+                \item	Escalar os dados entre 0 e 1
+                \item	As features categóricas binárias (dias da semana e semestre) já estarão escaladas
+                \item   Plotar gráficos de comportamento da feature com correlação do comportamento de consumo de refeições.
+            \end{itemize}
+        \subsection{Pré-processamento – Definição dos modelos}
+         	Nos modelos endógenos: 
+         	\begin{itemize}
+             	\item   Adaptar as entradas da rede neural para leitura dos valores temporais, onde cada linha de entrada trará os dados de consumo das 5 linhas anteriores. 
+                \item	Desenvolver redes perceptron de baixa profundidade para avaliar o aprendizado da rede
+                \item	Aumentar a profundidade da rede e avaliar as mudanças da função de perda rmse
+                \item	Implementar e avaliar modelos com redes recorrentes GRU, que são especialmente desenvolvidos para o aprendizado com memorização de dados, e no caso deste trabalho, poderão memorizar as sazonalidades semanais de consumo (de até 5 dias, dado a temporização do conjunto em 5 dias).
+            \end{itemize}
+            De acordo com http://deeplearningbook.com.br/arquitetura-de-redes-neurais-gated-recurrent-unit-gru/,  “As GRUs são uma versão melhorada da rede neural recorrente padrão, Para resolver o problema da dissipação do gradiente de uma RNN padrão, a GRU usa dois portões, reset e update gate. Basicamente, eles são dois vetores que decidem quais informações devem ser passadas para a saída. O que há de especial neles é que eles podem ser treinados para manter informações de muito tempo atrás, sem dissipá-las com o tempo ou remover informações irrelevantes para a previsão. A estrutura da GRU permite capturar adaptativamente dependências de grandes sequências de dados sem descartar informações de partes anteriores da sequência.”
+        \begin{figure}[!ht]
+    		\center{
+    			\includegraphics[width=0.80\textwidth]
+    			{./Figuras/gru_arch.jpg}
+    		}
+    		\caption{Arquitetura do modelo GRU.\label{fig:gru-arch}}
+	    \end{figure}
+        Nos modelos mistos – endógenos e exógenos: 
+            Para os dados temporais (consumo e venda)
+            Utilizar os melhores modelos endógenos dos experimentos anteriores para as entradas endógenas. 
+            Para os dados discretos e categóricos :
+            Adaptar a entrada destes dados para rede perceptron
+            Concatenar a saída das 2 redes neurais em uma nova rede percetron criando um comitê de redes neurais para obter a saída final prevista.
+
 	
 	
 

@@ -30,6 +30,35 @@
   \usepackage{booktabs} % For \toprule, \midrule and \bottomrule
   \usepackage{siunitx} % Formats the units and values
   \usepackage{pgfplotstable} % Generates table from .csv
+  \usepackage[pdftex]{hyperref}
+  \usepackage{listings}
+  \usepackage{color}
+ 
+\definecolor{dkgreen}{rgb}{0,0.6,0}
+\definecolor{gray}{rgb}{0.5,0.5,0.5}
+\definecolor{mauve}{rgb}{0.58,0,0.82}
+\lstset{
+  language=Python,                
+  basicstyle=\footnotesize,           
+  numbers=left,                   
+  numberstyle=\tiny\color{gray},  
+  stepnumber=2,                             
+  numbersep=5pt,                  
+  backgroundcolor=\color{white},    
+  showspaces=false,               
+  showstringspaces=false,         
+  showtabs=false,                 
+  frame=single,                   
+  rulecolor=\color{black},        
+  tabsize=2,                      
+  captionpos=b,                   
+  breaklines=true,                
+  breakatwhitespace=false,        
+  title=\lstname,                               
+  keywordstyle=\color{blue},          
+  commentstyle=\color{dkgreen},       
+  stringstyle=\color{mauve},     
+}
 % --- 
 % CONFIGURAÇÕES DE PACOTES
 % --- 
@@ -397,8 +426,9 @@
         % \paragraph*{Meta-análise}
         %   De acordo com \cite{Flavia2014} que realiza um trabalho de previsão de consumo em aves, a técnica de meta-análise, a análise das análises, 
         
+        %TODO : VERIFICAR OS INDICES
         \paragraph*{Análise dos resultados}
-        De acordo com \cite{Flavia2014}, a comparação e a discussão dos resultados deve ser feita com base em medidas de avaliação de erro absoluto médio (EAM), erro quadrado médio (EQM) e raiz do erro quadrado médio (REQM). A verificação estatística das diferenças nas medidas obtidas com as técnicas por meio do teste de hipótese de Wilcoxon Rank Sum. 
+        De acordo com \cite{Flavia2014}, a comparação e a discussão dos resultados deve ser feita com base em medidas de avaliação de erro absoluto médio (EAM), erro quadrado médio (EQM) e raiz do erro quadrado médio (REQM).
 
       \section{Organização do documento}
         Este trabalho está organizado da seguinte maneira: o Capítulo 2 possui os conceitos básicos para o entendimento do trabalho. No Capítulo 3, apresenta-se alguns trabalhos relacionados. O Capítulo 4 contém o plano de atividades para o TCC II. A conclusão é apresentada no Capítulo 5.
@@ -1202,7 +1232,7 @@
   % ----------------------------------------------------------
   % \chapter{METODOLOGIA}
   % ----------------------------------------------------------
-  \chapter{Metodologia Experimental}
+  \chapter{Metodologia}
 	\section{Pré-processamento}
 	    \subsection{Coleta de dados endógenos.}
         	Os dados históricos de consumo no restaurante foram retirados do atual sistema banco de dados de refeições subsidiadas do Hospital São Paulo, que gerencia os dados dos refeitórios de todos as unidades da Unifesp. É importante ressaltar que tais dados são apenas de funcionários, docentes e discentes da instituição. Eventuais compras de refeições realizadas por visitantes que não possuem vínculo com a instituição não são registradas pelo sistema. 
@@ -1380,7 +1410,7 @@
        
        \newline O coeficiente de correlação de Pearson, obtido pela biblioteca scipy na chamada de função "\scipy.stats.pearsonr(true,pred)"\ e o coeficiente "chi-quadrado" definido como $R^2$ obtido na chamada de função "\scipy.stats.linregress"\ será utilizado nas etapas de teste para avaliar a proximidade das predições do modelo com o comportamento real de consumo (Se acompanha as quedas e subidas de consumo ao longo do tempo).
        
-       \newline Serão documentados outras métricas estatísticas obtidas por esta chamada de função como os valores de slope, intercept, p\_value, std\_err.
+       \newline Serão documentados, para trabalhos futuros, outras métricas estatísticas obtidas por esta chamada de função como os valores de slope, intercept, p\_value, std\_err.
        
        \newline A chamada de função sns.regplot(x=arr\_true,y=arr\_pred,data=df) da biblioteca seaborn irá retornar um gráfico scatter dos valores preditos e reais para a avaliação dos erros, médias e tendencia de previsão.
        
@@ -1389,23 +1419,154 @@
   % ----------------------------------------------------------
   % \chapter{METODOLOGIA}
   % ----------------------------------------------------------
-  \chapter{Experimentos e discussão dos resultados}
-	\section{Pré-processamento}
-	    \subsection{Coleta de dados endógenos.}
+  \chapter{Resultados}
+	\section{1a Fase Experimental}
+	    \subsection{Pré-Processamento}
+    	    \subsubsection{Divisão dos conjuntos}
+    	        \paragraph{Dificuldades encontradas e resolvidas}
+    	            A primeira dificuldade encontrada foi um comportamento anormal dos gráficos de previsão, e valores reais. O conjunto de dados foi lido trocando datas (dia por mês e mês por dia). A indexação por data na divisão de conjuntos produzia divisões fora do formato esperado.
+    	            \begin{lstlisting}
+    	                df_file = "https://raw.githubusercontent.com/ddlandim/                                     monografy-ann-demand-prediction/master/experimentos_monografia/input/Todos.csv"
+                        df = pd.read_csv(df_file,index_col='DATA',parse_dates=True)
+                        df.info()
+    	            \end{lstlisting}
+    	            \linebreak 
+    	            Resultado obtido com um dos melhores modelos endógenos GRU:
+    	            \begin{figure}[!ht]
+                    	\center{
+                    		\includegraphics[width=1.0\textwidth]
+                    		{./Figuras/resultados/pandas_wrong_indexing.png}
+                    	}
+                    	\caption{Resultado de um dos melhores modelos endógenos obtido sobre o conjunto de dados aleatoriamente ordenado sobre o tempo \label{fig:pandas_wrong_indexing} }
+                    \end{figure}
+                    \newpage 
+                    Corrigindo a importação dos registros para o formato correto de dados, os resultados foram melhores e condizentes com o comportamento real de consumo, além disso podemos observar que a primeira fase filtra dados obtidos apenas para o 1o semestre de 2019 e no caso da indexação incorreta na figura anterior a ordenação ultrapassou o mês de julho.
+                    \begin{lstlisting}
+    	                infile = "https://raw.githubusercontent.com/ddlandim/                           monografy-ann-demand-prediction/master/experimentos_monografia                   /input/Todos.csv"
+                        dateparse = lambda x: datetime.strptime(x, '%d/%m/%Y')
+                        df = pd.read_csv(infile, parse_dates=['DATA'], date_parser=dateparse,index_col='DATA')
+    	            \end{lstlisting}
+                    \begin{figure}[!ht]
+                    	\center{
+                    		\includegraphics[width=1.0\textwidth]
+                    		{./Figuras/resultados/pandas_correct_indexing.png}
+                    	}
+                    	\caption{Resultado de um dos melhores modelos endógenos obtido sobre o conjunto de dados com ordenação corrigida \label{fig:pandas_correct_indexing} }
+                    \end{figure}
+                    %%%%
+                    %%%%
+                    Nas figuras abaixo são exibidos os valores reais de consumo nos conjuntos de treino (2017 1o e 2o semestre, 2018 2o semestre), validação (2018 - 1o semestre) e teste (2019 - 1o semestre).
+                    %TREINO
+                    \begin{figure}[!ht]
+                    	\center{
+                    		\includegraphics[width=1.0\textwidth]
+                    		{./Figuras/resultados/case1_train.png}
+                    	}
+                    	\caption{Conjunto verdade de treino, dados de 2017 1o e 2o semestre, e 2018 2o semestre. \label{fig:case1_train} }
+                    \end{figure}
+                    %VALIDACAO
+                    \begin{figure}[!ht]
+                    	\center{
+                    		\includegraphics[width=1.0\textwidth]
+                    		{./Figuras/resultados/case1_val.png}
+                    	}
+                    	\caption{Conjunto verdade de validação, dados de 2018 1o semestre. \label{fig:case1_val} }
+                    \end{figure}
+                    %TESTE
+                    \begin{figure}[!ht]
+                    	\center{
+                    		\includegraphics[width=1.0\textwidth]
+                    		{./Figuras/resultados/case1_test.png}
+                    	}
+                    	\caption{Conjunto verdade de teste, dados de 2019 1o semestre. \label{fig:case1_train} }
+                    \end{figure}
+                    
+    	    \subsubsection{Análise das variáveis endógenas}
+    	        \paragraph{Consumo atual em relação às vendas do 1º dia anterior}
+        	        O comportamento de vendas de ticket de almoço apresentou comportamento diferente no ano de 2017 em comparação aos anos seguintes devido à uma limitação imposta pelo restaurante, a partir de 2018, que os alunos comprassem apenas 2 tickets por dia. Possivelmente esta limitação foi dada para aproximar o comportamento de consumo de 1 até 2 dias seguintes à vendas de tickets no dia vigente, esta limitação pode ser interpretada como método de auxílio à gestão para a produção de refeições e para o tratamento de desperdício.
+        	        
+        	        É possível notar, mesmo com o outlier presente e com a nova limitação de compras de tickets a partir de 2018, que o consumo está fortemente relacionado com as vendas de tickets de 1 dia anterior e que os alunos se adaptaram à utilização em curto prazo dos tickets.
+        	        
+        	        Há outros fatores não previstos envolvidos, como falha de registros no sistema, bem como o outlier de 2000 vendas realizadas no dia (número superior à população de alunos) pode ser interpretado com a migração de sistema que ocorreu em 2017 da unidade talim para o banco de dados do Hospital São Paulo, possivelmente foram importadas vendas do sistema antigo sem a diferenciação de datas.
+        	        
+        	        \begin{figure}[!ht]
+                    	\center{
+                    		\includegraphics[width=1.0\textwidth]
+                    		{./Figuras/resultados/case1_consumo_vendas_almoco.png}
+                    	}
+                    	\caption{Correlação entre consumo e vendas de almoço. \label{fig:case1_consumo_vendas_almoco} }
+                    \end{figure}
+                    \begin{figure}[!ht]
+                    	\center{
+                    		\includegraphics[width=1.0\textwidth]
+                    		{./Figuras/resultados/case1_scatter_consumo_vendas_almoco.png}
+                    	}
+                    	\caption{Gráfico Scatter entre consumo e vendas de almoço. \label{fig:case1_scatter_consumo_vendas_almoco} }
+                    \end{figure}
+                    Métricas:
+                    \hline CONSUMO EM RELAÇÃO ÀS VENDAS DE 1 DIA ANTERIOR 
+                    \hline CORRELAÇÃO (r): 0.7255528038157009 
+                    \hline Pi (p) :5.399561176138223e-41 
+                    \hline RMSE = 260.5399426736619 
+                    \hline TOTAL DE REFEIÇÕES PROJETADAS = 104694 
+                    \hline TOTAL DE REFEIÇÕES CONSUMIDAS = 69544 
+                    \hline TOTAL DE REFEIÇÕES SUB PROJETADAS = -4703 
+                    \hline TOTAL DE REFEIÇÕES SUPER PROJETADAS = 39853 
+                    \hline ERRO ABSOLUTO MEDIANO = 139.0 
+                    \hline ERRO ABSOLUTO PERCENTUAL MEDIO = 90.18221588972722%
+
+    	    \subsubsection{Análise da técnica do restaurante}
+    	    \subsubsection{Análise da sazonalidade semanal}
+    	    \subsubsection{Análise das variáveis exógenas}
+    	\subsection{Definição e treino dos modelos}
+    	    \subsubsection{Ajuste empírico de topologia com os modelos perceptron}
+    	    \subsubsection{Modelo Perceptron}
+    	    \subsubsection{Modelos recorrentes GRU endógenos}
+    	    \subsubsection{Modelos mistos endógenos e exógenos}
+    	\subsection{Teste e métricas}
+    	    \subsubsection{Endógenos : GRU x MLP}
+    	    \subsubsection{Melhor modelo Endógeno}
+    	    \subsubsection{Modelos mistos}
+    	    \subsubsection{Melhor modelo da 1a fase}
+    \section{2a Fase Experimental}
+	    \subsection{Pré-Processamento}
+    	    \subsubsection{Divisão dos conjuntos}
+    	    \subsubsection{Análise da técnica do restaurante}
+    	\subsection{Definição e treino dos modelos}
+    	    \subsubsection{Modelos recorrentes GRU endógenos}
+    	    \subsubsection{Modelos mistos endógenos e exógenos}
+    	\subsection{Teste e métricas}
+    	    \subsubsection{Endógenos : GRU x MLP}
+    	    \subsubsection{Melhor modelo Endógeno}
+    	    \subsubsection{Modelos mistos}
+    	    \subsubsection{Teste do melhor modelo da 2a fase no domínio da primeira fase}
+    \section{Tabela de resultados}
+        \subsection{Melhores Resultados}
+        \subsection{Tabela completa de todos os modelos}
+	    
   % ----------------------------------------------------------
   % \chapter{Plano de atividades para o TCC II}
   % ----------------------------------------------------------
   \chapter{Conclusão}
-    As análises diversas de previsão de demanda para o tema abordado requerem extensos métodos de implementação e estruturação de dados.
-    Uma das etapas mais importantes do trabalho, é o método de coleta de dados. Muitos podem ser de acesso burocrático, ou de díficil busca. E são o requisito primordial para o inicio de qualquer análise.
-    
-    A diversidade de métodos de aprendizado de máquina é imensurável, e dentro de apenas uma análise, que é o treino com retropropagação, pode-se montar infinitas topologias diferentes com base na estrutura dos dados coletados. 
-    As heurísticas sobre a definição de topologia apesar de diversas, não são determinísticas, e o processo requer análise exploratória, subjetiva e de tentativa e erro sobre o tema e problema a ser abordado.
-    
-    Todavia foi notório a eficência dos modelos de aprendizado de máquina em trabalhos relacionados à restaurantes universitários. 
-    
-    Como no ICT - Unifesp, não há qualquer modelo atual de previsão, e a falta de um modelo causa desperdício de alimentos e prejuízo ao restaurante, a abordagem dessa pesquisa e sua continuação com novos métodos após a conclusão deste trabalho torna-se viável.
-
+    \section{A importância da metodologia de divisão do conjunto de dados em séries temporais}
+    \section{Sobre o método de produção de refeições com margem de erro e análise da semana anterior}
+    \section{Sobre a sazonalidade semanal}
+    \section{Sobre o ajuste empírico da topologia dos modelos}
+    \section{Sobre os resultados preliminares da etapa de validação}
+    \section{Sobre a sazonalidade semanal}
+    \section{Sobre os erros anômalos de predição}
+    \section{Sobre o modelo com melhor resultado}
+    \section{Conclusões gerais}
+         As análises diversas de previsão de demanda para o tema abordado requerem extensos métodos de implementação e estruturação de dados.
+        Uma das etapas mais importantes do trabalho, é o método de coleta de dados. Muitos podem ser de acesso burocrático, ou de difícil busca. E são o requisito primordial para o inicio de qualquer análise.
+        
+         A diversidade de métodos de aprendizado de máquina é imensurável, e dentro de apenas uma análise, que é o treino com retropropagação, pode-se montar infinitas topologias diferentes com base na estrutura dos dados coletados. 
+        As heurísticas sobre a definição de topologia apesar de diversas, não são determinísticas, e o processo requer análise exploratória, subjetiva e empírica sobre o tema e problema a ser abordado.
+        
+         Todavia foi notório a eficência dos modelos de aprendizado de máquina em trabalhos relacionados à restaurantes universitários. 
+        
+         Como no ICT - Unifesp, não há qualquer modelo atual de previsão, e a falta de um modelo causa desperdício de alimentos e prejuízo ao restaurante, a abordagem dessa pesquisa e sua continuação com novos métodos após a conclusão deste trabalho torna-se viável.
+  \chapter{Agradecimentos}
   %\begin{itemize}
   %\item Contextualização e Motivação; 
   %\item Definição do problema; 
@@ -1444,7 +1605,6 @@
   % ---
   % Finaliza a parte no bookmark do PDF, para que se inicie o bookmark na raiz
   % ---
-  \bookmarksetup{startatroot}% 
   % ---
 
   % ---
@@ -1461,7 +1621,8 @@
   % Referências bibliográficas
   % ----------------------------------------------------------
   %\bibliographystyle{plain}
-  \bibliography{references}
+  \chapter{Referências}
+        \bibliography{references}
 
   % ----------------------------------------------------------
   % Glossário
@@ -1500,7 +1661,20 @@
   % ----------------------------------------------------------
   % Anexos
   % ----------------------------------------------------------
-
+   % ----------------------------------------------------------
+  % \chapter{Plano de atividades para o TCC II}
+  % ----------------------------------------------------------
+    \chapter{Anexos}
+	\section{1a Fase Experimental}
+	    \subsection{Pré-Processamento e treino dos modelos}
+	        \url{https://colab.research.google.com/drive/1spSZDJk1EwK9UK-jfYbWinKEq0EEYIuM?usp=sharing}
+	    \subsection{Importação e aplicação de métricas dos modelos}
+	        \url{https://colab.research.google.com/drive/1vLx4TmsDy0jxVF0BFLng9XFdxgR_IAPL?usp=sharing}
+	\section{2a Fase Experimental}
+	    \subsection{Pré-Processamento e treino dos modelos}
+	        \url{https://colab.research.google.com/drive/1U4pTAAzBQDS3s5LFZqK1-isa3pHJQ9D8?usp=sharing}
+	    \subsection{Importação e aplicação de métricas dos modelos}
+	        \url{https://colab.research.google.com/drive/1bBMTP9YQcy6sRNHZTr3NRSt1YCxJyu5t?usp=sharing}
   % ---
   % Inicia os anexos
   % ---
@@ -1514,5 +1688,5 @@
   % ---
 
   %\end{anexosenv}
-
+    \bookmarksetup{startatroot}% 
   \end{document}

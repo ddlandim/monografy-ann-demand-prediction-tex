@@ -1992,12 +1992,12 @@
                 TOTAL DE REFEIÇÕES CONSUMIDAS = 35555\newline
                 TOTAL DE REFEIÇÕES SUB PROJETADAS = -4471.480010986328\newline
                 TOTAL DE REFEIÇÕES SUPER PROJETADAS = 3920.041976928711\newline
-
+        \newpage
     	\subsection{Teste e métricas}
     	    \subsubsection{Endógenos : GRU x MLP}
-            Apesar dos coeficientes de correlação próximos no teste entre os modelos RNN\_ENDO\_2 e MLP\_ENDO\_1 impactando na proximidade de outras métricas como RMSE, MAPE, etc. O valor p-value é notoriamente discrepante.
-            \hline RNN\_ENDO\_2 : CORRELAÇÃO (r): 0.5954398951050144 Pi (p) :9.422151772316392e-10
-            \hline MLP\_ENDO\_1 : MLP: CORRELAÇÃO (r): 0.5212411617024483 Pi (p) :1.9211576129056944e-07 
+            Apesar dos coeficientes de correlação próximos no teste entre os modelos RNN\_ENDO\_2 e MLP\_ENDO\_1 impactando na proximidade de outras métricas como RMSE, MAPE, etc. O valor p-value é notoriamente discrepante.\newline
+            RNN\_ENDO\_2 : CORRELAÇÃO (r): 0.5954398951050144 Pi (p) :9.422151772316392e-10\newline
+            MLP\_ENDO\_1 : MLP: CORRELAÇÃO (r): 0.5212411617024483 Pi (p) :1.9211576129056944e-07 \newline
             \begin{figure}[!ht]
               \center{
                 \includegraphics[width=0.7\textwidth]
@@ -2024,22 +2024,22 @@
               }
               \caption{Analise de anomalias preditivas do RNN\_ENDO\_2 \label{fig:case1_rnn_endo2_test_dates} }
             \end{figure}
-            Datas outliers onde o modelo seguiu tendencia de alta ou baixa de consumo mas obteve erro discrepante, pontos verdes:
+            Datas outliers onde o modelo seguiu tendencia de alta ou baixa de consumo mas obteve erro discrepante, pontos verdes:\newline
             
-            \hline Data : 01/03/2019 (sexta feira)    | Consumo : 224 | Justificativa : Sexta Feira pré - carnaval
-            \hline Data : 03/06/2019 (segunda feira)  | Consumo : 13  | Justificativa : Segunda Feira pós paralisação estudantil na praça afonso pena
+            Data : 01/03/2019 (sexta feira)    | Consumo : 224 | Justificativa : Sexta Feira pré - carnaval\newline
+            Data : 03/06/2019 (segunda feira)  | Consumo : 13  | Justificativa : Segunda Feira pós paralisação estudantil na praça afonso pena\newline
 
-            Datas com anomalias de previsão onde o modelo seguiu tendensa oposta ao consumo, pontos vermelhos:
+            Datas com anomalias de previsão onde o modelo seguiu tendensa oposta ao consumo, pontos vermelhos:\newline
 
-            \hline Data : 08/03/2019 (sexta feira)    | Consumo : 209 | Justificativa : Sexta Feira pós - carnaval
-            \hline Data : 15/05/2019 (quarta feira)   | Consumo : 19  | Justificativa : Paralisação estudantil na praça afonso pena
-            \hline Data : 30/05/2019 (quinta feira)   | Consumo : 38  | Justificativa : Paralisação estudantil na praça afonso pena
+            Data : 08/03/2019 (sexta feira)    | Consumo : 209 | Justificativa : Sexta Feira pós - carnaval\newline
+            Data : 15/05/2019 (quarta feira)   | Consumo : 19  | Justificativa : Paralisação estudantil na praça afonso pena\newline
+            Data : 30/05/2019 (quinta feira)   | Consumo : 38  | Justificativa : Paralisação estudantil na praça afonso pena\newline
 
-            Métricas do modelo:
-            \hline Total\_Consumidas = 31962 | Total\_Previstas = 31465,61133 | Erro\_Total\_Previsao = -496,3886719 | Percentual\_Erro\_Total = -1,5530\%
-            \hline Correlação = 0,595439895 | P-value = 9,42215E-10         | RMSE = 108,0663015
-            \hline Total de Refeições em falta = -2982,567947 | Total Descartadas = 3478,957266
-            \hline ERRO\_ABS\_MEDIANO = 46,70721436 | ERRO\_ABSOLUTO\_PERCENTUAL\_MEDIO = 74,93539002
+            Métricas do modelo:\newline
+            Total\_Consumidas = 31962 | Total\_Previstas = 31465,61133 | Erro\_Total\_Previsao = -496,3886719 | Percentual\_Erro\_Total = -1,5530\%\newline
+            Correlação = 0,595439895 | P-value = 9,42215E-10         | RMSE = 108,0663015\newline
+            Total de Refeições em falta = -2982,567947 | Total Descartadas = 3478,957266\newline
+            ERRO\_ABS\_MEDIANO = 46,70721436 | ERRO\_ABSOLUTO\_PERCENTUAL\_MEDIO = 74,93539002\newline
             \begin{figure}[!ht]
               \center{
                 \includegraphics[width=0.7\textwidth]
@@ -2065,15 +2065,15 @@
                   }
                   \caption{Grafico scatter de teste do modelo RNN\_EXO\_1 \label{fig:case1_rnn_exo_1_test_scatter} }
                 \end{figure}
-                \hline TOTAL DE REFEIÇÕES CONSUMIDAS = 31962 : 88 linhas
-                \hline TOTAL DE REFEIÇÕES PROJETADAS = 28728.816 : 88 linhas
-                \hline ERRO DE PREVISÃO = -3233.18359375 -10.115711137444466 % do total consumido
-                \hline CORRELAÇÃO (r): 0.4122158648305426 Pi (p) :6.590759241637016e-05 R2 :0.16992191921799218
-                \hline RMSE = 124.49076120428357
-                \hline ERRO TOTAL DE REFEIÇÕES SUB PROJETADAS = -2709.1732788085938
-                \hline ERRO TOTAL DE REFEIÇÕES SUPER PROJETADAS = 5942.356475830078
-                \hline ERRO ABSOLUTO MEDIANO = 85.59107971191406
-                \hline ERRO ABSOLUTO PERCENTUAL MEDIO = 90.98694558104974%
+                TOTAL DE REFEIÇÕES CONSUMIDAS = 31962 : 88 linhas \newline
+                TOTAL DE REFEIÇÕES PROJETADAS = 28728.816 : 88 linha \newline
+                ERRO DE PREVISÃO = -3233.18359375 -10.115711137444466\% do total consumido\newline
+                CORRELAÇÃO (r): 0.4122158648305426 Pi (p) :6.590759241637016e-05 R2 :0.16992191921799218\newline
+                RMSE = 124.49076120428357\newline
+                ERRO TOTAL DE REFEIÇÕES SUB PROJETADAS = -2709.1732788085938\newline
+                ERRO TOTAL DE REFEIÇÕES SUPER PROJETADAS = 5942.356475830078\newline
+                ERRO ABSOLUTO MEDIANO = 85.59107971191406\newline
+                ERRO ABSOLUTO PERCENTUAL MEDIO = 90.98694558104974\%\newline
              %%%%%%%%%%%%%%%%% RNN_EXO_2
               \paragraph{RNN\_EXO\_2}
                 \begin{figure}[!ht]
@@ -2091,15 +2091,15 @@
                   }
                   \caption{Grafico scatter de teste do modelo RNN\_EXO\_2 \label{fig:case2_rnn_exo_2_test_scatter} }
                 \end{figure}
-                \hline TOTAL DE REFEIÇÕES CONSUMIDAS = 31962 : 88 linhas
-                \hline TOTAL DE REFEIÇÕES PROJETADAS = 30823.148 : 88 linhas
-                \hline ERRO DE PREVISÃO = -1138.8515625 -3.563142364370189\% do total consumido
-                \hline CORRELAÇÃO (r): 0.5206433612135913 Pi (p) :1.995208420251518e-07 R2 :0.27106950957578635
-                \hline RMSE = 112.99211377165491
-                \hline ERRO TOTAL DE REFEIÇÕES SUB PROJETADAS = -3044.8834533691406
-                \hline ERRO TOTAL DE REFEIÇÕES SUPER PROJETADAS = 4183.734128952026
-                \hline ERRO ABSOLUTO MEDIANO = 63.59894561767578
-                \hline ERRO ABSOLUTO PERCENTUAL MEDIO = 88.26875085831726\%
+                TOTAL DE REFEIÇÕES CONSUMIDAS = 31962 : 88 linhas\newline
+                TOTAL DE REFEIÇÕES PROJETADAS = 30823.148 : 88 linhas\newline
+                ERRO DE PREVISÃO = -1138.8515625 -3.563142364370189\% do total consumido\newline
+                CORRELAÇÃO (r): 0.5206433612135913 Pi (p) :1.995208420251518e-07 R2 :0.27106950957578635\newline
+                RMSE = 112.99211377165491\newline
+                ERRO TOTAL DE REFEIÇÕES SUB PROJETADAS = -3044.8834533691406\newline
+                ERRO TOTAL DE REFEIÇÕES SUPER PROJETADAS = 4183.734128952026\newline
+                ERRO ABSOLUTO MEDIANO = 63.59894561767578\newline
+                ERRO ABSOLUTO PERCENTUAL MEDIO = 88.26875085831726\%\newline
              %%%%%%%%%%%%%%%%% RNN_EXO_3
               \paragraph{RNN\_EXO\_3}
                 \begin{figure}[!ht]
@@ -2117,22 +2117,25 @@
                   }
                   \caption{Grafico scatter de teste do modelo RNN\_EXO\_3 \label{fig:case3_rnn_exo_3_test_scatter} }
                 \end{figure}
-                \hline TOTAL DE REFEIÇÕES CONSUMIDAS = 31962 : 88 linhas
-                \hline TOTAL DE REFEIÇÕES PROJETADAS = 29425.791 : 88 linhas
-                \hline ERRO DE PREVISÃO = -2536.208984375 -7.935075978896815\% do total consumido
-                \hline CORRELAÇÃO (r): 0.33963283016931 Pi (p) :0.0012067360859947137 R2 :0.11535045932881538
-                \hline RMSE = 124.65810037942255
-                \hline ERRO TOTAL DE REFEIÇÕES SUB PROJETADAS = -3417.6602630615234
-                \hline ERRO TOTAL DE REFEIÇÕES SUPER PROJETADAS = 5953.868759155273
-                \hline ERRO ABSOLUTO MEDIANO = 100.44429016113281
-                \hline ERRO ABSOLUTO PERCENTUAL MEDIO = 98.79064922123037\%
+                TOTAL DE REFEIÇÕES CONSUMIDAS = 31962 : 88 linhas\newline
+                TOTAL DE REFEIÇÕES PROJETADAS = 29425.791 : 88 linhas\newline
+                ERRO DE PREVISÃO = -2536.208984375 -7.935075978896815\% do total consumido\newline
+                CORRELAÇÃO (r): 0.33963283016931 Pi (p) :0.0012067360859947137 R2 :0.11535045932881538\newline
+                RMSE = 124.65810037942255\newline
+                ERRO TOTAL DE REFEIÇÕES SUB PROJETADAS = -3417.6602630615234\newline
+                ERRO TOTAL DE REFEIÇÕES SUPER PROJETADAS = 5953.868759155273\newline
+                ERRO ABSOLUTO MEDIANO = 100.44429016113281\newline
+                ERRO ABSOLUTO PERCENTUAL MEDIO = 98.79064922123037\%\newline
 
     	    \subsubsection{Melhor modelo da 1a fase}
-            Entre todos os modelos, o melhor modelo, produzindo o menor RMSE, e com vantagem em todas as outras métricas foi o modelo endógeno, RNN\_ENDO\_2.
+                Entre todos os modelos, o melhor modelo, produzindo o menor RMSE, e com vantagem em todas as outras métricas foi o modelo endógeno, RNN\_ENDO\_2.
+                Comparativos finais:
+               %TODO: INSERIR TABELA COMPARATIVOS FINAIS.
 
     \section{2a Fase Experimental}
 	    \subsection{Pré-Processamento}
     	    \subsubsection{Divisão dos conjuntos}
+    	        
     	    \subsubsection{Análise da técnica do restaurante}
     	\subsection{Definição e treino dos modelos}
     	    \subsubsection{Modelos recorrentes GRU endógenos}

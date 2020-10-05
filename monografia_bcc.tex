@@ -13,21 +13,23 @@
   \usepackage{lastpage}			% Usado pela Ficha catalográfica
   %\usepackage{natbib}
   \usepackage{indentfirst}			% Indenta o primeiro parágrafo de cada seção.
-  \usepackage{color,xcolor}				% Controle das cores
+  \usepackage{color}				% Controle das cores
+  \usepackage[table]{xcolor}
   \usepackage{graphicx}			% Inclusão de gráficos
   % ---
   \usepackage[portuguese, ruled, linesnumbered]{algorithm2e} %Peseudocodigo
   \usepackage{amssymb} %checkmarker
-  \let\su@ExpandTwoArgs\relax
- \let\IfSubStringInString\relax
- \let\su@IfSubStringInString\relax 
+
  \usepackage{glossaries}
+ \usepackage{float}
+ \usepackage{multicol,multirow}
 % ---
 % Pacotes de citações
 % ---
   \usepackage[brazilian,hyperpageref]{backref}	 % Paginas com as citações na bibl
   \usepackage[alf]{abntex2cite}	% Citações padrão ABNT
   \usepackage{datatool}
+  \usepackage{subcaption}
   
   
   \usepackage{booktabs} % For \toprule, \midrule and \bottomrule
@@ -44,7 +46,10 @@
     \urlstyle{same}
       \usepackage{listings}
       \usepackage{color}
- 
+
+
+
+
 \definecolor{dkgreen}{rgb}{0,0.6,0}
 \definecolor{gray}{rgb}{0.5,0.5,0.5}
 \definecolor{mauve}{rgb}{0.58,0,0.82}
@@ -254,26 +259,26 @@
   % ---
     \begin{agradecimentos}
         \paragraph{Minha Jornada}
-        Minha jornada pela graduação foi marcada por muita persistência, dificuldades e fracassos. Agradeço primeiramente a Deus por me dar fé e alimentar minha persistência e esperança. Apesar de todo o conteúdo técnico das mais de 40 disciplinas do meu curso, o que mais me agregou aprendizado foi o ambiente desafiador desta universidade; que somado à muitas dificuldades pessoais, acidentes, contra-tempos de saúde, profissão e família; constituiu o conjunto perfeito de desafios que me transformou em uma pessoa forte e destemida para enfrentar as cobranças do mercado, mais convicto e perseverante a cada nova tentativa de conquistar meus objetivos. Agradeço à minha família por sempre me apoiar dando tudo de si, aos meus professores que me orientaram e me motivaram, nas reuniões e chats online até nos finais de semana, aos amigos universitários, e a todos os professores que me acompanharam e ofereceram desafios em todos esses anos na UNIFESP.
-        \paragraph{Dedicatórias}
+            Minha jornada pela graduação foi marcada por muita persistência, dificuldades e fracassos. Agradeço primeiramente a Deus por me dar fé e alimentar minha persistência e esperança. Apesar de todo o conteúdo técnico das mais de 40 disciplinas do meu curso, o que mais me agregou aprendizado foi o ambiente desafiador desta universidade; que somado à muitas dificuldades pessoais, acidentes, contra-tempos de saúde, profissão e família; constituiu o conjunto perfeito de desafios que me transformou em uma pessoa forte e destemida para enfrentar as cobranças do mercado, mais convicto e perseverante a cada nova tentativa de conquistar meus objetivos. Agradeço à minha família por sempre me apoiar dando tudo de si, aos meus professores que me orientaram e me motivaram, nas reuniões e chats online até nos finais de semana, aos amigos universitários, e a todos os professores que me acompanharam e ofereceram desafios em todos esses anos na UNIFESP.
+        \paragraph{Em especial, agradeço:}
                 
-                À professora Daniela Musa por ser minha primeira coordenadora de curso e orientadora quando ingressei na Unifesp\newline
+            À professora Daniela Musa por ser minha primeira coordenadora de curso e orientadora quando ingressei na Unifesp.\newline
+            
+            Aos professores das disciplinas que formaram minha base de conhecimento da ciência da computação e que me deram grande preparo para as minhas atividades acadêmicas, profissionais e nos diversos processos seletivos que participei no mercado. Aos professores Reginaldo Kuroshu, Bruno Kimura, Àlvaro Fazenda, Regina Coelho, Arlindo Flavio, Antonio Chaves, Ana Luiza e Otavio Lemos.\newline
+            
+            À professora Camila Bertini  que na disciplina de simulação de sistemas me motivou nos primeiros estudos no tema deste trabalho, com uma realização de correlação com reamostragem de consumo x temperatura em 2016.\newline
+            
+            À professora Flavia Martins de estatística, que me orientou algumas vezes em sua sala sobre a introdução teórica de predições com redes neurais, sua tese de doutorado foi bem complementar e enriquecedora na fundamentação teórica deste trabalho.\newline
+            
+            Aos professores Vinicius Veloso e Fabio Faria, por me apresentarem a disciplina de inteligencia artificial. E ao Vinicius Veloso por me orientar na primeira parte deste trabalho e em todo o desenvolvimento de fundamentação teórica da primeira parte.\newline
+            
+            Ao professor Marcos Quiles por me orientar nesta segunda parte do trabalho, me apresentando desde o início o trabalho com python, tensorflow, scikit learning, sobre as orientações mais específicas do aprendizado da rede neural como uma regressão em um hiperplano. Em me orientar nas métricas de avaliação dos modelos e sobre a toda a metodologia experimental.\newline
+            
+            À equipe de Data Science e Machine Learning Engineering da empresa 2RP-NET, especialista em análise de dados e aprendizado de máquina em Big-data, da qual recentemente fui integrado em setembro/2020 graças ao aprendizado adquirido neste trabalho acadêmico. E por ter disponibilizado um período extenso da reunião de equipe durante o nosso expediente para discutirmos os resultados e métricas deste trabalho, equipe da qual é composta por profissionais mestres e doutores em data science e machine learning.\newline
+            
+            À todos os outros professores, colegas, alunos e colaboradores do instituto de ciência e tecnologia da UNIFESP.\newline
                 
-                Aos professores das disciplinas que formaram minha base de conhecimento da ciência da computação e que me deram grande preparo para as minhas atividades acadêmicas, profissionais e nos diversos processos seletivos que participei no mercado. Aos professores Reginaldo, Bruno Kimura, Àlvaro Fazenda, Regina Coelho, Arlindo Flavio, Ana Luiza e Otavio Lemos.\newline
-                
-                À professora Camila Bertini  que na disciplina de simulação de sistemas me motivou nos primeiros estudos no tema deste trabalho, com uma realização de correlação com reamostragem de consumo x temperatura em 2016.\newline
-                
-                À professora Flavia Martins de estatística, que me orientou algumas vezes em sua sala sobre a introdução teórica de predições com redes neurais, sua tese de doutorado foi bem complementar e enriquecedora na fundamentação teórica deste trabalho.\newline
-                
-                Aos professores Vinicius Veloso e Fabio Faria, por me apresentarem a disciplina de inteligencia artificial. E ao Vinicius Veloso por me orientar na primeira parte deste trabalho e em todo o desenvolvimento de fundamentação teórica da primeira parte.\newline
-                
-                Ao professor Marcos Quiles por me orientar nesta segunda parte do trabalho, me apresentando desde o início o trabalho com python, tensorflow, scikit learning, sobre as orientações mais específicas do aprendizado da rede neural como uma regressão em um hiperplano. Em me orientar nas métricas de avaliação dos modelos e sobre a toda a metodologia experimental.\newline
-                
-                À equipe de Data Science e Machine Learning engineering da empresa 2RP-NET, especialista em análise de dados e aprendizado de máquina em Big-data, da qual recentemente fui integrado em setembro/2020 graças ao aprendizado adquirido neste trabalho acadêmico. E por ter disponibilizado um período extenso da reunião de equipe durante o nosso expediente para discutirmos os resultados e métricas deste trabalho, equipe da qual é composta por profissionais mestres e doutores em data science e machine learning.\newline
-                
-                À todos os outros professores, colegas, alunos e colaboradores do instituto de ciência e tecnologia da UNIFESP.\newline
-                
-                À minha família por ter me apoiado nesse longo período na UNIFESP.\newline
+            À minha família por ter me apoiado nesse longo período na UNIFESP.\newline
 
     \end{agradecimentos}
   % ---
@@ -439,7 +444,7 @@
           \end{itemize}
             %TODO-T: REVER METODOLOGIA
       \section{Metodologia}
-        \paragraph*{Análises dos dados}
+        \textbf{Análises dos dados}
 
           Por se tratar de um trabalho de previsão de demanda,  este trabalho irá realizar a coleta e tratamento dos dados de consumo do restaurante universitário da Unifesp, a coleta de dados climáticos que influenciam em tal demanda, calcular os dados de calendário derivados das datas de coleta, por exemplo, o dia da semana, a estação do ano, o número do semestre (se par ou ímpar), horário, etc.
 
@@ -450,7 +455,7 @@
 
           Assim, a primeira investigação usará a análise estatística de regressão linear múltipla fundamentada por \cite{Clarice2011} por meio de métricas aplicadas pelo framework scipy e plot de gráficos scatter por meio da biblioteca seaborn, que além de realizar nos plots dos gráficos, uma regressão linear simples entre 2 valores supervisionados, também são retornadas outras métricas como medidas de correlação, p-value, $R^2$ , entre outras méticas que serão documentadas para trabalhos futuros.
 
-        \paragraph*{Estudo de Aprendizado de máquina}
+        \textbf{Estudo de Aprendizado de máquina}
           As análises de inteligência artificial, fundamentadas por trabalhos de previsão de demanda em R.U. da Universidade Federal de Viçosa, de acordo \cite{Lopes2008} e na Universidade Estadual Paulista Júlio de Mesquita por \cite{Rocha2011}, concluem a segunda aplicação da técnica de redes neurais artificiais com o método de Perceptron de Múltiplas Camadas (PMC) fundamentado em \cite{Haykin1994}, incrementando-se na técnica a inclusão de variáveis climáticas utilizadas nos trabalhos de previsão de  \cite{Almeida2013, RUAS2012, Silva2010}, modificando a topologia como em \cite{Lopes2008} para receber tais dados. 
 
           Após a modificação da topologia, os dados serão estruturados em 2 fases experimentas, sendo a primeira com os experimentos focados para validação e teste no primeiro semestre de 2019, e na segunda fase os experimentos contemplarão o ano de 2018 inteiro para validação e o ano de 2019 inteiro para teste.
@@ -459,7 +464,7 @@
         %   De acordo com \cite{Flavia2014} que realiza um trabalho de previsão de consumo em aves, a técnica de meta-análise, a análise das análises, 
         
         %TODO : VERIFICAR OS INDICES
-        \paragraph*{Análise dos resultados}
+        \textbf{Análise dos resultados}
         De acordo com \cite{Flavia2014}, a comparação e a discussão dos resultados deve ser feita com base em medidas de avaliação de erro absoluto médio (EAM), erro quadrado médio (EQM) e raiz do erro quadrado médio (REQM).
   % ----------------------------------------------------------
   % CAPÍTULO 2 - Fundamentação Teórica
@@ -507,12 +512,10 @@
           Para realizar tais previsões os métodos quantitativos necessitam de um histórico de dados, para analisar padrões em seu comportamento e predizer o futuro que irá agir dentro deste padrão.
 
           Estes métodos se ramificam em 2 tipos, as séries temporais e os modelos causais.
-          \begin{figure}[!ht]
-          	\center{
-          		\includegraphics[width=0.65\textwidth]
-          		{01-junior-metodos-quantitativos.png}
-          	}
-          	\caption{Tipos de métodos quantitativos Retirado de \cite{Junior2007}.\label{fig:metodosQuantitativos}}
+          \begin{figure}[H]
+          	\center{          		\includegraphics[width=0.65\textwidth]     		{01-junior-metodos-quantitativos.png}
+          	
+          	\caption{Tipos de métodos quantitativos. } \subcaption*{ Fonte:  \cite{Junior2007}}.\label{fig:metodosQuantitativos}}
           \end{figure}
 
         \subsection{Métodos de previsão de Demanda}
@@ -520,12 +523,11 @@
 
           O comportamento dos dados deste trabalho, apesar de ter uma distribuição de datas em função do tempo se classificando em um modelo de série temporal, assume-se a hipótese que tem tal comportamento impactado por relações causais com outras variáveis como recesso acadêmico, feriados, eventos, precipitações intensas que causam trânsito local e impactam na logística e frequência do público, entre outras variáveis de causas menos aparentes.
 
-          \begin{figure}[!ht]
+          \begin{figure}[H]
           	\center{
-          		\includegraphics[width=0.65\textwidth]
-          		{02-junior-metodos-previsao-demanda.png}
-          	}
-          	\caption{Métodos de previsão de demanda \cite{Junior2007}.\label{fig:metodosPrevisaoDemanda}}
+          	\includegraphics[width=0.65\textwidth]{02-junior-metodos-previsao-demanda.png}
+          	\caption{Métodos de previsão de demanda.}
+          	\subcaption*{Fonte: \cite{Junior2007}. }\label{fig:metodosPrevisaoDemanda}}
           \end{figure}
 
         \subsection{Séries Temporais}
@@ -552,12 +554,11 @@
 
           O cenário deste estudo analisa a frequência de alunos dentro do ICT - UNIFESP e consequentemente dentro do R.U tem sazonalidade anual a partir do momento em que a grade de disciplinas tender a ter sazonalidade anual. \\
 
-          \begin{figure}[!ht]
+          \begin{figure}[H]
           	\center{
-          		\includegraphics[width=0.65\textwidth]
-          		{03-ruas-serie-temporal-sazonal.png}
-          	}
-          	\caption{DADOS DE DEMANDA DE SAZONALIDADE DIÁRIA, EM FUNÇÃO DO HORÁRIO. Retirado de \cite{RUAS2012}.\label{fig:seriesTemporais}}
+          		\includegraphics[width=0.65\textwidth]{03-ruas-serie-temporal-sazonal.png}
+          	
+          	\caption{Dados de demanda de sazonalidade diária, em função do horário.} \subcaption*{ Fonte: \cite{RUAS2012}}.\label{fig:seriesTemporais}}
           \end{figure}
 
         \subsection{Previsão com Regressão Linear Múltipla}
@@ -576,7 +577,7 @@
           Logo, $Y=f(X_1,X_2,...,X_k,\beta_0,\beta_1,...,\beta_k)+E y$ é linear nos parâmetros se:
           $\frac {\partial f}{\partial \beta_i} = h(X_1,X_2,...,X_k)$
           
-          \paragraph{Representação dos dados}
+          \paragraph*{Representação dos dados}
           Na tabela abaixo representa-se a estrutura de dados para regressão linear múltipla, com n observações da variável resposta $Y$ e $p$ variáveis explicativas. Assim, $y_i$ é o valor da i-ésima resposta e $x_{ij}$ na é o valor da variável $x_j$ do conjunto de $j$ variáveis correspondente à resposta $y_i$ .
           Para que seja possível aplicar o método dos quadrados mínimos (explicado adiante) de resolução do sistema de variáveis $X$ em relação à $Y$, é importante que se obtenha p observações $Y$, onde $n\geq (p+1)$.
           
@@ -594,7 +595,7 @@
           Satisfazendo o modelo final $Y_i = \beta_0 + \beta_1*x_{i1} + \beta_2*x_{i2} + \beta_p*x_{ip} + \epsilon_i$\\
           $i=1,...,n$
           
-          \paragraph{Método dos Mínimos Quadrados}
+          \paragraph*{Método dos Mínimos Quadrados}
           O método dos mínimos quadrados, é uma técnica utilizada popularmente em estimações econômicas, que busca encontrar o melhor ajuste de um conkunto de ados conforme tabela e modelo acima, para minimizar a soma dos erros quadráticos $\epsilon$. A técnica foi publica por Adrien-Marie Legendre em 1809, em Nouvelles méthodes pour la détermination des orbites des comètes, realizando a hipótese de que a distribuição do $\epsilon$ seja aleatória e normal, embora tal dedução já existisse indiretamente nos teoremas de Gauss-Markov.
           
           A minimização da soma dos erros quadráticos busca então minimizar a seguinte equação $L$:
@@ -648,38 +649,38 @@
 %TODO-T: FIGURA 4 ESTORANDO MARGEM DO TÍTULO
           \paragraph*{Neuronio Biológico}
             O modelo de neurônio artificial surge então, com a busca da inteligência artificial de reproduzir o comportamento de aprendizado humano, reproduzindo computacionalmente seu elemento biológico principal de aprendizagem: O neurônio biológico. 
-            \begin{figure}[!ht]
+            \begin{figure}[H]
               \center{
                 \includegraphics[width=0.65\textwidth]
                 {05-neuronio.jpg}
-              }
-              \caption{Neuronio Biológico, retirado de https://pt.khanacademy.org/science/biology/human-biology/neuron-nervous-system/v/anatomy-of-a-neuron.\label{fig:NeuronioBiológico}}
+              
+              \caption{Neuronio Biológico} \subcaption*{Fonte:  https://pt.khanacademy.org/science/biology/human-biology/\\neuron-nervous-system/v/anatomy-of-a-neuron.}\label{fig:NeuronioBiológico}}
             \end{figure}
-            Um neurônio biológico (Figura 05) processa informações recebidas por meio de seus dentritos e processa-as em seu corpo celular, tal reação à esses estímulos recebidos gera um sínal de saída como resposta aos estímulos, enviado através do axônio. Esse estímulo é repassado como sinal de entrada, através de outros neurônios por meio de seus dendritos, e o ciclo se repete em uma vasta rede.
+            Um neurônio biológico (Figura 04) processa informações recebidas por meio de seus dentritos e processa-as em seu corpo celular, tal reação à esses estímulos recebidos gera um sinal de saída como resposta aos estímulos, enviado através do axônio. Esse estímulo é repassado como sinal de entrada, através de outros neurônios por meio de seus dendritos, e o ciclo se repete em uma vasta rede.
             Controlando essas conexões, pontos de contato entre a resposta de um neurônio e a entrada de outro, existem as sinapses. Elas funcionam como agentes que permitem a interação acontecer ou inibem, e são acionadas por um conjunto somatório de estímulos. Se tal somatório de estímulos for satisfatório, elas permite a transmissão de sinal elétrico pelo axônio até o dendrito de um neurônio vizinho, formando um ciclo de aprendizado em uma rede neural biológica.
 
           \paragraph*{Neuronio Artifical}
-            Warren McCulloch e Walter Pitts em 1942 observando o neurônio biológico iniciam a busca de um modelo computacional do mesmo. McCuloch era psiquiatra e neuroanatomista e passou cerca de 20 anos refletindo e estudando sobre a representação do sistema nervoso, em 1942 ele convidou Pitts, que era matemático, para fazer parte das suas pesquisas.Em 1943 lançaram o artigo "A Logical Calculus of the Ideas Immanent in Nervous Activity." chegando em um modelo matemático do neurônio artificial: 
+            Warren McCulloch e Walter Pitts em 1942 observando o neurônio biológico iniciam a busca de um modelo computacional do mesmo. McCuloch era psiquiatra e neuroanatomista e passou cerca de 20 anos refletindo e estudando sobre a representação do sistema nervoso, em 1942 ele convidou Pitts, que era matemático, para fazer parte das suas pesquisas. Em 1943 lançaram o artigo "A Logical Calculus of the Ideas Immanent in Nervous Activity." chegando em um modelo matemático do neurônio artificial: 
 
-            \begin{figure}[!ht]
+            \begin{figure}[H]
                 \center{
                   \includegraphics[width=0.65\textwidth]
                   {06-neuronio-artificial.png}
-                }
-                \caption{Neuronio Artificial, Retirado de \url{http://redesneuraisartificiais.blogspot.com/2010/10/o-primeiro-modelo-de-um-neuronio-criado.html}\label{fig:NeuronioArtificial}}
+               
+                \caption{Neuronio Artificial.} \subcaption*{ Fonte: \url{http://redesneuraisartificiais.blogspot.com/2010/10/o-primeiro-modelo-de-um-neuronio-criado.html}} \label{fig:NeuronioArtificial} }
             \end{figure}
 
             Assim como no neurônio biológico, este modelo reage à um vetor de entradas $X_0,X_1,...,X_n$ onde tem suas sinapses representadas por pesos numéricos, existe uma soma ponderada dessas entradas que é controlada por uma função de transferência ou função de ativação, determinando se essa soma é maior que um valor numérico. Se essa soma for satisfatória o neurônio é ativado emitindo um valor de saída 1, caso contrário se emite um valor de saída 0.
             Todo o funcionamento deste modelo então é reduzido a responder se a soma recebida é maior que um valor numérico esperado.
 
-            Neste modelo simplista o neurônio consegue realizar operações lógicas. Na figura 07 os pesos w1 e w2 e o limiar T estão ajustados para responder à operação AND que resumidamente à uma operação lógica que somente produz um valor positivo 1 na resposta de saída se ambos os valores de entrada forem 1.
+            Neste modelo simplista o neurônio consegue realizar operações lógicas. Na figura 06 os pesos w1 e w2 e o limiar T estão ajustados para responder à operação AND que resumidamente à uma operação lógica que somente produz um valor positivo 1 na resposta de saída se ambos os valores de entrada forem 1.
             %TODO-T: TÍTULO DA FIGURA ESTOURANDO A MARGEM
-            \begin{figure}[!ht]
+            \begin{figure}[H]
               \center{
-                \includegraphics[width=0.65\textwidth]
-                {07-neuronio-operacao-and.png}
-              }
-              \caption{Neuronio Artificial - Operação AND, Retirado de http://redesneuraisartificiais.blogspot.com/2010/10/o-primeiro-modelo-de-um-neuronio-criado.html\label{fig:NeuronioArtificialAnd}}
+                \includegraphics[width=0.65\textwidth]                {07-neuronio-operacao-and.png}
+              
+              \caption{Neuronio Artificial - Operação AND.} \subcaption*{
+              Fonte:  http://redesneuraisartificiais.blogspot.com/2010/10/o-primeiro-modelo-de-um-neuronio-criado.html}\label{fig:NeuronioArtificialAnd}}
             \end{figure}
 %FIXED-T VIRGULA REMOVIDA DPS DE POSITIVO
            O neurônio irá comparar se a soma das entradas $X$ multiplicadas pelos seus devidos pesos $W$, será menor que o limiar T. Ele somente irá produzir uma resposta positiva (1) se essa soma for maior. É fácil verificar então na imagem, que o resultado dessa soma só será positivo  se ambas as entradas forem 1, onde a soma será $2>1,5$.
@@ -717,25 +718,25 @@
             	\item $ y $ - sinal de saída do neurônio.
             \end{itemize}
 			
-            \begin{figure}[!ht]
+            \begin{figure}[H]
             	\center{
               \includegraphics[width=0.65\textwidth]
               {08-perceptron.png}
-            }
-            \caption{Neuronio Artificial Perceptron, retirado de \cite{Junior2007} \cite{}\label{fig:perceptron}}
+           
+            \caption{Neuronio Artificial Perceptron.} \subcaption*{ retirado de \cite{Junior2007}} \label{fig:perceptron} }
             \end{figure}
 			
 			     Em algumas literaturas o bias pode ser reduzido a um peso $W_0$ com entrada $X_0$ fixo em 1 no neurônio, a representação gráfica da topologia pode mudar, mas no somatório de saída, o calculo continua o mesmo.
 			
 			     A função de ativação $\delta$ se apresenta de forma linear ou não linear, determinando a saída de um neurônio a partir do seu potencial de ativação. 
-			     As funções de ativação podem ser observadas na figura 09, sendo a de maior popularidade de utilização, a sigmoide.
+			     As funções de ativação podem ser observadas na figura 08, sendo a de maior popularidade de utilização, a sigmoide.
 			
-			     \begin{figure}[!ht]
+			     \begin{figure}[H]
     				\center{
     					\includegraphics[width=0.80\textwidth]
     					{09-delta.png}
-    				}
-    				\caption{Funções de Ativação retirado de \cite{Flavia2014} \label{fig:perceptron2}}
+    				
+    				\caption{Funções de Ativação.} \subcaption*{ Fonte:  \cite{Flavia2014}: \label{fig:perceptron2}}}
 			     \end{figure}
 			
 				    As funções de ativação dá a capacidade do perceptron quando conectado em rede (explicado no próximo capítulo) de resolver problemas lineares e não lineares, agregando adaptação e improviso ao resolver programas que não estão contidos em seus dados de alimentação.
@@ -743,13 +744,13 @@
 		      \paragraph*{Perceptron - Treino Supervisionado}
             \cite{Almeida2013} cita que o processo de aprendizado do perceptron pode ocorrer de forma supervisionada quando o neurônio deve aprender a relacionar um conjunto observado de variáveis à um valor observado de saída deste mesmo conjunto. O neurônio recebe os sinais de entrada $Xi$ e produz uma saída $Yi$ através do combinador linear e função $\delta$ de ativação; compara essa saída $Yi$ com a observação $i$ obtida do conjunto de dados (ponto chave do processo de treino supervisionado) e por fim essa comparação irá gerar um erro $e$.
             
-            \subparagraph* {Critério de parada}
+            \subparagraph*{Critério de parada}
             	De acordo com algum critério adotado em cada contexto de aplicação do perceptron, este erro pode ser aceitado e o neurônio mantém o valor de seus pesos $Wi$ que impactam na saída $Yi$ desejada. A aprendizagem do neurônio também pode atingir um critério de parada após N épocas de treinamento, diversos critérios de paradas  podem ser combinados.  
             	
-            \subparagraph* {Época de treinamento}
+            \subparagraph*{Época de treinamento}
             	Se o critério de parada não for aprovado, uma nova época de treinamento (ou repetição de interação) é iniciada mesmos valores $X_i$ e $Y_i$ passados, os valores de pesos $Wi$ são reajustados com a taxa de aprendizagem, buscando o objetivo de se obter um erro menor.
             	
-            \subparagraph* {Taxa de aprendizagem}
+            \subparagraph {Taxa de aprendizagem}
             	Esse reajuste de pesos $Wi$ denomina-se taxa de aprendizagem, $\alpha$ que pode ter valores de escolha livre ao contexto de aplicação do perceptron, para reajustar estes pesos $Wi$. Assim que a taxa de aprendizagem ajusta os pesos, uma nova época N+1 de treinamento está se iniciando buscando novamente um erro menor. Ressaltando então que o critério de parada pode ser acionado e interromper o reinicio do processo, se for estipulado um limite para o valor de N combinado ou não com um limite para o erro. 
             	
           \subsection {Funcionamento e treino do neurônio perceptron}
@@ -773,7 +774,7 @@
               \item SE $CP(e)$ for APROVADO, o algoritmo continua, SE REPROVADO, a aprendizagem é feita ajustando $b_{}=b_{}+(\alpha*(e))$, e ajustando o vetor $W_{i} = W_{i}+(\alpha*e*X_{di})$. 
             \end{enumerate}
  
-        \paragraph* {Funcionamento do perceptron para logica AND}.\\
+        \paragraph*{Funcionamento do perceptron para logica AND}.\\
 		 Este exemplo aborda a aplicação do problema do neurônio de Warren McCulloch e Walter Pitts, o aprendizado para a tabela AND, que busca fornecer uma resposta verdadeira apenas se a primeira E todas as demais entradas forem verdadeiras.\\            	
         A utilização do perceptron com o modelo de aprendizado supervisionado, busca então conseguir de forma autônoma os valores de pesos $W_i$ e desta forma aprender o funcionamento da logica E, sem que seja necessário a tarefa humana de ajustar o mesmo.\\
                  \begin{table}[!ht]
@@ -983,41 +984,42 @@
           
           Então em 1969, Marvin Mjinsky e Seymour Papert realizaram uma publicação comprovando essa limitação de aprendizado à uma combinação linear, e provaram que o perceptron é limitado à resolução de problemas que são resolvidos ou classificados por apenas 1 linha, ou seja, problemas linearmente separáveis que consiste na mesma limitação do processo de regressão linear múltipla.
           Na figura 10, abaixo, o perceptron não pode solucionar o problema (b). E essa limitação desmotivou e parou os estudos com perceptrons.
-    		  \begin{figure}[!ht]
+    		  \begin{figure}[H]
     		  	\center{
     		  		\includegraphics[width=0.65\textwidth]
     		  		{10-limite-perceptron.png}
-    		  	}
-    		  	\caption{Problemas Linearmente Separáveis e Não Separáveis. Retirado de \cite{Flavia2014}.\label{fig:problemasLineares}}
+    		  
+    		  	\caption{Problemas Linearmente Separáveis e Não Separáveis.} \subcaption*{Fonte: \cite{Flavia2014}.}\label{fig:problemasLineares}}	
+    		  	
     		  \end{figure}
 	  	
 	  	 Em 1986 James McClelland e David Rumelhart proporam o método de desenvolvimento de uma rede neural de perceptrons, tangindo mais ainda a inspiração da solução no cérebro humano. O processo resume o treinamento do perceptron simples aplicado à um conjunto de perceptrons interligados, e assim solucionando problemas complexos que podem ser resolvidos com uma combinação de soluções.
 	  	  
-  	  	  \begin{figure}[!ht]
+  	  	  \begin{figure}[H]
   	  	  	\center{
   	  	  		\includegraphics[width=0.30\textwidth]
   	  	  		{11-solucao-mlp.png}
-  	  	  	}
-  	  	  \caption{Problemas Linearmente Não Separáveis Multiplas Soluções. \label{fig:doisPerceptrons}}
+  	  	  	
+  	  	  \caption{Problemas Linearmente Não Separáveis. Múltiplas Soluções.}  \label{fig:doisPerceptrons}}
   	  	   \end{figure}
   	    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%   
   	    \subsection{Rede Perceptrons Múltiplas Camadas - MLP}
   	       
   	       A solução base para se combinar 2 ou mais perceptrons a fim de se resolver um problema com a combinação de 2 ou mais soluções lineares, é a utilização de um perceptron combinador de sinal de saída, já que cada perceptron pode ter múltiplas entradas e somente uma saída. Dessa forma as redes neurais vão formando colunas de perceptrons interconectados. Cada coluna é denominada uma camada da rede neural. A ultima camada deve ter o número de perceptrons correspondente ao número de saídas desejadas. Na figura abaixo, encontra-se uma rede neural com duas camadas intermediárias e 3 saídas.
   	       
-  	       \begin{figure}[!ht]
+  	       \begin{figure}[H]
   	       	\center{
   	       		\includegraphics[width=0.65\textwidth]
   	       		{12-mlp.png}
-  	       	}
-  	       	\caption{Rede de perceptrons com múltiplas camadas. Retirado de \cite{Almeida2013}\label{fig:MLP}}
+  	       	
+  	       	\caption{Rede de perceptrons com múltiplas camadas.} \subcaption*{Fonte: \cite{Almeida2013}}\label{fig:MLP}}
   	       \end{figure}
          
   	       Esta rede denominada MLP (Multilayer Perceptron) possui uma camada de entrada onde cada nó representa uma variável a ser considerada ao problema a ser analisado, e pelo menos uma camada intermediária.
   	      
   	       Nesta camada intermediária os neurônios possuem geralmente uma função de ativação sigmoidal logística ou tangente hiperbólica, e conceitualmente no mínimo 1 neurônio desta primeira camada oculta deve receber no mínimo 2 conexões de entrada. E uma camada de saída, na borda à direita, com o número de neurônios correspondente ao número de soluções buscadas. 
   	       
-            \paragraph{Treino e Validação da MLP}
+            \paragraph*{Treino e Validação da MLP}
             	O conjunto de dados de entrada na rede MLP supervisionada, deve ser dividido em 2 partes principais, Treinamento e Validação. É importante salientar que as observações de ambos os conjuntos devem originar do mesmo conjunto de dados para representar o mesmo problema, as observações $Y_i$ relacionadas aos vetores $i$ de variáveis $X_{i1},Xi_{i2},...,X{ij}$ do conjunto de treino, devem ter a mesma estrutura, mesmo número j de variáveis X por vetor de entrada e devem representar o mesmo problema que as observações $Yi$ do conjunto de validação.
             	
             	O conjunto de dados da validação e treino somados devem formar exatamente o conjunto original, sem informações excedentes ou em falta.
@@ -1040,48 +1042,49 @@
             	
             	O ponto de parada no limite inferior do erro quadrático médio da amostra de validação, será o ponto ótimo de parada de treinamento.
           	
-          	\begin{figure}[!ht]
+          	\begin{figure}[H]
           		\center{
-          			\includegraphics[width=0.65\textwidth]
+          			\includegraphics[width=0.5\textwidth]
           			{14-validacaocruzada.png}
-          		}
-          		\caption{Ponto ótimo de parada da validação cruzada. Retirado de \cite{Flavia2014} \label{fig:validacaoCruzada}}
+          		
+          		\caption{Ponto ótimo de parada da validação cruzada.} 
+          		\subcaption*{ Retirado de \cite{Flavia2014}} \label{fig:validacaoCruzada}} 
           	\end{figure}
         
         O treinamento de uma rede MLP para previsões de demanda de restaurantes universitários que obteve sucesso em \cite{Lopes2008} e \cite{Rocha2011} é a retro propagação de erro.
         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
         \subsection{Perceptrons Múltiplas Camadas com Retro Propagação de Erro}
         A rede Perceptron Múltiplas Camadas com Retro Propagação de Erro (do inglês, M.L.P Backpropagation), faz o reajuste dos pesos sinápticos dos neurônios através de duas fases:
-  	       \paragraph{Feed-forward} Nesta primeira fase de treino os sinais $X_{i0},X_{i0},...,X_{in}$ com sua respectiva saída $Y_i$ do conjunto de dados são apresentados à todos os neurônios da primeira camada. O processo de propagação do sinal de saída de cada neurônio segue o princípio do neurônio artificial apresentado na seção anterior, que envia o sinal de saída como um sinal de entrada ao neurônio seguinte.
+  	       \paragraph*{Feed-forward} Nesta primeira fase de treino os sinais $X_{i0},X_{i0},...,X_{in}$ com sua respectiva saída $Y_i$ do conjunto de dados são apresentados à todos os neurônios da primeira camada. O processo de propagação do sinal de saída de cada neurônio segue o princípio do neurônio artificial apresentado na seção anterior, que envia o sinal de saída como um sinal de entrada ao neurônio seguinte.
   	       
-  	       \paragraph{Feed-backward} Nesta fase é obtido um valor de erro da camada de saída. Este erro é utilizado na equação de reajuste do peso sináptico das conexões dos neurônios da camada de saída com o sinal de saída dos neurônios da última camada oculta. E depois este erro é propagado realizando outra equação de reajuste de peso sináptico das conexões dos neurônios nas camadas anteriores, no sentido contrário em direção à camada de entrada. Isto permite que os pesos sináptico de todas as camadas de intermediárias neste processo tenham seus pesos ajustados.
+  	       \paragraph*{Feed-backward} Nesta fase é obtido um valor de erro da camada de saída. Este erro é utilizado na equação de reajuste do peso sináptico das conexões dos neurônios da camada de saída com o sinal de saída dos neurônios da última camada oculta. E depois este erro é propagado realizando outra equação de reajuste de peso sináptico das conexões dos neurônios nas camadas anteriores, no sentido contrário em direção à camada de entrada. Isto permite que os pesos sináptico de todas as camadas de intermediárias neste processo tenham seus pesos ajustados.
   	       
-  	       \begin{figure}[!ht]
+  	       \begin{figure}[H]
   	       	\center{
   	       		\includegraphics[width=0.65\textwidth]
   	       		{13-mlp-back.png}
-  	       	}
-  	       	\caption{Fases de treino da MLP-Back-Propagation. Retirado de \cite{Almeida2013}\label{fig:MLP2}}
+  	       	
+  	       	\caption{Fases de treino da MLP-Back-Propagation.} \subcaption{Fonte:  \cite{Almeida2013}}\label{fig:MLP2}}
   	       \end{figure}
   	       
   	       \paragraph*{MLP Backpropagation em R.U em trabalhos relacionados}
   	       Em \cite{Lopes2008} A rede neural perceptron de múltiplas camadas é utilizada para tratar a previsão de demanda do R.U da UFV, utilizando apenas como variáveis quantitativas as 5 ultimas observações anteriores ao dia a se analisar, e como variáveis qualitativas o dia da semana variando de segunda a sexta, em valores binários.
   	       
-           \begin{figure}[!ht]
+           \begin{figure}[H]
           	\center{
           		\includegraphics[width=0.65\textwidth]
           		{15-rna-lopes.png}
-          	}
-          	\caption{Rede Neural Perceptron de Múltiplas Camadas. Retirado de \cite{Lopes2008}.\label{fig:mlp-lopes}}
+          	
+          	\caption{Rede Neural Perceptron de Múltiplas Camadas.} \subcaption*{ Fonte:  \cite{Lopes2008}.}\label{fig:mlp-lopes}}
            \end{figure}
             
            Em \cite{Rocha2011} o trabalho realizado com neurônios artificiais para prever a demanda do R.U da UNESP, envolve apenas uma única camada de entrada e uma segunda camada para saída, porém com uma diversidade maior de variáveis de entrada correlacionadas com o consumo do restaurante. 
-           \begin{figure}[!ht]
+           \begin{figure}[H]
           	\center{
           		\includegraphics[width=0.65\textwidth]
           		{16-rna-rocha.png}
-          	}
-          	\caption{Rede Neural Perceptron de Múltiplas Camadas. Retirado de  \cite{Rocha2011} \label{fig:rnaRocha}}
+          	
+          	\caption{Rede Neural Perceptron de Múltiplas Camadas.} \subcaption*{Fonte:   \cite{Rocha2011}} \label{fig:rnaRocha}}
            \end{figure}
          
             Ambos os modelos possuem topologia de uma camada oculta para entrada dos dados, e uma camada de saída. que de acordo com \cite{Braga2000} cita que através de uma análise de Cybenko, uma camada intermediária é o suficiente para aproximar qualquer função contínua e 2 camadas intermediárias são suficientes para aproximar qualquer função matemática, e devendo ser observado o fato de que em alguns casos, a utilização de 2 ou mais camadas pode facilitar o treinamento da rede, porém a utilização de um grande número de camadas intermediárias ou ocultas, é inviável, pois em cada uma delas a estimativa do erro se trata de uma estimativa da estimativa do erro da camada anterior, e este cascateamento de estimativas pode se tornar menos preciso à medida que cresce.
@@ -1122,20 +1125,20 @@
             Se a iteração $i$ da época $k$ for a primeira, todos os pesos $Wi_{n}j$ em todos os neurônios, são inicializados com valores aleatórios pequenos.\\ 
             
             
-            \begin{figure}[!ht]
+            \begin{figure}[H]
           	\center{
           		\includegraphics[width=0.65\textwidth]
           		{18-mlp-bp-ff1.png}
-          	}
-          	\caption{Apresentação da i-ésima observação do conjunto de treino à rede}
+          	
+          	\caption{Apresentação da i-ésima observação do conjunto de treino à rede}}
            \end{figure}
            
-           \begin{figure}[!ht]
+           \begin{figure}[H]
           	\center{
           		\includegraphics[width=0.65\textwidth]
           		{18-mlp-bp-ff2.png}
-          	}
-          	\caption{Cálculo do valor estimado de saída da rede.}
+          	
+          	\caption{Cálculo do valor estimado de saída da rede.}}
            \end{figure}
             
             O valor de $Yi_{\mu}(j)$. dos neurônios da primeira camada oculta, são obtidos de forma que $Xi_{n}(j)$ são os sinais de entrada das variáveis de 1 à $n$.
@@ -1150,21 +1153,21 @@
             \subparagraph*{Regra $\delta$ para neurônio de saída}
             Exclusivamente para a camada de saída, $\delta$ é calculado por\\
             $\delta_s = (Yi - Yi_{\mu}(s) )*F'(\mu(s))$.
-            \begin{figure}[!ht]
+            \begin{figure}[H]
           	\center{
           		\includegraphics[width=0.40\textwidth]
           		{17-mlp-bp-saida.png}
-          	}
-          	\caption{Aprendizado de um neurônio na camada de saída}
+          
+          	\caption{Aprendizado de um neurônio na camada de saída}	}
            \end{figure}
             
             O valor dos $n$ pesos $Wi_{n}(s)$ do neurônio de saída $s$ com $n$ entradas vindas das saídas de neurônios $j$ das camadas anteriores, é obtido por $\Delta Wi_{n}(s) = \eta*\delta_s*Yi_{\mu}(j)$\\.
-            \begin{figure}[!ht]
+            \begin{figure}[H]
           	\center{
           		\includegraphics[width=0.65\textwidth]
           		{20-mlp-bp-fb.png}
-          	}
-          	\caption{Reajuste dos pesos de saída}
+          	
+          	\caption{Reajuste dos pesos de saída}}
            \end{figure}
            %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
            \subparagraph*{Regra $\delta$ para neurônios de camadas ocultas}
@@ -1181,12 +1184,12 @@
             
             Após o reajuste chegar na primeira camada oculta, um novo vetor de observações $i$ é apresentado à rede repetindo, iniciando novamente a fase feed-forward e repetindo o ciclo até o fim das entradas.
             
-            \begin{figure}[!ht]
+            \begin{figure}[H]
           	\center{
           		\includegraphics[width=0.65\textwidth]
           		{21-mlp-bp-fbe.png}
-          	}
-          	\caption{Reajuste dos pesos de camadas ocultas}
+          	
+          	\caption{Reajuste dos pesos de camadas ocultas}}
             \end{figure}
            
             \subparagraph{Validação de treino}
@@ -1243,21 +1246,21 @@
   % ----------------------------------------------------------
   \chapter{Trabalhos relacionados}
     \subsection{Previsão de demanda em restaurantes universitários}
-        \paragraph*{} No estudo estatístico feito por \cite{Landim2016}, foi analisada a correlação entre a temperatura e o consumo de refeições nos dias de vendas do restaurante universitário do campus ICT da Unifesp, sendo que os dados continham apenas uma pequena amostra das vendas do segundo semestre de 2016. Devido ao baixo volume de ocorrências, os dados foram submetidos à reamostragem via bootstrap. De acordo com os gráficos das amostras, identificou-se que a correlação mostrada nos gráficos da primeira metade do semestre e do período total do semestre formaram distribuições bimodais. Porém, na segunda metade do semestre formou-se uma distribuição unimodal. Portanto, concluiu-se que outras variáveis e outros modelos de análises deveriam ser utilizados para esta previsão de demanda.
+         No estudo estatístico feito por \cite{Landim2016}, foi analisada a correlação entre a temperatura e o consumo de refeições nos dias de vendas do restaurante universitário do campus ICT da Unifesp, sendo que os dados continham apenas uma pequena amostra das vendas do segundo semestre de 2016. Devido ao baixo volume de ocorrências, os dados foram submetidos à reamostragem via bootstrap. De acordo com os gráficos das amostras, identificou-se que a correlação mostrada nos gráficos da primeira metade do semestre e do período total do semestre formaram distribuições bimodais. Porém, na segunda metade do semestre formou-se uma distribuição unimodal. Portanto, concluiu-se que outras variáveis e outros modelos de análises deveriam ser utilizados para esta previsão de demanda.
         
-        \paragraph*{} \cite{Lopes2008} faz o mesmo estudo deste cenário do ICT UNIFESP aplicado na Universidade Federal de Viçosa (UFV). Neste estudo, os dados utilizados foram somente o histórico de vendas do restaurante universitário, e nenhuma variável de ambiente foi coletada como temperatura, precipitação, número de alunos matriculados, etc. O algoritmo utilizado foi o Traincgp (Conjugate gradient backpropagation with Polak-Ribiere updates) no software Matlab. Este algoritmo não envolve o cálculo das derivadas segundas das variáveis e converge ao mínimo da função quadrática em um número finito de iterações como cita o autor. Foram então considerados para cada nó da rede neural, o dia da semana (como segunda, terça, quarta, quinta e sexta) e cada camada dessa rede utilizando os 5 dias anteriores para cada nó (as 5 segundas anteriores, 5 terças anteriores e assim sucessivamente) e, por fim, obtido um modelo pela rede que apresentou erro máximo de 3.
+         \cite{Lopes2008} faz o mesmo estudo deste cenário do ICT UNIFESP aplicado na Universidade Federal de Viçosa (UFV). Neste estudo, os dados utilizados foram somente o histórico de vendas do restaurante universitário, e nenhuma variável de ambiente foi coletada como temperatura, precipitação, número de alunos matriculados, etc. O algoritmo utilizado foi o Traincgp (Conjugate gradient backpropagation with Polak-Ribiere updates) no software Matlab. Este algoritmo não envolve o cálculo das derivadas segundas das variáveis e converge ao mínimo da função quadrática em um número finito de iterações como cita o autor. Foram então considerados para cada nó da rede neural, o dia da semana (como segunda, terça, quarta, quinta e sexta) e cada camada dessa rede utilizando os 5 dias anteriores para cada nó (as 5 segundas anteriores, 5 terças anteriores e assim sucessivamente) e, por fim, obtido um modelo pela rede que apresentou erro máximo de 3.
         
-        \paragraph*{} \cite{Rocha2011} também realiza o estudo de demanda no restaurante universitário da Universidade Estadual Paulista Júlio de Mesquita Filho (UNESP), novamente com os métodos de redes neurais artificiais com backpropagation, e utilizando apenas como fonte de dados o histórico numérico das vendas realizadas, e outras variáveis intermediárias obtidas a partir deste como médias de subconjunto de observações (médias de segundas-feiras), e a única variável de ambiente coletada foi o número de feriados próximos à observação de venda. No estudo do total de dias analisados, verifica-se que em 73\% (187 dias), o método de média simples propiciou um maior erro em relação à RNA, que por sua vez ocasionou um erro maior nos 23\% (69 dias) restantes.Em se tratando de menor desperdício, observa-se que a RNA apresenta erros maiores que 50 refeições em 13 dias, enquanto o método da média simples apresenta erros maiores que 50 refeições em 58 dias, concluindo-se então que o método de RNA foi bem mais eficiente do que o cálculo de média simples utilizado pela administração do restaurante universitário.
+         \cite{Rocha2011} também realiza o estudo de demanda no restaurante universitário da Universidade Estadual Paulista Júlio de Mesquita Filho (UNESP), novamente com os métodos de redes neurais artificiais com backpropagation, e utilizando apenas como fonte de dados o histórico numérico das vendas realizadas, e outras variáveis intermediárias obtidas a partir deste como médias de subconjunto de observações (médias de segundas-feiras), e a única variável de ambiente coletada foi o número de feriados próximos à observação de venda. No estudo do total de dias analisados, verifica-se que em 73\% (187 dias), o método de média simples propiciou um maior erro em relação à RNA, que por sua vez ocasionou um erro maior nos 23\% (69 dias) restantes.Em se tratando de menor desperdício, observa-se que a RNA apresenta erros maiores que 50 refeições em 13 dias, enquanto o método da média simples apresenta erros maiores que 50 refeições em 58 dias, concluindo-se então que o método de RNA foi bem mais eficiente do que o cálculo de média simples utilizado pela administração do restaurante universitário.
       
       \subsection{Previsão de demanda em outros ambientes} 
-        \paragraph*{} \cite{RUAS2012} fazem uma análise de previsão de demanda de energia elétrica no estado do paraná, entre os anos de 2004 e 2006, utilizando redes neurais artificiais e máquinas de vetores de suporte. Apesar de não ser o mesmo exemplo do cenário do restaurante universitário do ICT UNIFESP, temos a distribuição dos dados de consumo coletados como uma série temporal. Nesta pesquisa de previsão de demanda de energia elétrica foi utilizada uma rede parcialmente recorrente de Elman, que permite a previsão de um passo de tempo à frente. Para que seja possível realizar a previsão para vários pontos à frente, é necessário utilizar os valores já previstos, ou seja, a saída da rede, como entradas da mesma.
+         \cite{RUAS2012} fazem uma análise de previsão de demanda de energia elétrica no estado do paraná, entre os anos de 2004 e 2006, utilizando redes neurais artificiais e máquinas de vetores de suporte. Apesar de não ser o mesmo exemplo do cenário do restaurante universitário do ICT UNIFESP, temos a distribuição dos dados de consumo coletados como uma série temporal. Nesta pesquisa de previsão de demanda de energia elétrica foi utilizada uma rede parcialmente recorrente de Elman, que permite a previsão de um passo de tempo à frente. Para que seja possível realizar a previsão para vários pontos à frente, é necessário utilizar os valores já previstos, ou seja, a saída da rede, como entradas da mesma.
         
-        \paragraph*{} \cite{Almeida2013} analisa um cenário semelhante de demanda de energia elétrica, porém utilizando-se técnicas de previsão de demanda com Rede Neural Artificial do tipo Multilayer Perceptron combinado com lógica fuzzy que permite colocar variáveis de temperatura (entre outras) em um conjunto de regras que impactam no problema.
+         \cite{Almeida2013} analisa um cenário semelhante de demanda de energia elétrica, porém utilizando-se técnicas de previsão de demanda com Rede Neural Artificial do tipo Multilayer Perceptron combinado com lógica fuzzy que permite colocar variáveis de temperatura (entre outras) em um conjunto de regras que impactam no problema.
         
-        \paragraph*{} \cite{Silva2010} também aplica técnicas de redes neurais para previsão de demanda de energia elétrica, com o estudo de variáveis climáticas, porém através de um modelo de MAPA SOM - (Self-Organizing Map) que é um tipo de rede neural desenvolvido para reconhecimento de padrões. Apesar de ser um modelo não supervisionado, o modelo é ideal para organizar as principais variáveis impactantes e descartáveis na previsão. O mapa som utilizado pelo autor apresenta os dados associados aos seus neurônios de forma que padrões similares encontram-se em neurônios contíguos, tendo uma organização topológica. Deste modo é possível se extrair relações abstratas entre as variáveis do vetor de dados através da sua posição nos mapas componentes, que por meio de uma escala de cores mostram a quantidade de uma variável específica em cada neurônio do mapa.
+       \cite{Silva2010} também aplica técnicas de redes neurais para previsão de demanda de energia elétrica, com o estudo de variáveis climáticas, porém através de um modelo de MAPA SOM - (Self-Organizing Map) que é um tipo de rede neural desenvolvido para reconhecimento de padrões. Apesar de ser um modelo não supervisionado, o modelo é ideal para organizar as principais variáveis impactantes e descartáveis na previsão. O mapa som utilizado pelo autor apresenta os dados associados aos seus neurônios de forma que padrões similares encontram-se em neurônios contíguos, tendo uma organização topológica. Deste modo é possível se extrair relações abstratas entre as variáveis do vetor de dados através da sua posição nos mapas componentes, que por meio de uma escala de cores mostram a quantidade de uma variável específica em cada neurônio do mapa.
        
        \subsection{Revisão bibliográfica de diversos métodos de previsão de demanda}
-        \paragraph*{} \cite{Junior2007} realiza um trabalho de comparação entre diversos métodos estocásticos e  Redes Neurais Artificiais (RNA) para a previsão da demanda de produtos cosméticos distribuídos em séries temporais. Entre as Redes Neurais, encontramos redes do tipo feedforward com o algoritmo de treino por backpropagation que foi o principal foco no trabalho de previsão do R.U na Universidade Federal de Viçosa e na Universidade Estadual Paulista Júlio de Mesquita Filho.
+        \cite{Junior2007} realiza um trabalho de comparação entre diversos métodos estocásticos e  Redes Neurais Artificiais (RNA) para a previsão da demanda de produtos cosméticos distribuídos em séries temporais. Entre as Redes Neurais, encontramos redes do tipo feedforward com o algoritmo de treino por backpropagation que foi o principal foco no trabalho de previsão do R.U na Universidade Federal de Viçosa e na Universidade Estadual Paulista Júlio de Mesquita Filho.
   % ----------------------------------------------------------
   % \chapter{METODOLOGIA}
   % ----------------------------------------------------------
@@ -1305,58 +1308,68 @@
             	 
             	O dia da semana seguirá o modelo binário de acordo com os trabalho de previsão de demanda em R.U realizados por \cite{Lopes2008} e \cite{Rocha2011}.
         
-        \begin{figure}[!ht]
+        \begin{figure}[H]
         	\center{
         		\includegraphics[width=0.40\textwidth]
         		{04-lopes-entradas-dia-semana.png}
-        	}
-        	\caption{Entradas de dia da semana em cofatores. Retirado de \cite{Lopes2008}.\label{fig:entradasSemanais}}
+        	
+        	\caption{Entradas de dia da semana em cofatores.} \subcaption*{ Retirado de \cite{Lopes2008}.}\label{fig:entradasSemanais}}
         \end{figure}
 	
 	\subsection{Temporização dos dados endógenos}
         Os dados endógenos obtidos de forma discreta no conjunto de dados fornecidos pela Unifesp devem passar pelo processo de temporização em um intervalo de 5 dias, em cada registro de venda deverão ser acrescentados 5 novos atributos contendo os dados de consumo dos 5 dias anteriores. Este processo adapta o conjunto de dados para um processo de memorização das entradas que será o formato compatível de leitura nos modelos de redes neurais a serem desenvolvidos.
-        \begin{figure}[!ht]
+        \begin{figure}[H]
     		\center{
     			\includegraphics[width=0.80\textwidth]
     			{./Figuras/entr_almoco_offset.png}
-    		}
-    		\caption{Registros de consumo de refeições com intervalo temporal de 5 dias.\label{fig:entr_almoco_offset}}
+    		
+    		\caption{Registros de consumo de refeições com intervalo temporal de 5 dias.}\label{fig:entr_almoco_offset}}
 	    \end{figure}
-        Estrutura final do conjunto de dados indexados por data: \newline
-        id	variavel					tipo \newline 
-        0	SEMESTRE\_1					int64 \newline 
-        1	SEMESTRE\_2					int64 \newline 
-        2	SEGUNDA						int64 \newline 
-        3	TERCA						int64 \newline 
-        4	QUARTA						int64 \newline 
-        5	QUINTA						int64 \newline 
-        6	SEXTA						int64 \newline 
-        7	DISTANCIA\_DIA\_ANTERIOR		int64 \newline 
-        8	DISTANCIA\_DIA\_POSTERIOR		int64 \newline 
-        9	PERC\_CONCLUSAO\_SEM			float64 \newline 
-        10	PERC\_CONCLUSAO\_MES			float64 \newline 
-        11	PRESSAO\_ATMOSFERICA			float64 \newline 
-        12	TEMPERATURA					float64 \newline 
-        13	UMIDADE						int64 \newline 
-        14	VENTO						float64 \newline 
-        15	VENDAS\_ALMOCO				int64 \newline 
-        16	VENDAS\_ALMOCO\_1				int64 \newline 
-        17	VENDAS\_ALMOCO\_2				int64 \newline 
-        18	VENDAS\_ALMOCO\_3				int64 \newline 
-        19	VENDAS\_ALMOCO\_4				int64 \newline 
-        20	VENDAS\_ALMOCO\_5				int64 \newline 
-        21	ENTR\_ALMOCO					int64 \newline 
-        22	ENTR\_ALMOCO\_1				int64 \newline 
-        23	ENTR\_ALMOCO\_2				int64 \newline 
-        24	ENTR\_ALMOCO\_3				int64 \newline 
-        25	ENTR\_ALMOCO\_4				int64 \newline 
-        26	ENTR\_ALMOCO\_5				int64 \newline 
-        27	ENTR\_JANTAR					int64 \newline 
-        28	ENTR\_JANTAR\_1				int64 \newline 
-        29	ENTR\_JANTAR\_2				int64 \newline 
-        30	ENTR\_JANTAR\_3				int64 \newline 
-        31	ENTR\_JANTAR\_4				int64 \newline 
-        32	ENTR\_JANTAR\_5				int64 \newline
+	    
+       
+         { \centering
+          \rowcolors{2}{gray!25}{white}
+        \begin{tabular}{|c|c|c|} \hline
+        \multicolumn{3}{c}{ Estrutura final do conjunto de dados indexados por data: } \\
+        \hline
+        identificador &	nome da variável					&tipo de variável\\ 
+        \hline
+        0&	SEMESTRE\_1					&int64 \\
+        1&	SEMESTRE\_2					&int64\\
+        2&	SEGUNDA						&int64 \\
+        3&	TERCA						&int64 \\
+        4&	QUARTA						&int64 \\ 
+        5&	QUINTA						&int64 \\ 
+        6&	SEXTA						&int64 \\ 
+        7&	DISTANCIA\_DIA\_ANTERIOR	&	int64 \\ 
+        8&	DISTANCIA\_DIA\_POSTERIOR	&	int64 \\
+        9&	PERC\_CONCLUSAO\_SEM		&	float64 \\
+        10&	PERC\_CONCLUSAO\_MES		&	float64 \\
+        11&	PRESSAO\_ATMOSFERICA		&	float64 \\
+        12&	TEMPERATURA					&float64 \\ 
+        13&	UMIDADE						&int64 \\
+        14&	VENTO						&float64\\ 
+        15&	VENDAS\_ALMOCO				&int64 \\
+        16&	VENDAS\_ALMOCO\_1			&	int64 \\ 
+        17&	VENDAS\_ALMOCO\_2			&	int64 \\
+        18&	VENDAS\_ALMOCO\_3			&	int64\\ 
+        19&	VENDAS\_ALMOCO\_4			&	int64 \\
+        20&	VENDAS\_ALMOCO\_5			&	int64 \\ 
+        21&	ENTR\_ALMOCO				&	int64\\
+        22&	ENTR\_ALMOCO\_1				&int64 \\
+        23&	ENTR\_ALMOCO\_2				&int64 \\
+        24&	ENTR\_ALMOCO\_3				&int64 \\ 
+        25&	ENTR\_ALMOCO\_4				&int64 \\
+        26&	ENTR\_ALMOCO\_5				&int64 \\
+        27&	ENTR\_JANTAR				&	int64 \\ 
+        28&	ENTR\_JANTAR\_1				&int64\\
+        29&	ENTR\_JANTAR\_2				&int64 \\ 
+        30&	ENTR\_JANTAR\_3				&int64 \\ 
+        31&	ENTR\_JANTAR\_4				&int64 \\
+        32&	ENTR\_JANTAR\_5				&int64\\
+              \hline
+    \end{tabular} }
+    
         %TODO: INCLUIR TABELA COM O DATAFRAME COMPLETO: (./Tabelas/Todos.csv)
         % PERDI HORAS NESSA DISGRAÇA DE IMPORTAÇÃO DE TABELA.... DESISTO
         % \begin{table}[h!]
@@ -1413,15 +1426,16 @@
         \subsection{Avaliação de modelos modernos}
          	De acordo com \cite{DLB} no capítulo de arquitetura de redes neurais gated recurrent unit gru, as redes recorrentes GRU são uma melhoria das redes recorrentes padrão clássicas encontradas na literatura, pois utilizam elementos que decidem o valores de saída das unidades, e que podem memorizar informações de entrada dadas por um grande intervalo de tempo, sem sofrer dissipação destes valores, com o aproveitamento de recursos de memória computacionais. Logo serão indicadas na aplicação deste trabalho para a memorização da sazonalidade semestral e anual dos dados do restaurante universitário.
          	%TODO-T: figura 23 estorando a  margem no titulo
-            \begin{figure}[!ht]
+            \begin{figure}[H]
             	\center{
             		\includegraphics[width=0.80\textwidth]
             		{./Figuras/gru_arch.jpg}
-            	}
-            	\caption{Arquitetura do modelo GRU, extraído de http://deeplearningbook.com.br/arquitetura-de-redes-neurais-gated-recurrent-unit-gru/ \label{fig:gru-arch}}
+            	
+            	\caption{Arquitetura do modelo GRU}
+            	\subcaption*{ Fonte:  http://deeplearningbook.com.br/arquitetura-de-redes-neurais-gated-recurrent-unit-gru/} \label{fig:gru-arch}}
             \end{figure}
         \subsection{Topologia}
-            \paragraph{Sobre a necessidade de se implementar modelos mistos}
+            \paragraph*{Sobre a necessidade de se implementar modelos mistos}
                 No conjunto de dados deste trabalho, os dados obtidos se dividem em dados temporais (onde cada registro de consumo e venda trás a informação de seu domínio em um intervalo de 5 dias anteriores) e dados discretos onde temos variáveis categóricas de data para cada registro, e variáveis climáticas, porém sem a aplicação de um intervalo temporal, ou seja, os dados exógenos são discretos, e os endógenos contínuos.
                 Portanto é necessária a implementação de modelos específicos para entradas temporais e discretas.
                 Para a saída final pode ser implementado um comitê de redes neurais endógenas e exógenas, com um neurônio perceptron na saída, recebendo os 2 valores dos modelos endógenos e exógenos e regredindo ao valor de saída que será a predição do consumo.
@@ -1440,11 +1454,11 @@
                 \end{itemize}
                 %TODO-T: FIGURA 24 ESTORANDO MARGEM DO TITULO
 	\subsection{Função de ativação}
-	    \begin{figure}[!ht]
+	    \begin{figure}[H]
         	\center{
         		\includegraphics[width=0.80\textwidth] {./Figuras/mc_ai/activation_functions.png}
-        	}
-        	\caption{Funções de Ativação, imagem extraída de : \cite{MCAI} https://mc.ai/complete-guide-of-activation-functions/ \label{fig:activation_functions}}
+        	
+        	\caption{Funções de Ativação} \subcaption*{Fonte: \cite{MCAI}, https://mc.ai/complete-guide-of-activation-functions/}} \label{fig:activation_functions}
         \end{figure}
 	    \subsubsection{Para a entrada e camadas ocultas}
     	    A função ReLu será simples e eficiente para a aplicação nos experimentos, visto que na fase feed-forward terá efeito parecido com a função identidade, e na fase feed-backward durante o reajuste dos pesos pelo otimizador, irá produzir efeito degrau zerando valores negativos sendo adequada na aplicação do domínio de entrada deste trabalho, visto que todas as variáveis endógenas e exógenas não possuem valores negativos.
@@ -1452,12 +1466,12 @@
     	    Para os valores previstos a função escolhida será a linear, pois na fase feed-backward do reajuste dos pesos pelo algoritmo de treino backpropagation, a derivada da função linear será zero, portanto os valores e peso de saída não sofrerão reajustes, mantendo a execução do algoritmo de treino apenas nos valores de entrada e nas camadas ocultas das redes.
 %TODO-T: FIGURA 25 ESTORANDO MARGEM NO TITULO    	
     \subsection{Otimizador}
-        \begin{figure}[!ht]
+        \begin{figure}[H]
         	\center{
         		\includegraphics[width=0.80\textwidth]
         		{./Figuras/MLM/optimizers.png}
-        	}
-        	\caption{Comparison of Adam to Other Optimization Algorithms Training a Multilayer Perceptron, imagem extraída de : \cite{MLM} https://machinelearningmastery.com/adam-optimization-algorithm-for-deep-learning/ \label{fig:otimizadores}}
+        	
+        	\caption{Comparison of Adam to Other Optimization Algorithms Training a Multilayer Perceptron} \subcaption*{Fonte : \cite{MLM} https://machinelearningmastery.com/adam-optimization-algorithm-for-deep-learning/}} \label{fig:otimizadores}
         \end{figure}
         Para este trabalho será escolhido o otimizador ADAM no treino de backpropagation.
         A vantagem deste otimizador é a fusão das melhores características de 2 otimizadores :\newline 
@@ -1495,11 +1509,11 @@
     	            \end{lstlisting}
     	            
     	            Resultado obtido com um dos melhores modelos endógenos GRU, figura: \ref{fig:pandas_wrong_indexing} 
-    	            \begin{figure}[!ht]
+    	            \begin{figure}[H]
                     	\center{
                     		\includegraphics[width=1.0\textwidth]{./Figuras/resultados/pandas_wrong_indexing.png}
-                    	}
-                    	\caption{Resultado de um dos melhores modelos endógenos obtido sobre o conjunto de dados aleatoriamente ordenado sobre o tempo \label{fig:pandas_wrong_indexing} }
+                    	
+                    	\caption{Resultado de um dos melhores modelos endógenos obtido sobre o conjunto de dados aleatoriamente ordenado sobre o tempo} \label{fig:pandas_wrong_indexing} }
                     \end{figure}
                     \newpage 
                     Corrigindo a importação dos registros para o formato correto de dados, os resultados foram melhores e condizentes com o comportamento real de consumo, além disso podemos observar que a primeira fase filtra dados obtidos apenas para o 1o semestre de 2019 e no caso da indexação incorreta na figura \ref{fig:pandas_wrong_indexing} a ordenação ultrapassou o mês de julho.
@@ -1508,83 +1522,81 @@
                         dateparse = lambda x: datetime.strptime(x, '%d/%m/%Y')
                         df = pd.read_csv(infile, parse_dates=['DATA'], date_parser=dateparse,index_col='DATA')
     	            \end{lstlisting}
-                    \begin{figure}[!ht]
+                    \begin{figure}[H]
                     	\center{
                     		\includegraphics[width=1.0\textwidth]{./Figuras/resultados/pandas_correct_indexing.png}
-                    	}
-                    	\caption{Resultado de um dos melhores modelos endógenos obtido sobre o conjunto de dados com ordenação corrigida \label{fig:pandas_correct_indexing} }
+                    	
+                    	\caption{Resultado de um dos melhores modelos endógenos obtido sobre o conjunto de dados com ordenação corrigida \label{fig:pandas_correct_indexing} }}
                     \end{figure}
                     %%%%
                     %%%%
                     %TODO-T: CITAR FIGURAS
                     Nas figuras \ref{fig:case1_train} , \ref{fig:case1_val} e \ref{fig:case1_test}   são exibidos os valores reais de consumo nos conjuntos de treino (2017 1o e 2o semestre, 2018 2o semestre), validação (2018 - 1o semestre) e teste (2019 - 1o semestre).
                     %TREINO
-                    \begin{figure}[!ht]
-                    	\center{
-                    		\includegraphics[width=1.0\textwidth]{./Figuras/resultados/case1_train.png}
-                    	}
-                    	\caption{Conjunto verdade de treino, dados de 2017 1o e 2o semestre, e 2018 2o semestre. \label{fig:case1_train} }
+                    \begin{figure}[H]
+                    	\center{                    		\includegraphics[width=0.9\textwidth]{./Figuras/resultados/case1_train.png}
+                    	\caption{Conjunto verdade de treino, dados de 2017 1o e 2o semestre, e 2018 2o semestre.} \label{fig:case1_train} }
                     \end{figure}
                     %VALIDACAO
-                    \begin{figure}[!ht]
-                    	\center{
-                    		\includegraphics[width=1.0\textwidth]{./Figuras/resultados/case1_val.png}
-                    	}
-                    	\caption{Conjunto verdade de validação, dados de 2018 1o semestre. \label{fig:case1_val} }
+                    \begin{figure}[H]
+                    	\center{                    		\includegraphics[width=0.9\textwidth]{./Figuras/resultados/case1_val.png}
+                    	\caption{Conjunto verdade de validação, dados de 2018 1o semestre.	} \label{fig:case1_val} }
                     \end{figure}
                     %TESTE
-                    \begin{figure}[!ht]
-                    	\center{
-                    		\includegraphics[width=1.0\textwidth]{./Figuras/resultados/case1_test.png}
-                    	}
-                    	\caption{Conjunto verdade de teste, dados de 2019 1o semestre. \label{fig:case1_test} }
+                    \begin{figure}[H]
+                    	\center{                    	\includegraphics[width=0.9\textwidth]{./Figuras/resultados/case1_test.png}
+                    	 \caption{Conjunto verdade de teste, dados de 2019 1o semestre.} \label{fig:case1_test} }
                     \end{figure}
                     
     	    \subsubsection{Análise das variáveis endógenas}
-    	        \paragraph{Consumo atual em relação às vendas do 1º dia anterior}
-    	            \begin{figure}[!ht]
-                    	\center{
-                    		\includegraphics[width=1.0\textwidth]{./Figuras/resultados/case1_consumo_vendas_almoco.png}
-                    	}
-                    	\caption{Correlação entre consumo e vendas de almoço. \label{fig:case1_consumo_vendas_almoco} }
+    	       \textbf{Consumo atual em relação às vendas do 1º dia anterior}
+    	       
+    	            \begin{figure}[H]
+                    	\center{                    		\includegraphics[width=1.0\textwidth]{./Figuras/resultados/case1_consumo_vendas_almoco.png}
+                    	\caption{Correlação entre consumo e vendas de almoço.} \label{fig:case1_consumo_vendas_almoco} }
                     \end{figure}
-                    \begin{figure}[!ht]
-                    	\center{
-                    		\includegraphics[width=1.0\textwidth]{./Figuras/resultados/case1_scatter_consumo_vendas_almoco.png}
-                    	}
-                    	\caption{Gráfico Scatter entre consumo e vendas de almoço. \label{fig:case1_scatter_consumo_vendas_almoco} }
-                    \end{figure}
-                    Métricas:\newline
-                    CONSUMO EM RELAÇÃO ÀS VENDAS DE 1 DIA ANTERIOR\newline
-                    CORRELAÇÃO (r): 0.7255528038157009\newline
-                    Pi (p) :5.399561176138223e-41\newline
-                    RMSE = 260.5399426736619\newline
-                    TOTAL DE REFEIÇÕES PROJETADAS = 104694\newline 
-                    TOTAL DE REFEIÇÕES CONSUMIDAS = 69544\newline
-                    TOTAL DE REFEIÇÕES SUB PROJETADAS = -4703\newline 
-                    TOTAL DE REFEIÇÕES SUPER PROJETADAS = 39853\newline 
-                    ERRO ABSOLUTO MEDIANO = 139.0\newline 
-                    ERRO ABSOLUTO PERCENTUAL MEDIO = 90.18%\newline
                     
-        	       É possível notar na figura \ref{fig:case1_consumo_vendas_almoco} que as  vendas de ticket de almoço apresentaram comportamento diferente no ano de 2017 em comparação aos anos seguintes devido à uma limitação imposta pelo restaurante, a partir de 2018, que os alunos comprassem apenas 2 tickets por dia. Possivelmente esta limitação foi dada para aproximar o comportamento de consumo de 1 até 2 dias seguintes à vendas de tickets no dia vigente, esta limitação pode ser interpretada como método de auxílio à gestão para a produção de refeições e para o tratamento de desperdício.
+                    \begin{figure}[H]
+                    	\center{                    		\includegraphics[width=1.0\textwidth]{./Figuras/resultados/case1_scatter_consumo_vendas_almoco.png}
+                    	\caption{Gráfico Scatter entre consumo e vendas de almoço.} \label{fig:case1_scatter_consumo_vendas_almoco} }
+                    \end{figure}
+                    
+                    
+                    Métricas:
+                    
+                     \rowcolors{2}{gray!25}{white}
+                     \begin{tabular}{|c|c|}\hline
+                    \multicolumn{2}{c}{CONSUMO EM RELAÇÃO ÀS VENDAS DE 1 DIA ANTERIOR}\\ \hline
+                    CORRELAÇÃO (r) &  0.7255528038157009\\
+                    Pi (p) &5.399561176138223e-41\\
+                    RMSE & 260.5399426736619\\
+                    TOTAL DE REFEIÇÕES PROJETADAS & 104694\\ 
+                    TOTAL DE REFEIÇÕES CONSUMIDAS & 69544\\
+                    TOTAL DE REFEIÇÕES SUB PROJETADAS & -4703\\
+                    TOTAL DE REFEIÇÕES SUPER PROJETADAS & 39853\\
+                    ERRO ABSOLUTO MEDIANO & 139.0\\
+                    ERRO ABSOLUTO PERCENTUAL MEDIO & 90.18\\\hline
+                    \end{tabular}
+                    
+        	      \paragraph*{}É possível notar na figura \ref{fig:case1_consumo_vendas_almoco} que as  vendas de ticket de almoço apresentaram comportamento diferente no ano de 2017 em comparação aos anos seguintes devido à uma limitação imposta pelo restaurante, a partir de 2018, que os alunos comprassem apenas 2 tickets por dia. Possivelmente esta limitação foi dada para aproximar o comportamento de consumo de 1 até 2 dias seguintes à vendas de tickets no dia vigente, esta limitação pode ser interpretada como método de auxílio à gestão para a produção de refeições e para o tratamento de desperdício.
         	        
         	        Mesmo com o outlier presente e com a nova limitação de compras de tickets a partir de 2018, o consumo está fortemente relacionado com as vendas de tickets de 1 dia anterior e que os alunos se adaptaram à utilização em curto prazo dos tickets.
         	        
         	        Há outros fatores não previstos envolvidos, como falha de registros no sistema, bem como o outlier de 2000 vendas realizadas no dia (número superior à população de alunos) pode ser interpretado com a migração de sistema que ocorreu em 2017 da unidade talim para o banco de dados do Hospital São Paulo, possivelmente foram importadas vendas do sistema antigo sem a diferenciação de datas.
         	        
                     Após a normalização dos dados para 3x o desvio padrão médio, o pico de 2000 vendas foi normalizado para o valor arredondado de 1356 refeições e mesmo com a normalização, o comportamento linear desta feature, conforme figura \ref{fig:feature_sem_outliers}, se manteve.
-                    \begin{figure}[!ht]
+                    \begin{figure}[H]
                     	\center{
                     		\includegraphics[width=1.0\textwidth]{./Figuras/resultados/feature_sem_outliers.png}
-                    	}
-                    	\caption{Vendas de tickets normalizados com teto de 3x o desvio padrão. \label{fig:feature_sem_outliers} }
+                    	
+                    	\caption{Vendas de tickets normalizados com teto de 3x o desvio padrão.} \label{fig:feature_sem_outliers} }
                     \end{figure}
                     E após a aplicação da escala na feature \ref{fig:feature_sem_outliers_escalada}, o comportamento linear também se manteve.
-                    \begin{figure}[!ht]
+                    \begin{figure}[H]
                     	\center{
                     		\includegraphics[width=1.0\textwidth]{./Figuras/resultados/feature_sem_outliers_escalada.png}
-                    	}
-                    	\caption{Vendas de tickets escalada. \label{fig:feature_sem_outliers_escalada} }
+                    	
+                    	\caption{Vendas de tickets escalada.} \label{fig:feature_sem_outliers_escalada} }
                     \end{figure}
                     
                     O processo de normalização e escala foi realizado para todas as features endógenas e para as features climáticas.
@@ -1592,34 +1604,34 @@
     	    \paragraph{Análise da técnica do restaurante}
     	        A análise da técnica do restaurante foi feita com o cálculo de 30\% de produção acima do consumo do 5o dia anterior.
     	        É possível notar que o modelo do R.U é feito para tolerar descartes devido à multa contratual para falta de refeições e o que a produção de 30\% de refeições acima do consumo da semana anterior, conforme a figura  \ref{fig:case1_ru_pred.png}, gera um erro muito maior do que 30\% devido ao comportamento oscilatório do consumo, conforme a figura \ref{fig:case1_ru_pred_scatter}. 
-    	         \begin{figure}[!ht]
+    	         \begin{figure}[H]
                 	\center{
                 		\includegraphics[width=1.0\textwidth]{./Figuras/resultados/case1_ru_pred.png}
-                	}
-                	\caption{Correlação entre consumo e produção com 30\% acima do consumo da semana anterior. \label{fig:case1_ru_pred.png} }
+                
+                	\caption{Correlação entre consumo e produção com 30\% acima do consumo da semana anterior.	} \label{fig:case1_ru_pred.png} }
                 \end{figure}
-                \begin{figure}[!ht]
+                \begin{figure}[H]
                 	\center{
                 		\includegraphics[width=1.0\textwidth]{./Figuras/resultados/case1_ru_pred_scatter.png}
-                	}
-                	\caption{Gráfico Scatter entre consumo e produção com margem de 30\%. \label{fig:case1_ru_pred_scatter} }
+                	
+                	\caption{Gráfico Scatter entre consumo e produção com margem de 30\%.} \label{fig:case1_ru_pred_scatter} }
                 \end{figure}
                 \paragraph{Consumo atual em relação ao consumo do jantar de 1 dia anterior.}
                     Mesmo se tratando turmas diferentes,  os alunos que consomem refeições no almoço são de período e grade horária diferente dos alunos no período da noite, mas há uma relação evidente entre os 2 consumos, conforme as figuras \ref{fig:case1_consumo_jantar} e \ref{fig:case1_consumo_jantar_scatter}.\newline
                     COMPORTAMENTO DE CONSUMO EM RELAÇÃO À JANTA DE 1 DIA ANTERIOR\newline
                     CORRELAÇÃO (r): 0.765599143585576\newline
                     P-value :4.526981505307197e-48\newline
-                    \begin{figure}[!ht]
+                    \begin{figure}[H]
                 	\center{
                 		\includegraphics[width=1.0\textwidth]{./Figuras/resultados/case1_consumo_jantar.png}
-                	}
-                	\caption{Correlação de consumo de almoço e jantar de 1 dia anterior. \label{fig:case1_consumo_jantar} }
+                	
+                	\caption{Correlação de consumo de almoço e jantar de 1 dia anterior.} \label{fig:case1_consumo_jantar} }
                     \end{figure}
-                    \begin{figure}[!ht]
+                    \begin{figure}[H]
                     	\center{
                     		\includegraphics[width=1.0\textwidth]{./Figuras/resultados/case1_consumo_jantar_scatter.png}
-                    	}
-                    	\caption{Gráfico Scatter entre consumo e jantar de 1 dia anterior. \label{fig:case1_consumo_jantar_scatter} }
+                    	
+                    	\caption{Gráfico Scatter entre consumo e jantar de 1 dia anterior.} \label{fig:case1_consumo_jantar_scatter} }
                     \end{figure}
 
     	    \subsubsection{Análise da sazonalidade semanal}
@@ -1627,39 +1639,38 @@
     	        O violino azul com o valor 1 representa a distribuição do consumo ao logo do dataset.
     	        O violino com valor zero pode ser ignorado e é um retorno padrão da ferramenta, representando a distribuição da ausência de consumo no dia da semana considerado.
     	        Nas sextas feiras, o consumo teve escala de distribuição menor para o primeiro semestre de 2019.
-    	         \begin{figure}[!ht]
+    	         \begin{figure}[H]
                 	\center{
-                		\includegraphics[width=0.7\textwidth]{./Figuras/resultados/case1_segunda.png}
-                	}
-                	\caption{Gráfico violino da ditribuição do consumo na segunda feira. \label{fig:case1_violinplot_segunda} }
+                		\includegraphics[width=0.6\textwidth]{./Figuras/resultados/case1_segunda.png}
+                	
+                	\caption{Gráfico violino da distribuição do consumo na segunda feira.} \label{fig:case1_violinplot_segunda} }
+                \end{figure}
+                \begin{figure}[H]
+                	\center{
+                		\includegraphics[width=0.6\textwidth]{./Figuras/resultados/case1_terca.png}
+                	
+                	\caption{Gráfico violino da distribuição do consumo na terça feira.} \label{fig:case1_violinplot_terca} }
                 \end{figure}
                 
-                \begin{figure}[!ht]
+                \begin{figure}[H]
                 	\center{
-                		\includegraphics[width=0.7\textwidth]{./Figuras/resultados/case1_terca.png}
-                	}
-                	\caption{Gráfico violino da ditribuição do consumo na terça feira. \label{fig:case1_violinplot_terca} }
+                		\includegraphics[width=0.6\textwidth]{./Figuras/resultados/case1_quarta.png}
+                
+                	\caption{Gráfico violino da distribuição do consumo na quarta feira.	} \label{fig:case1_violinplot_quarta} }
                 \end{figure}
                 
-                \begin{figure}[!ht]
+                \begin{figure}[H]
                 	\center{
-                		\includegraphics[width=0.7\textwidth]{./Figuras/resultados/case1_quarta.png}
-                	}
-                	\caption{Gráfico violino da ditribuição do consumo na quarta feira. \label{fig:case1_violinplot_quarta} }
+                		\includegraphics[width=0.6\textwidth]{./Figuras/resultados/case1_quinta.png}
+                	
+                	\caption{Gráfico violino da distribuição do consumo na quinta feira.} \label{fig:case1_violinplot_quinta} }
                 \end{figure}
                 
-                \begin{figure}[!ht]
+                \begin{figure}[H]
                 	\center{
-                		\includegraphics[width=0.7\textwidth]{./Figuras/resultados/case1_quinta.png}
-                	}
-                	\caption{Gráfico violino da ditribuição do consumo na quinta feira. \label{fig:case1_violinplot_quinta} }
-                \end{figure}
-                
-                \begin{figure}[!ht]
-                	\center{
-                		\includegraphics[width=0.7\textwidth]{./Figuras/resultados/case1_sexta.png}
-                	}
-                	\caption{Gráfico violino da ditribuição do consumo na sexta feira. \label{fig:case1_violinplot_sexta} }
+                		\includegraphics[width=0.6\textwidth]{./Figuras/resultados/case1_sexta.png}
+                	
+                	\caption{Gráfico violino da distribuição do consumo na sexta feira.} \label{fig:case1_violinplot_sexta} }
                 \end{figure}
     	    \subsubsection{Análise das variáveis exógenas}
     	        \paragraph{Consumo atual em relação ao avanço do semestre}
@@ -1667,94 +1678,94 @@
     	            COMPORTAMENTO DE CONSUMO EM RELAÇÃO AO AVANÇO DO SEMESTRE\newline 
                     CORRELAÇÃO (r): -0.351388192148681\newline
                     Pi (p) :1.8029942608003656e-08\newline
-                    \begin{figure}[!ht]
+                    \begin{figure}[H]
                     	\center{
                     		\includegraphics[width=0.7\textwidth]{./Figuras/resultados/case1_perc_sem.png}
-                    	}
-                    	\caption{Correlação da ditribuição do consumo com o avanço do semestre. \label{fig:case1_perc_sem} }
+                    	
+                    	\caption{Correlação da distribuição do consumo com o avanço do semestre.} \label{fig:case1_perc_sem} }
                     \end{figure}
                 
-                \begin{figure}[!ht]
+                \begin{figure}[H]
                 	\center{
                 		\includegraphics[width=0.7\textwidth]{./Figuras/resultados/case1_perc_sem_scatter.png}
-                	}
-                	\caption{Gráfico escatter da ditribuição do consumo com o avanço do semestre. \label{fig:case1_perc_sem_scatter} }
+                	
+                	\caption{Gráfico scatter da distribuição do consumo com o avanço do semestre.} \label{fig:case1_perc_sem_scatter} }
                 \end{figure}
               \paragraph{Consumo atual em relação ao avanço do mês}
                 Já o consumo em relação ao avanço do mês é inconclusivo. Esta hipótese validaria que os alunos tivessem preferência de realizar refeições fora do restaurante em períodos típicos de dias de pagamentos geralmente no 5º dia útil, ou todo dia 20. Como o restaurante do ICT Unifesp não enfrenta concorrência dado o isolamento geográfico de seu público, a sazonalidade do consumo se mantém correlata com as atividades da universidade e não da concorrência com outros restaurantes.\newline
                 COMPORTAMENTO DE VENDAS EM RELAÇÃO AO AVANÇO DO MÊS\newline
                 CORRELAÇÃO (r): 0.04867329355640767\newline
                 Pi (p) :0.4500827452374414\newline
-                \begin{figure}[!ht]
+                \begin{figure}[H]
                     	\center{
                     		\includegraphics[width=0.7\textwidth]{./Figuras/resultados/case1_perc_mes.png}
-                    	}
-                    	\caption{Correlação da ditribuição do consumo com o avanço do mes. \label{fig:case1_perc_mes} }
+                    	
+                    	\caption{Correlação da distribuição do consumo com o avanço do mes.} \label{fig:case1_perc_mes} }
                     \end{figure}
                 
-                \begin{figure}[!ht]
+                \begin{figure}[H]
                 	\center{
                 		\includegraphics[width=0.7\textwidth]{./Figuras/resultados/case1_perc_mes_scatter.png}
-                	}
-                	\caption{Gráfico escatter da ditribuição do consumo com o avanço do mes. \label{fig:case1_perc_mes_scatter} }
+                
+                	\caption{Gráfico scatter da distribuição do consumo com o avanço do mes.} \label{fig:case1_perc_mes_scatter} }
                 \end{figure}
               \paragraph{Variáveis climáticas}
                 As correlações do consumo de refeições com as variáveis climáticas não obtiveram correlações evidentes com o consumo de refeições, sendo observadas nas figuras \ref{fig:case1_temperatura} à \ref{fig:case1_pressao_scatter}.
                 %%%%%%%%%%%%%%%%%%%%%%%%%%%  TEMPERATURA   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-                \begin{figure}[!ht]
+                \begin{figure}[H]
                     	\center{
                     		\includegraphics[width=0.7\textwidth]{./Figuras/resultados/case1_temperatura.png}
-                    	}
-                    	\caption{Correlação da ditribuição do consumo com a temperatura. \label{fig:case1_temperatura} }
+                    	
+                    	\caption{Correlação da distribuição do consumo com a temperatura.} \label{fig:case1_temperatura} }
                     \end{figure}
                 
-                \begin{figure}[!ht]
+                \begin{figure}[H]
                 	\center{
                 		\includegraphics[width=0.7\textwidth]{./Figuras/resultados/case1_temperatura_scatter.png}
-                	}
-                	\caption{Gráfico escatter da ditribuição do consumo com a temperatura. \label{fig:case1_temperatura_scatter_consumo} }
+                	
+                	\caption{Gráfico escatter da distribuição do consumo com a temperatura.} \label{fig:case1_temperatura_scatter_consumo} }
                 \end{figure}
                 %%%%%%%%%%%%%%%%%%%%%%%%%%%  UMIDADE   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-                 \begin{figure}[!ht]
+                 \begin{figure}[H]
                     	\center{
                     		\includegraphics[width=0.7\textwidth]{./Figuras/resultados/case1_umidade.png}
-                    	}
-                    	\caption{Correlação da ditribuição do consumo com a umidade. \label{fig:case1_umidade} }
+                    
+                    	\caption{Correlação da distribuição do consumo com a umidade.	} \label{fig:case1_umidade} }
                     \end{figure}
                 
-                \begin{figure}[!ht]
+                \begin{figure}[H]
                 	\center{
                 		\includegraphics[width=0.7\textwidth]{./Figuras/resultados/case1_umidade_scatter.png}
-                	}
-                	\caption{Gráfico escatter da ditribuição do consumo com a umidade. \label{fig:case1_temperatura_scatter} }
+                	
+                	\caption{Gráfico escatter da distribuição do consumo com a umidade.} \label{fig:case1_temperatura_scatter} }
                 \end{figure}
                 %%%%%%%%%%%%%%%%%%%%%%%%%%%  VENTO   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-                 \begin{figure}[!ht]
+                 \begin{figure}[H]
                     	\center{
                     		\includegraphics[width=0.7\textwidth]{./Figuras/resultados/case1_vento.png}
-                    	}
-                    	\caption{Correlação da ditribuição do consumo com a velocidade do vento em m/s. \label{fig:case1_vento} }
+                    	
+                    	\caption{Correlação da distribuição do consumo com a velocidade do vento em m/s.} \label{fig:case1_vento} }
                     \end{figure}
                 
-                \begin{figure}[!ht]
+                \begin{figure}[H]
                 	\center{
                 		\includegraphics[width=0.7\textwidth]{./Figuras/resultados/case1_vento_scatter.png}
-                	}
-                	\caption{Gráfico escatter da ditribuição do consumo com a velocidade do vento. \label{fig:case1_vento_scatter} }
+                	
+                	\caption{Gráfico escatter da distribuição do consumo com a velocidade do vento.} \label{fig:case1_vento_scatter} }
                 \end{figure}
                 %%%%%%%%%%%%%%  PRESSAO ATMOSFERICA   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-                 \begin{figure}[!ht]
+                 \begin{figure}[H]
                     	\center{
                     		\includegraphics[width=0.7\textwidth]{./Figuras/resultados/case1_pressao.png}
-                    	}
-                    	\caption{Correlação da ditribuição do consumo com a pressão atmosférica. \label{fig:case1_pressao} }
+                    	
+                    	\caption{Correlação da distribuição do consumo com a pressão atmosférica.} \label{fig:case1_pressao} }
                     \end{figure}
                 
-                \begin{figure}[!ht]
+                \begin{figure}[H]
                 	\center{
                 		\includegraphics[width=0.7\textwidth]{./Figuras/resultados/case1_pressao_scatter.png}
-                	}
-                	\caption{Gráfico escatter da ditribuição do consumo com a pressão atmosférica. \label{fig:case1_pressao_scatter} }
+                
+                	\caption{Gráfico escatter da distribuição do consumo com a pressão atmosférica.	} \label{fig:case1_pressao_scatter} }
                 \end{figure}
     	\subsection{Definição e treino dos modelos}
     	    \subsubsection{Ajuste empírico de topologia com os modelos perceptron}
@@ -1762,34 +1773,34 @@
               \paragraph{MLP1}
     	        O primeiro modelo perceptron multilayer foi definido com uma camada de 15 unidades (mesmo número de features endógenas sendo 5 para consumo almoço (de 1 a 5 dias anteriores para cada entrada), 5 para vendas de tickets e 5 para consumo de jantar.
     	        O modelo será denominado MLP1 para futuras referências.
-    	        \begin{figure}[!ht]
+    	        \begin{figure}[H]
                 	\center{
                 		\includegraphics[width=0.7\textwidth]{./Figuras/resultados/case1_mlp1.png}
-                	}
-                	\caption{Topologia do modelo MLP1 \label{fig:case1_mlp1} }
+                	
+                	\caption{Topologia do modelo MLP1} \label{fig:case1_mlp1} }
                 \end{figure}
-                \begin{figure}[!ht]
+                \begin{figure}[H]
                 	\center{
                 		\includegraphics[width=0.7\textwidth]{./Figuras/resultados/case1_mlp1_train.png}
-                	}
-                	\caption{Gráfico de treino do modelo MLP1. \label{fig:case1_mlp1_train} }
+                	
+                	\caption{Gráfico de treino do modelo MLP1.} \label{fig:case1_mlp1_train} }
                 \end{figure}
     	        A raiz do erro quadrático médio do modelo foi, RMSE = 130.6207420543897
     	        
     	        %%%%%%%%%%%%%%%%%%%%% MLP 2 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     	        \paragraph{MLP2}
     	        Foi definido um novo modelo MLP2, aumentando o número de neurônios do MLP1 para a comparação do RMSE de treino.
-    	        \begin{figure}[!ht]
+    	        \begin{figure}[H]
                 	\center{
                 		\includegraphics[width=0.7\textwidth]{./Figuras/resultados/case1_mlp2.png}
-                	}
-                	\caption{Topologia do modelo MLP2 \label{fig:case1_mlp2} }
+                	
+                	\caption{Topologia do modelo MLP2} \label{fig:case1_mlp2} }
                 \end{figure}
-                \begin{figure}[!ht]
+                \begin{figure}[H]
                 	\center{
                 		\includegraphics[width=0.7\textwidth]{./Figuras/resultados/case1_mlp2_train.png}
-                	}
-                	\caption{Gráfico de treino do modelo MLP2. \label{fig:case1_mlp2_train} }
+                
+                	\caption{Gráfico de treino do modelo MLP2.	} \label{fig:case1_mlp2_train} }
                 \end{figure}
                  A raiz do erro quadrático médio do modelo MLP2 foi, RMSE = 107.97413966672336
     	        É possível notar a diminuição do RMSE (Raiz do erro quadrático médio) ao aumentar a profundidade da rede perceptron para treino e avaliação sob o conjunto de validação. Validando a hipótese de que os modelos tem capacidade de aprendizado do problema em relação ao ajuste da topologia dos mesmos.
@@ -1798,342 +1809,449 @@
           \subsubsection{Modelos Endógenos}
     	        Como o ajuste empírico obteve avanço nos resultados, foi definido outro modelo perceptron MLP\_ENDO\_1 com maior profundidade, e depois um modelo recorrente GRU com 2 reajustes (RNN\_ENDO\_1 e RNN\_ENDO\_2).
                 Para a avaliação prévia dos modelos, os mesmos foram testados no conjunto de validação.
+                
+                
     	        %%%%%%%%%%%%%%%%% MLP ENDO 1
-              \paragraph{MLP\_ENDO\_1}
-      	        \begin{figure}[!ht]
+              {\textbf{MLP\_ENDO\_1}}
+              
+              
+      	        \begin{figure}[H]
                 	\center{
                 		\includegraphics[width=0.7\textwidth]{./Figuras/resultados/case1_mlp_endo1.png}
-                	}
-                	\caption{Topologia do modelo MLP\_ENDO\_1 \label{fig:case1_mlp_endo1} }
+                	
+                	\caption{Topologia do modelo MLP\_ENDO\_1} \label{fig:case1_mlp_endo1} }
                 \end{figure}
 
-                \begin{figure}[!ht]
+                \begin{figure}[H]
                   \center{
                     \includegraphics[width=0.7\textwidth]{./Figuras/resultados/case1_mlp_endo1_train.png}
-                  }
-                  \caption{Treino do modelo MLP\_ENDO\_1 \label{fig:case1_mlp_endo1_train} }
+                  
+                  \caption{Treino do modelo MLP\_ENDO\_1} \label{fig:case1_mlp_endo1_train} }
                 \end{figure}
 
-                \begin{figure}[!ht]
+                \begin{figure}[H]
                   \center{
                     \includegraphics[width=0.7\textwidth]{./Figuras/resultados/case1_mlp_endo1_val.png}
-                  }
-                  \caption{Avaliação do modelo MLP\_ENDO\_1 \label{fig:case1_mlp_endo1_val} }
+                  
+                  \caption{Avaliação do modelo MLP\_ENDO\_1} \label{fig:case1_mlp_endo1_val} }
                 \end{figure}
-                METRICAS DO MODELO MLP\_ENDO\_1 : \newline
-                RMSE = 110.92902359567118\newline
-                TOTAL DE REFEIÇÕES PROJETADAS = 89 : 33611.37430477142\newline
-                TOTAL DE REFEIÇÕES CONSUMIDAS = 89 : 35555\newline
-                TOTAL DE REFEIÇÕES SUB PROJETADAS = -4328.862397193909\newline
-                TOTAL DE REFEIÇÕES SUPER PROJETADAS = 2385.236701965332\newline
-
+                
+                
+                 \rowcolors{2}{gray!25}{white}
+                \begin{tabular}{|c|c|}
+                \hline
+                \multicolumn{2}{c}{METRICAS DO MODELO MLP\_ENDO\_1 :}\\ \hline
+                RMSE &  110.92902359567118\\
+                TOTAL DE REFEIÇÕES PROJETADAS & 89 : 33611.37430477142\\
+                TOTAL DE REFEIÇÕES CONSUMIDAS & 89 : 35555\\
+                TOTAL DE REFEIÇÕES SUB PROJETADAS & -4328.862397193909\\
+                TOTAL DE REFEIÇÕES SUPER PROJETADAS & 2385.236701965332\\
+                \hline
+                 \end{tabular}
+                 
+                 
               %%%%%%%%%%%%%%%%% RNN ENDO 1
-              \paragraph{RNN\_ENDO\_1}
-                \begin{figure}[!ht]
+              {\textbf{RNN\_ENDO\_1}}
+                \begin{figure}[H]
                   \center{
                     \includegraphics[width=0.7\textwidth]{./Figuras/resultados/case1_rnn_endo1.png}
-                  }
-                  \caption{Topologia do modelo RNN\_ENDO\_1 \label{fig:case1_rnn_endo1} }
+                  
+                  \caption{Topologia do modelo RNN\_ENDO\_1} \label{fig:case1_rnn_endo1} }
                 \end{figure}
 
-                \begin{figure}[!ht]
+                \begin{figure}[H]
                   \center{
                     \includegraphics[width=0.7\textwidth]{./Figuras/resultados/case1_rnn_endo1_train.png}
-                  }
-                  \caption{Treino do modelo RNN\_ENDO\_1 \label{fig:case1_rnn_endo1_train} }
+                  
+                  \caption{Treino do modelo RNN\_ENDO\_1} \label{fig:case1_rnn_endo1_train} }
                 \end{figure}
 
-                \begin{figure}[!ht]
+                \begin{figure}[H]
                   \center{
                     \includegraphics[width=0.7\textwidth]{./Figuras/resultados/case1_rnn_endo1_val.png}
-                  }
-                  \caption{Avaliação do modelo RNN\_ENDO\_1 \label{fig:case1_rnn_endo1_val} }
+                  
+                  \caption{Avaliação do modelo RNN\_ENDO\_1} \label{fig:case1_rnn_endo1_val} }
                 \end{figure}
-                METRICAS DO MODELO RNN\_ENDO\_1 : \newline
-                RMSE = 118.98273426840373\newline
-                TOTAL DE REFEIÇÕES PROJETADAS = 33423.96739196777\newline
-                TOTAL DE REFEIÇÕES CONSUMIDAS = 35555\newline
-                TOTAL DE REFEIÇÕES SUB PROJETADAS = -5248.0078125\newline
-                TOTAL DE REFEIÇÕES SUPER PROJETADAS = 3116.9752044677734\newline
+                
+                 \rowcolors{2}{gray!25}{white}
+                \begin{tabular}{|c|c|}
+                \rowcolor{gray!50} \hline
+                \multicolumn{2}{c}{ METRICAS DO MODELO RNN\_ENDO\_1 : }\\ \hline
+                RMSE & 118.98273426840373\\
+                TOTAL DE REFEIÇÕES PROJETADAS & 33423.96739196777\\
+                TOTAL DE REFEIÇÕES CONSUMIDAS & 35555\\
+                TOTAL DE REFEIÇÕES SUB PROJETADAS & -5248.0078125\\
+                TOTAL DE REFEIÇÕES SUPER PROJETADAS & 3116.9752044677734\\
+                \hline
+                \end{tabular}
 
             %%%%%%%%%%%%%%%%% RNN ENDO 2
-              \paragraph{RNN\_ENDO\_2}
-                \begin{figure}[!ht]
+             {\textbf{RNN\_ENDO\_2}}
+                \begin{figure}[H]
                   \center{
                     \includegraphics[width=0.7\textwidth]{./Figuras/resultados/case1_rnn_endo2.png}
-                  }
-                  \caption{Topologia do modelo RNN\_ENDO\_2 \label{fig:case1_rnn_endo2} }
+                  
+                  \caption{Topologia do modelo RNN\_ENDO\_2} \label{fig:case1_rnn_endo2} }
                 \end{figure}
 
-                \begin{figure}[!ht]
+                \begin{figure}[H]
                   \center{
                     \includegraphics[width=0.7\textwidth]{./Figuras/resultados/case1_rnn_endo2_train.png}
-                  }
-                  \caption{Treino do modelo RNN\_ENDO\_2 \label{fig:case1_rnn_endo2_train} }
+                  
+                  \caption{Treino do modelo RNN\_ENDO\_2} \label{fig:case1_rnn_endo2_train} }
                 \end{figure}
 
-                \begin{figure}[!ht]
+                \begin{figure}[H]
                   \center{
                     \includegraphics[width=0.7\textwidth]{./Figuras/resultados/case1_rnn_endo2_val.png}
-                  }
-                  \caption{Avaliação do modelo RNN\_ENDO\_2 \label{fig:case1_rnn_endo2_val} }
+                  
+                  \caption{Avaliação do modelo RNN\_ENDO\_2} \label{fig:case1_rnn_endo2_val} }
                 \end{figure}
-                METRICAS DO MODELO RNN\_ENDO\_2 : \newline
-                RMSE = 109.81020024143946\newline
-                TOTAL DE REFEIÇÕES PROJETADAS = 32984.970529556274\newline
-                TOTAL DE REFEIÇÕES CONSUMIDAS = 35555\newline
-                TOTAL DE REFEIÇÕES SUB PROJETADAS = -4821.583518981934\newline
-                TOTAL DE REFEIÇÕES SUPER PROJETADAS = 2251.554048538208\newline
+                
+                \rowcolors{2}{gray!25}{white}
+                    \begin{tabular}{|c|c|}
+                    \rowcolor{gray!50}
+                    \hline
+                \multicolumn{2}{c}{METRICAS DO MODELO RNN\_ENDO\_2 :}  \\ \hline
+                RMSE & 109.81020024143946\\
+                TOTAL DE REFEIÇÕES PROJETADAS & 32984.970529556274\\
+                TOTAL DE REFEIÇÕES CONSUMIDAS & 35555\\
+                TOTAL DE REFEIÇÕES SUB PROJETADAS & -4821.583518981934\\
+                TOTAL DE REFEIÇÕES SUPER PROJETADAS & 2251.554048538208\\
+                \hline \end{tabular}
 
-                \paragraph{Comparativo gráfico da etapa de avaliação no teste no conjunto de validação, entre os melhores modelos endógenos treinados, RNN\_ENDO\_2 e MLP\_ENDO\_1}
+                \textbf{Comparativo gráfico da etapa de avaliação no teste no conjunto de validação, entre os melhores modelos endógenos treinados, RNN\_ENDO\_2 e MLP\_ENDO\_1}
+                
+                
                   É possível notar, conforme figura \ref{fig:case1_gru_mlp_val_analise} que mesmo com correlação e RMSE muito próximo nos 2 modelos, o modelo GRU apresentou melhor valor p-value, no calculo de correlação de Pearson*. 
                   Em Junho após uma ocorrência outlier, o modelo GRU teve melhor recuperação de resultados em comparação ao MLP.
                   De acordo com a referência da documentação da biblioteca scipy, O valor p indica aproximadamente a probabilidade de um sistema não correlacionado produzir conjuntos de dados que têm uma correlação de Pearson pelo menos tão extrema quanto a calculada a partir desses conjuntos de dados.\newline
-                  RNN\_ENDO\_2 : CORRELAÇÃO (r): 0.6753384458677313 Pi (p) :3.903678433027079e-13\newline
-                  MLP\_ENDO\_1 : MLP: CORRELAÇÃO (r): 0.6791684214084684 Pi (p) :2.5590689588089596e-13\newline
-                  \begin{figure}[!ht]
+                  
+                  RNN\_ENDO\_2 :\newline 
+                  CORRELAÇÃO (r): 0.6753384458677313 \newline
+                  Pi (p) :3.903678433027079e-13
+                  
+                  
+                  MLP\_ENDO\_1 :\newline 
+                  MLP: CORRELAÇÃO (r): 0.6791684214084684 \newline
+                  Pi (p) :2.5590689588089596e-13\newline
+                  \begin{figure}[H]
                       \center{
                         \includegraphics[width=0.7\textwidth]{./Figuras/resultados/case1_gru_mlp_val_analise.PNG}
-                      }
-                      \caption{Comparação da etapa de validação entre MLP\_ENDO\_1 e RNN\_ENDO\_1 \label{fig:case1_gru_mlp_val_analise} }
+                      
+                      \caption{Comparação da etapa de validação entre MLP\_ENDO\_1 e RNN\_ENDO\_1} \label{fig:case1_gru_mlp_val_analise} }
                     \end{figure}
 
           %%%%%%%%%%%%%%%%%%%%% MODELOS EXÓGENOS ... 2 DA MANHÃ... Q Q EU FUI INVENTAR NESSE TRABALHO ... %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     	    \subsubsection{Modelos mistos endógenos e exógenos}
             %%%%%%%%%%%%%%%%% RNN_EXO_1
-              \paragraph{RNN\_EXO\_1}
-                \begin{figure}[!ht]
+              \textbf{RNN\_EXO\_1}
+                \begin{figure}[H]
                   \center{
                     \includegraphics[width=0.7\textwidth]{./Figuras/resultados/case1_rnn_exo_1.png}
-                  }
-                  \caption{Topologia do modelo RNN\_EXO\_1 \label{fig:case1_rnn_exo_1} }
+                  
+                  \caption{Topologia do modelo RNN\_EXO\_1} \label{fig:case1_rnn_exo_1} }
                 \end{figure}
 
-                \begin{figure}[!ht]
+                \begin{figure}[H]
                   \center{
                     \includegraphics[width=0.7\textwidth]{./Figuras/resultados/case1_rnn_exo_1_train.png}
-                  }
-                  \caption{Treino do modelo RNN\_EXO\_1 \label{fig:case1_rnn_exo_1_train} }
+                  
+                  \caption{Treino do modelo RNN\_EXO\_1} \label{fig:case1_rnn_exo_1_train} }
                 \end{figure}
 
-                \begin{figure}[!ht]
+                \begin{figure}[H]
                   \center{
                     \includegraphics[width=0.7\textwidth]{./Figuras/resultados/case1_rnn_exo_1_val.png}
-                  }
-                  \caption{Avaliação do modelo RNN\_EXO\_1 \label{fig:case1_rnn_exo_1_val} }
+                  
+                  \caption{Avaliação do modelo RNN\_EXO\_1} \label{fig:case1_rnn_exo_1_val} }
                 \end{figure}
                 
-                \begin{figure}[!ht]
+                \begin{figure}[H]
                   \center{
                     \includegraphics[width=0.7\textwidth]{./Figuras/resultados/case1_rnn_exo_1_val_scatter.png}
-                  }
-                  \caption{Grafico scatter de avaliação do modelo RNN\_EXO\_1 \label{fig:case1_rnn_exo_1_val_scatter} }
+                  
+                  \caption{Grafico scatter de avaliação do modelo RNN\_EXO\_1} \label{fig:case1_rnn_exo_1_val_scatter} }
                 \end{figure}
-                METRICAS DO MODELO RNN\_EXO\_1 : \newline
-                RMSE = 132.9496\newline
-                TOTAL DE REFEIÇÕES PROJETADAS = 30223.764709472656\newline
-                TOTAL DE REFEIÇÕES CONSUMIDAS = 35555\newline
-                TOTAL DE REFEIÇÕES SUB PROJETADAS = -7585.754409790039\newline
-                TOTAL DE REFEIÇÕES SUPER PROJETADAS = 2254.5191192626953\newline
+                
+                \rowcolors{2}{gray!25}{white}
+                \begin{tabular}{|c|c|}
+                \rowcolor{gray!50}
+                \hline
+                \multicolumn{2}{c}{METRICAS DO MODELO RNN\_EXO\_1 :}\\ \hline
+                RMSE & 132.9496\\
+                TOTAL DE REFEIÇÕES PROJETADAS & 30223.764709472656\\
+                TOTAL DE REFEIÇÕES CONSUMIDAS & 35555\\
+                TOTAL DE REFEIÇÕES SUB PROJETADAS & -7585.754409790039\\
+                TOTAL DE REFEIÇÕES SUPER PROJETADAS & 2254.5191192626953\\
+                \hline \end{tabular}
 
+                \newpage
               %%%%%%%%%%%%%%%%% RNN_EXO_2
-              \paragraph{RNN\_EXO\_2}
-                \begin{figure}[!ht]
+              \textbf{RNN\_EXO\_2}
+                \begin{figure}[H]
                   \center{
                     \includegraphics[width=0.7\textwidth]{./Figuras/resultados/case1_rnn_exo_2.png}
-                  }
-                  \caption{Topologia do modelo RNN\_EXO\_2 \label{fig:case1_rnn_exo_2} }
+                 
+                  \caption{Topologia do modelo RNN\_EXO\_2}  \label{fig:case1_rnn_exo_2} }
                 \end{figure}
 
-                \begin{figure}[!ht]
+                \begin{figure}[H]
                   \center{
                     \includegraphics[width=0.7\textwidth]{./Figuras/resultados/case1_rnn_exo_2_train.png}
-                  }
-                  \caption{Treino do modelo RNN\_EXO\_2 \label{fig:case1_rnn_exo_2_train} }
+                  
+                  \caption{Treino do modelo RNN\_EXO\_2} \label{fig:case1_rnn_exo_2_train} }
                 \end{figure}
 
-                \begin{figure}[!ht]
+                \begin{figure}[H]
                   \center{
                     \includegraphics[width=0.7\textwidth]{./Figuras/resultados/case1_rnn_exo_2_val.png}
-                  }
-                  \caption{Avaliação do modelo RNN\_EXO\_2 \label{fig:case1_rnn_exo_2_val} }
+                  
+                  \caption{Avaliação do modelo RNN\_EXO\_2} \label{fig:case1_rnn_exo_2_val} }
                 \end{figure}
-                \begin{figure}[!ht]
+                \begin{figure}[H]
                   \center{
                     \includegraphics[width=0.7\textwidth]{./Figuras/resultados/case1_rnn_exo_2_val_scatter.png}
                   }
                   \caption{Grafico scatter de avaliação do modelo RNN\_EXO\_2 \label{fig:case1_rnn_exo_2_val_scatter} }
                 \end{figure}
-                METRICAS DO MODELO RNN\_EXO\_2 : \newline
-                RMSE = 122.32142544582184\newline
-                TOTAL DE REFEIÇÕES PROJETADAS = 32146.112915039062\newline
-                TOTAL DE REFEIÇÕES CONSUMIDAS = 35555\newline
-                TOTAL DE REFEIÇÕES SUB PROJETADAS = -5875.795913696289\newline
-                TOTAL DE REFEIÇÕES SUPER PROJETADAS = 2466.9088287353516\newline
-
+                
+                \rowcolors{2}{gray!25}{white}
+                 \begin{tabular}{|c|c|}
+                 \rowcolor{gray!50}
+                 \hline
+                \multicolumn{2}{c}{METRICAS DO MODELO RNN\_EXO\_2 :}\\ \hline
+                RMSE & 122.32142544582184\\
+                TOTAL DE REFEIÇÕES PROJETADAS & 32146.112915039062\\
+                TOTAL DE REFEIÇÕES CONSUMIDAS & 35555\\
+                TOTAL DE REFEIÇÕES SUB PROJETADAS & -5875.795913696289\\
+                TOTAL DE REFEIÇÕES SUPER PROJETADAS & 2466.9088287353516\\
+                \hline \end{tabular}
+                
+             \newpage   
+                
           %%%%%%%%%%%%%%%%% RNN_EXO_3
-              \paragraph{RNN\_EXO\_3}
-                \begin{figure}[!ht]
+              \textbf{RNN\_EXO\_3}
+              
+              
+                \begin{figure}[H]
                   \center{
                     \includegraphics[width=0.7\textwidth]{./Figuras/resultados/case1_rnn_exo_3.png}
-                  }
-                  \caption{Topologia do modelo RNN\_EXO\_3 \label{fig:case1_rnn_exo_3} }
+                  
+                  \caption{Topologia do modelo RNN\_EXO\_3} \label{fig:case1_rnn_exo_3} }
                 \end{figure}
 
-                \begin{figure}[!ht]
+                \begin{figure}[H]
                   \center{
                     \includegraphics[width=0.7\textwidth]{./Figuras/resultados/case1_rnn_exo_3_train.png}
-                  }
-                  \caption{Treino do modelo RNN\_EXO\_3 \label{fig:case1_rnn_exo_3_train} }
+                  
+                  \caption{Treino do modelo RNN\_EXO\_3} \label{fig:case1_rnn_exo_3_train} }
                 \end{figure}
 
-                \begin{figure}[!ht]
+                \begin{figure}[H]
                   \center{
                     \includegraphics[width=0.7\textwidth]{./Figuras/resultados/case1_rnn_exo_3_val.png}
-                  }
-                  \caption{Avaliação do modelo RNN\_EXO\_3 \label{fig:case1_rnn_exo_3_val} }
+                  
+                  \caption{Avaliação do modelo RNN\_EXO\_3} \label{fig:case1_rnn_exo_3_val} }
                 \end{figure}
-                \begin{figure}[!ht]
+                \begin{figure}[H]
                   \center{
                     \includegraphics[width=0.7\textwidth]{./Figuras/resultados/case1_rnn_exo_3_val_scatter.png}
                   }
                   \caption{Grafico scatter de avaliação do modelo RNN\_EXO\_3 \label{fig:case1_rnn_exo_3_val_scatter} }
                 \end{figure}
-                METRICAS DO MODELO RNN\_EXO\_3 : \newline
-                RMSE = 121.25903250027721\newline
-                TOTAL DE REFEIÇÕES PROJETADAS = 35003.56196594238\newline
-                TOTAL DE REFEIÇÕES CONSUMIDAS = 35555\newline
-                TOTAL DE REFEIÇÕES SUB PROJETADAS = -4471.480010986328\newline
-                TOTAL DE REFEIÇÕES SUPER PROJETADAS = 3920.041976928711\newline
+                
+                   \rowcolors{2}{gray!25}{white}
+                 \begin{tabular}{|c|c|}
+                     \rowcolor{gray!50}
+                     \hline
+                     \multicolumn{2}{c}{ METRICAS DO MODELO RNN\_EXO\_3 : } \\ \hline
+                        RMSE & 121.25903250027721\\
+                        TOTAL DE REFEIÇÕES PROJETADAS & 35003.56196594238\\
+                        TOTAL DE REFEIÇÕES CONSUMIDAS &  35555\\
+                        TOTAL DE REFEIÇÕES SUB PROJETADAS & -4471.480010986328\\
+                        TOTAL DE REFEIÇÕES SUPER PROJETADAS & 3920.041976928711 \\ \hline 
+                \end{tabular}
         \newpage
+        
+        
     	\subsection{Teste e métricas}
     	    \subsubsection{Endógenos : GRU x MLP}
             Podemos notar na figura \ref{fig:case1_mlp_endo1_test} e \ref{fig:case1_rnn_endo2_test} que apesar dos coeficientes de correlação próximos no teste entre os modelos RNN\_ENDO\_2 e MLP\_ENDO\_1 impactando na proximidade de outras métricas como RMSE, MAPE, etc. O valor p-value é notoriamente discrepante.\newline
             Resultados dos modelos RNN\_ENDO\_2 X MLP\_ENDO\_1:\newline
             RNN\_ENDO\_2 : CORRELAÇÃO (r): 0.5954398951050144 Pi (p) :9.422151772316392e-10\newline
             MLP\_ENDO\_1 : MLP: CORRELAÇÃO (r): 0.5212411617024483 Pi (p) :1.9211576129056944e-07 \newline
-            \begin{figure}[!ht]
+            \begin{figure}[H]
               \center{
                 \includegraphics[width=0.7\textwidth]{./Figuras/resultados/case1_mlp_endo1_test.png}
-              }
-              \caption{Teste MLP\_ENDO\_1 \label{fig:case1_mlp_endo1_test} }
+              
+              \caption{Teste MLP\_ENDO\_1} \label{fig:case1_mlp_endo1_test} }
             \end{figure}
 
-            \begin{figure}[!ht]
+            \begin{figure}[H]
               \center{
                 \includegraphics[width=0.7\textwidth]{./Figuras/resultados/case1_rnn_endo2_test.png}
-              }
-              \caption{Teste RNN\_ENDO\_2 \label{fig:case1_rnn_endo2_test} }
+              
+              \caption{Teste RNN\_ENDO\_2} \label{fig:case1_rnn_endo2_test} }
             \end{figure}
 
     	    \subsubsection{Melhor modelo Endógeno}
             De acordo com as métricas de teste, o melhor modelo endógeno foi o RNN\_ENDO\_2, e suas anomalias de previsão são devidamente justificadas por datas especiais no calendário do primeiro semestre:
             
-            \begin{figure}[!ht]
+            \begin{figure}[H]
               \center{
                 \includegraphics[width=0.7\textwidth]{./Figuras/resultados/case1_rnn_endo2_test_dates.png}
-              }
-              \caption{Analise de anomalias preditivas do RNN\_ENDO\_2 \label{fig:case1_rnn_endo2_test_dates} }
+              
+              \caption{Analise de anomalias preditivas do RNN\_ENDO\_2} \label{fig:case1_rnn_endo2_test_dates} }
             \end{figure}
             
-            As datas que produziram outliers e anomalias de predição no melhor modelo exógeno, podem ser observadas na figura \ref{fig:case1_rnn_endo2_test_dates}, sendo os pontos verdes outliers onde o modelo seguiu a tendência de alta ou baixa de consumo mas obteve erro discrepante, e nos pontos vermelhos seguiu tendência inversa:\newline
+            As datas que produziram outliers e anomalias de predição no melhor modelo exógeno, podem ser observadas na figura \ref{fig:case1_rnn_endo2_test_dates}, sendo os pontos verdes outliers onde o modelo seguiu a tendência de alta ou baixa de consumo mas obteve erro discrepante, e nos pontos vermelhos seguiu tendência inversa:
+
+
+                \rowcolors{2}{gray!25}{white}
+                 \begin{tabular}{|c|c|c|}
+                 \rowcolor{gray!50}
+                 \hline 
+             Data & Consumo & Justificativa\\ \hline    
+            01/03/2019 (sexta feira)    & 224 & Sexta Feira pré - carnaval\\
+             03/06/2019 (segunda feira)  &  13 & Segunda Feira pós paralisação estudantil\\ \hline \end{tabular}
+
+            Datas com anomalias de previsão onde o modelo seguiu tendência oposta ao consumo, pontos vermelhos:
             
-            Data : 01/03/2019 (sexta feira)    | Consumo : 224 | Justificativa : Sexta Feira pré - carnaval\newline
-            Data : 03/06/2019 (segunda feira)  | Consumo : 13  | Justificativa : Segunda Feira pós paralisação estudantil na praça afonso pena\newline
+                \rowcolors{2}{gray!25}{white}
+                 \begin{tabular}{|c|c|c|}
+                 \rowcolor{gray!50}
+                 \hline
+            Data & Consumo & Justificativa \\
+            08/03/2019 (sexta feira)   & 209 &Sexta Feira pós - carnaval\\
+           15/05/2019 (quarta feira)   & 19  & Paralisação estudantil na praça Afonso Pena\\
+            30/05/2019 (quinta feira)   &  38  & Paralisação estudantil na Praça Afonso pena\\
+            \hline \end{tabular}
 
-            Datas com anomalias de previsão onde o modelo seguiu tendência oposta ao consumo, pontos vermelhos:\newline
-
-            Data : 08/03/2019 (sexta feira)    | Consumo : 209 | Justificativa : Sexta Feira pós - carnaval\newline
-            Data : 15/05/2019 (quarta feira)   | Consumo : 19  | Justificativa : Paralisação estudantil na praça afonso pena\newline
-            Data : 30/05/2019 (quinta feira)   | Consumo : 38  | Justificativa : Paralisação estudantil na praça afonso pena\newline
-
-            Métricas do melhor modelo, RNN\_ENDO\_2:\newline
-            Total\_Consumidas = 31962 | Total\_Previstas = 31465,61133 | Erro\_Total\_Previsao = -496,3886719 | Percentual\_Erro\_Total = -1,5530\%\newline
-            Correlação = 0,595439895 | P-value = 9,42215E-10         | RMSE = 108,0663015\newline
-            Total de Refeições em falta = -2982,567947 | Total Descartadas = 3478,957266\newline
-            ERRO\_ABS\_MEDIANO = 46,70721436 | ERRO\_ABSOLUTO\_PERCENTUAL\_MEDIO = 74,93539002\newline
-            \begin{figure}[!ht]
+            Métricas do melhor modelo: 
+            
+           \rowcolors{2}{gray!25}{white}
+                    \begin{tabular}{|c|c|}
+                    \rowcolor{gray!50}
+                    \hline
+                    Melhor modelo: &   RNN\_ENDO\_2: \\ \hline
+            Total\_Consumidas & 31962 \\ 
+            Total\_Previstas & 31465,61133 \\
+            Erro\_Total\_Previsao & -496,3886719 \\
+            Percentual\_Erro\_Total & -1,5530\% \\\
+            Correlação & 0,595439895 \\
+            P-value & 9,42215E-10    \\
+             RMSE &  108,0663015\\
+            Total de Refeições em falta & -2982,567947 \\Total Descartadas & 3478,957266\\
+            ERRO\_ABS\_MEDIANO & 46,70721436 \\ ERRO\_ABSOLUTO\_PERCENTUAL\_MEDIO & 74,93539002 \\ \hline \end{tabular}
+            
+                        \begin{figure}[H]
+            
               \center{
                 \includegraphics[width=0.7\textwidth]{./Figuras/resultados/case1_rnn_endo2_test_scatter.png}
-              }
-              \caption{Grafico scatter de teste do RNN\_ENDO\_2 \label{fig:case1_rnn_endo2_test_scatter} }
+              
+              \caption{Grafico scatter de teste do RNN\_ENDO\_2} \label{fig:case1_rnn_endo2_test_scatter} }
             \end{figure}
     	    \subsubsection{Modelos mistos}
              %%%%%%%%%%%%%%%%% RNN_EXO\_1
-              \paragraph{RNN\_EXO\_1}
-                \begin{figure}[!ht]
+              \textbf{RNN\_EXO\_1}
+                \begin{figure}[H]
                   \center{
                     \includegraphics[width=0.7\textwidth]{./Figuras/resultados/case1_rnn_exo_1_test.png}
-                  }
-                  \caption{Teste do modelo RNN\_EXO\_1 \label{fig:case1_rnn_exo_1_test} }
+                  
+                  \caption{Teste do modelo RNN\_EXO\_1} \label{fig:case1_rnn_exo_1_test} }
                 \end{figure}
 
-                \begin{figure}[!ht]
+                \begin{figure}[H]
                   \center{
                     \includegraphics[width=0.7\textwidth]{./Figuras/resultados/case1_rnn_exo_1_test_scatter.png}
-                  }
-                  \caption{Grafico scatter de teste do modelo RNN\_EXO\_1 \label{fig:case1_rnn_exo_1_test_scatter} }
+                  
+                  \caption{Grafico scatter de teste do modelo RNN\_EXO\_1} \label{fig:case1_rnn_exo_1_test_scatter} }
                 \end{figure}
-                RNN\_EXO\_1:
-                TOTAL DE REFEIÇÕES CONSUMIDAS = 31962 : 88 linhas \newline
-                TOTAL DE REFEIÇÕES PROJETADAS = 28728.816 : 88 linha \newline
-                ERRO DE PREVISÃO = -3233.18359375 -10.115711137444466\% do total consumido\newline
-                CORRELAÇÃO (r): 0.4122158648305426 Pi (p) :6.590759241637016e-05 R2 :0.16992191921799218\newline
-                RMSE = 124.49076120428357\newline
-                ERRO TOTAL DE REFEIÇÕES SUB PROJETADAS = -2709.1732788085938\newline
-                ERRO TOTAL DE REFEIÇÕES SUPER PROJETADAS = 5942.356475830078\newline
-                ERRO ABSOLUTO MEDIANO = 85.59107971191406\newline
-                ERRO ABSOLUTO PERCENTUAL MEDIO = 90.98694558104974\%\newline
+                
+                \rowcolors{2}{gray!25}{white}
+                    \begin{tabular}{|c|c|}
+                    \rowcolor{gray!50}
+                    \hline
+                \multicolumn{2}{c}{RNN\_EXO\_1:} \\
+                \hline
+                TOTAL DE REFEIÇÕES CONSUMIDAS & 31962 : 88  \\
+                TOTAL DE REFEIÇÕES PROJETADAS & 28728.816 : 88  \\
+                ERRO DE PREVISÃO & -3233.18359375 \\
+                PERCENTAGEM DE ERRO & -10.115711137444466\%  \\
+                CORRELAÇÃO (r) & 0.4122158648305426 \\ Pi (p) & 6.590759241637016e-05\\ R2 & 0.16992191921799218\\
+                RMSE & 124.49076120428357\\
+                ERRO TOTAL DE REFEIÇÕES SUB PROJETADAS & -2709.1732788085938\\
+                ERRO TOTAL DE REFEIÇÕES SUPER PROJETADAS & 5942.356475830078\\
+                ERRO ABSOLUTO MEDIANO & 85.59107971191406\\
+                ERRO ABSOLUTO PERCENTUAL MEDIO & 90.98694558104974\% \\ \hline \end{tabular}
+                
+              \newpage  
              %%%%%%%%%%%%%%%%% RNN_EXO_2
-              \paragraph{RNN\_EXO\_2}
-                \begin{figure}[!ht]
+              \textbf{RNN\_EXO\_2}
+                \begin{figure}[H]
                   \center{
                     \includegraphics[width=0.7\textwidth]{./Figuras/resultados/case1_rnn_exo_2_test.png}
-                  }
-                  \caption{Teste do modelo RNN\_EXO\_2 \label{fig:case1_rnn_exo_2_test} }
+                  
+                  \caption{Teste do modelo RNN\_EXO\_2} \label{fig:case1_rnn_exo_2_test} }
                 \end{figure}
 
-                \begin{figure}[!ht]
+                \begin{figure}[H]
                   \center{
                     \includegraphics[width=0.7\textwidth]{./Figuras/resultados/case1_rnn_exo_2_test_scatter.png}
-                  }
-                  \caption{Grafico scatter de teste do modelo RNN\_EXO\_2 \label{fig:case1_rnn_exo_2_test_scatter} }
+                  
+                  \caption{Grafico scatter de teste do modelo RNN\_EXO\_2} \label{fig:case1_rnn_exo_2_test_scatter} }
                 \end{figure}
-                RNN\_EXO\_2:
-                TOTAL DE REFEIÇÕES CONSUMIDAS = 31962 : 88 linhas\newline
-                TOTAL DE REFEIÇÕES PROJETADAS = 30823.148 : 88 linhas\newline
-                ERRO DE PREVISÃO = -1138.8515625 -3.563142364370189\% do total consumido\newline
-                CORRELAÇÃO (r): 0.5206433612135913 Pi (p) :1.995208420251518e-07 R2 :0.27106950957578635\newline
-                RMSE = 112.99211377165491\newline
-                ERRO TOTAL DE REFEIÇÕES SUB PROJETADAS = -3044.8834533691406\newline
-                ERRO TOTAL DE REFEIÇÕES SUPER PROJETADAS = 4183.734128952026\newline
-                ERRO ABSOLUTO MEDIANO = 63.59894561767578\newline
-                ERRO ABSOLUTO PERCENTUAL MEDIO = 88.26875085831726\%\newline
+                
+                \rowcolors{2}{gray!25}{white}
+                    \begin{tabular}{|c|c|}
+                    \rowcolor{gray!50}
+                    \hline
+                \multicolumn{2}{c}{RNN\_EXO\_2:} \\ \hline
+                TOTAL DE REFEIÇÕES CONSUMIDAS & 31962 : 88 \\
+                TOTAL DE REFEIÇÕES PROJETADAS & 30823.148 : 88 \\
+                ERRO DE PREVISÃO & -1138.8515625 \\
+                PERCENTAGEM DE ERRO &  -3.563142364370189 \\
+                CORRELAÇÃO (r)& 0.5206433612135913\\ Pi (p) & 1.995208420251518e-07\\
+                R2 & 0.27106950957578635\\
+                RMSE & 112.99211377165491\\
+                ERRO TOTAL DE REFEIÇÕES SUB PROJETADAS & -3044.8834533691406\\
+                ERRO TOTAL DE REFEIÇÕES SUPER PROJETADAS & 4183.734128952026\\
+                ERRO ABSOLUTO MEDIANO & 63.59894561767578\\
+                ERRO ABSOLUTO PERCENTUAL MEDIO & 88.26875085831726\% \\ \hline \end{tabular}
+                
+                
              %%%%%%%%%%%%%%%%% RNN_EXO_3
-              \paragraph{RNN\_EXO\_3}
-                \begin{figure}[!ht]
+              \textbf{RNN\_EXO\_3}
+                \begin{figure}[H]
                   \center{
                     \includegraphics[width=0.7\textwidth]{./Figuras/resultados/case1_rnn_exo_3_test.png}
-                  }
-                  \caption{Teste do modelo RNN\_EXO\_3 \label{fig:case1_rnn_exo_3_test} }
+                  
+                  \caption{Teste do modelo RNN\_EXO\_3} \label{fig:case1_rnn_exo_3_test} }
                 \end{figure}
 
-                \begin{figure}[!ht]
+                \begin{figure}[H]
                   \center{
                     \includegraphics[width=0.7\textwidth]{./Figuras/resultados/case1_rnn_exo_3_test_scatter.png}
-                  }
-                  \caption{Grafico scatter de teste do modelo RNN\_EXO\_3 \label{fig:case1_rnn_exo_3_test_scatter} }
+                  
+                  \caption{Grafico scatter de teste do modelo RNN\_EXO\_3} \label{fig:case1_rnn_exo_3_test_scatter} }
                 \end{figure}
-                RNN\_EXO\_3:
-                TOTAL DE REFEIÇÕES CONSUMIDAS = 31962 : 88 linhas\newline
-                TOTAL DE REFEIÇÕES PROJETADAS = 29425.791 : 88 linhas\newline
-                ERRO DE PREVISÃO = -2536.208984375 -7.935075978896815\% do total consumido\newline
-                CORRELAÇÃO (r): 0.33963283016931 Pi (p) :0.0012067360859947137 R2 :0.11535045932881538\newline
-                RMSE = 124.65810037942255\newline
-                ERRO TOTAL DE REFEIÇÕES SUB PROJETADAS = -3417.6602630615234\newline
-                ERRO TOTAL DE REFEIÇÕES SUPER PROJETADAS = 5953.868759155273\newline
-                ERRO ABSOLUTO MEDIANO = 100.44429016113281\newline
-                ERRO ABSOLUTO PERCENTUAL MEDIO = 98.79064922123037\%\newline
+                
+                \rowcolors{2}{gray!25}{white}
+                    \begin{tabular}{|c|c|}
+                    \rowcolor{gray!50}
+                    \hline
+               \multicolumn{2}{c}{ RNN\_EXO\_3:} \\ \hline
+                TOTAL DE REFEIÇÕES CONSUMIDAS & 31962 : 88 \\
+                TOTAL DE REFEIÇÕES PROJETADAS  & 29425.791 : 88 \\
+                ERRO DE PREVISÃO\ -2536.208984375\\ 
+                PERCENTAGEM DE ERRO &-7.935075978896815\% \\
+                CORRELAÇÃO (r) & 0.33963283016931 \\ Pi (p)& 0.0012067360859947137 \\R2 & 0.11535045932881538\\
+                RMSE & 124.65810037942255\\
+                ERRO TOTAL DE REFEIÇÕES SUB PROJETADAS & -3417.6602630615234\\
+                ERRO TOTAL DE REFEIÇÕES SUPER PROJETADAS & 5953.868759155273\\
+                ERRO ABSOLUTO MEDIANO & 100.44429016113281\\
+                ERRO ABSOLUTO PERCENTUAL MEDIO & 98.79064922123037\% \\ \hline \end{tabular}
 
     	    \subsubsection{Melhor modelo da 1a fase}
                 Entre todos os modelos, o melhor modelo, produzindo o menor RMSE, e com vantagem em todas as outras métricas foi o modelo endógeno, RNN\_ENDO\_2, ressaltando que o gráfico de predições deste modelo se encontra na figura \ref{fig:case1_rnn_endo2_test}
@@ -2144,290 +2262,330 @@
 	    \subsection{Pré-Processamento}
     	    \subsubsection{Divisão dos conjuntos}
     	        %%% TREINO
-    	        \begin{figure}[!ht]
+    	        \begin{figure}[H]
                   \center{
                     \includegraphics[width=0.7\textwidth]{./Figuras/resultados/case2/case2_train.png}
-                  }
-                  \caption{Conjunto de dados de treino, ano de 2017 completo \label{fig:case2_train} }
+                  
+                  \caption{Conjunto de dados de treino, ano de 2017 completo} \label{fig:case2_train} }
                 \end{figure}
                 
                 %%% VALIDAÇÃO
-                \begin{figure}[!ht]
+                \begin{figure}[H]
                   \center{
                     \includegraphics[width=0.7\textwidth]{./Figuras/resultados/case2/case2_val.png}
-                  }
-                  \caption{Conjunto de dados de validação, ano de 2018 completo \label{fig:case2_val} }
+                  
+                  \caption{Conjunto de dados de validação, ano de 2018 completo} \label{fig:case2_val} }
                 \end{figure}
                 
                 %%% TESTE
-                \begin{figure}[!ht]
+                \begin{figure}[H]
                   \center{
                     \includegraphics[width=0.7\textwidth]{./Figuras/resultados/case2/case2_test.png}
-                  }
-                  \caption{Conjunto de dados de teste, ano de 2019 completo \label{fig:case2_test} }
+                  
+                  \caption{Conjunto de dados de teste, ano de 2019 completo} \label{fig:case2_test} }
                 \end{figure}
     	        
     	        A nova divisão dos conjuntos segue conforme as figuras \ref{fig:case2_train} para o conjunto de treino, \ref{fig:case2_train} para o conjunto de validação e \ref{fig:case2_train} para o conjunto de teste.
     	        
     	    \subsubsection{Análise da técnica do restaurante}
-    	        \begin{figure}[!ht]
+    	        \begin{figure}[H]
                   \center{
                     \includegraphics[width=0.7\textwidth]{./Figuras/resultados/case1_ru_pred.png}
-                  }
-                  \caption{Gráfico entre o consumo de refeições e a produção com margem de 30\% para o ano de 2019 completo. \label{fig:ru_pred} }
+                 
+                  \caption{Gráfico entre o consumo de refeições e a produção com margem de 30\% para o ano de 2019 completo. } \label{fig:ru_pred} }
                 \end{figure}
-                 \begin{figure}[!ht]
+                 \begin{figure}[H]
                   \center{
                     \includegraphics[width=0.7\textwidth]{./Figuras/resultados/case1_ru_pred_scatter.png}
-                  }
-                  \caption{Gráfico scatter entre o consumo de refeições e a produção com margem de 30\% para o ano de 2019 completo. \label{fig:ru_pred_scatter} }
+                  
+                  \caption{Gráfico scatter entre o consumo de refeições e a produção com margem de 30\% para o ano de 2019 completo.} \label{fig:ru_pred_scatter} }
                 \end{figure}
-                Para a produção de refeições com margem de 30\% acima do consumo do 5o dia anterior, conforme figura \ref{fig:ru_pred} e \ref{fig:ru_pred_scatter} obtemos as seguintes métricas:\newline
-                TOTAL DE REFEIÇÕES CONSUMIDAS = 58653 : 182 linhas \newline
-                TOTAL DE REFEIÇÕES PROJETADAS = 76262 : 182 linhas CORRELAÇÃO (r): 0.40067947341844423 \newline
-                Pi (p) :2.0845891721642294e-08\newline
-                RMSE = 191.7620291511743 \newline
-                TOTAL DE REFEIÇÕES SUPER PROJETADAS = 23412 \newline
-                TOTAL DE REFEIÇÕES SUB PROJETADAS = -5803 \newline
-                ERRO ABSOLUTO MEDIANO = 133.0 \newline
-                ERRO ABSOLUTO PERCENTUAL MEDIO = 205.61135949728225\% \newline
+                
+                Para a produção de refeições com margem de 30\% acima do consumo do 5o dia anterior, conforme figura \ref{fig:ru_pred} e \ref{fig:ru_pred_scatter} obtemos as seguintes métricas:
+                
+                \rowcolors{2}{gray!25}{white}
+                    \begin{tabular}{|c|c|}
+                    \rowcolor{gray!50}
+                    \hline
+                    \multicolumn{2}{c}{Consumo com margem 30\% acima do 5o dia anterior}\\ \hline     
+                    TOTAL DE REFEIÇÕES CONSUMIDAS & 58653 : 182  \\
+                TOTAL DE REFEIÇÕES PROJETADAS & 76262 : 182 \\ 
+                CORRELAÇÃO (r)&  0.40067947341844423 \\
+                Pi (p) & 2.0845891721642294e-08\\
+                RMSE & 191.7620291511743 \\
+                TOTAL DE REFEIÇÕES SUPER PROJETADAS & 23412 \\
+                TOTAL DE REFEIÇÕES SUB PROJETADAS & -5803 \\
+                ERRO ABSOLUTO MEDIANO & 133.0 \\
+                ERRO ABSOLUTO PERCENTUAL MEDIO & 205.61135949728225\% \\  \hline \end{tabular}
+                
+                
     	\subsection{Treino e Validação dos modelos}
     	    %%% MLP_ENDO_1
-    	    \begin{figure}[!ht]
+    	    \begin{figure}[H]
               \center{
                 \includegraphics[width=0.7\textwidth]{./Figuras/resultados/case2/case2_mlp_endo1_train.png}
-              }
-              \caption{Gráfico de treino do modelo MLP\_ENDO\_1. \label{fig:case2_mlp_endo1_train} }
+              
+              \caption{Gráfico de treino do modelo MLP\_ENDO\_1.} \label{fig:case2_mlp_endo1_train} }
             \end{figure}
-            \begin{figure}[!ht]
+            \begin{figure}[H]
               \center{
                 \includegraphics[width=0.7\textwidth]{./Figuras/resultados/case2/case2_mlp_endo1_val.png}
-              }
-              \caption{Gráfico de validação do modelo MLP\_ENDO\_1. \label{fig:case2_mlp_endo1_val} }
+              
+              \caption{Gráfico de validação do modelo MLP\_ENDO\_1.} \label{fig:case2_mlp_endo1_val} }
             \end{figure}
             
             %%% RNN_ENDO_1
-    	    \begin{figure}[!ht]
+    	    \begin{figure}[H]
               \center{
                 \includegraphics[width=0.7\textwidth]{./Figuras/resultados/case2/case2_rnn_endo1_train.png}
-              }
-              \caption{Gráfico de treino do modelo RNN\_ENDO\_1. \label{fig:case2_rnn_endo1_train} }
+              
+              \caption{Gráfico de treino do modelo RNN\_ENDO\_1.} \label{fig:case2_rnn_endo1_train} }
             \end{figure}
-            \begin{figure}[!ht]
+            \begin{figure}[H]
               \center{
                 \includegraphics[width=0.7\textwidth]{./Figuras/resultados/case2/case2_rnn_endo1_val.png}
-              }
-              \caption{Gráfico de validação do modelo RNN\_ENDO\_1. \label{fig:case2_rnn_endo1_val} }
+              
+              \caption{Gráfico de validação do modelo RNN\_ENDO\_1.} \label{fig:case2_rnn_endo1_val} }
             \end{figure}
             
              %%% RNN_ENDO_2
-    	    \begin{figure}[!ht]
+    	    \begin{figure}[H]
               \center{
                 \includegraphics[width=0.7\textwidth]{./Figuras/resultados/case2/case2_rnn_endo2_train.png}
-              }
-              \caption{Gráfico de treino do modelo RNN\_ENDO\_2. \label{fig:case2_rnn_endo2_train} }
+             
+              \caption{Gráfico de treino do modelo RNN\_ENDO\_2. } \label{fig:case2_rnn_endo2_train} }
             \end{figure}
-            \begin{figure}[!ht]
+            \begin{figure}[H]
               \center{
                 \includegraphics[width=0.7\textwidth]{./Figuras/resultados/case2/case2_rnn_endo2_val.png}
-              }
-              \caption{Gráfico de validação do modelo RNN\_ENDO\_2. \label{fig:case2_rnn_endo2_val} }
+              
+              \caption{Gráfico de validação do modelo RNN\_ENDO\_2.} \label{fig:case2_rnn_endo2_val} }
             \end{figure}
             
             %%% RNN_EXO_1
-    	    \begin{figure}[!ht]
+    	    \begin{figure}[H]
               \center{
                 \includegraphics[width=0.7\textwidth]{./Figuras/resultados/case2/case2_rnn_exo1_train.png}
-              }
-              \caption{Gráfico de treino do modelo RNN\_EXO\_1. \label{fig:case2_rnn_exo1_train} }
+              
+              \caption{Gráfico de treino do modelo RNN\_EXO\_1.} \label{fig:case2_rnn_exo1_train} }
             \end{figure}
-            \begin{figure}[!ht]
+            \begin{figure}[H]
               \center{
                 \includegraphics[width=0.7\textwidth]{./Figuras/resultados/case2/case2_rnn_exo1_val.png}
-              }
-              \caption{Gráfico de validação do modelo  RNN\_EXO\_1. \label{fig:case2_rnn_exo1_val} }
+              
+              \caption{Gráfico de validação do modelo  RNN\_EXO\_1.} \label{fig:case2_rnn_exo1_val} }
             \end{figure}
             
             %%% RNN_EXO_2
-    	    \begin{figure}[!ht]
+    	    \begin{figure}[H]
               \center{
                 \includegraphics[width=0.7\textwidth]{./Figuras/resultados/case2/case2_rnn_exo2_train.png}
-              }
-              \caption{Gráfico de treino do modelo RNN\_EXO\_2. \label{fig:case2_rnn_exo2_train} }
+              
+              \caption{Gráfico de treino do modelo RNN\_EXO\_2.} \label{fig:case2_rnn_exo2_train} }
             \end{figure}
-            \begin{figure}[!ht]
+            \begin{figure}[H]
               \center{
                 \includegraphics[width=0.7\textwidth]{./Figuras/resultados/case2/case2_rnn_exo2_val.png}
-              }
-              \caption{Gráfico de validação do modelo  RNN\_EXO\_2. \label{fig:case2_rnn_exo2_val} }
+              
+              \caption{Gráfico de validação do modelo  RNN\_EXO\_2.} \label{fig:case2_rnn_exo2_val} }
             \end{figure}
             
             %%% RNN_EXO_3
-    	    \begin{figure}[!ht]
+    	    \begin{figure}[H]
               \center{
                 \includegraphics[width=0.7\textwidth]{./Figuras/resultados/case2/case2_rnn_exo3_train.png}
-              }
-              \caption{Gráfico de treino do modelo RNN\_EXO\_3. \label{fig:case2_rnn_exo3_train} }
+             
+              \caption{Gráfico de treino do modelo RNN\_EXO\_3. } \label{fig:case2_rnn_exo3_train} }
             \end{figure}
-            \begin{figure}[!ht]
+            \begin{figure}[H]
               \center{
                 \includegraphics[width=0.7\textwidth]{./Figuras/resultados/case2/case2_rnn_exo3_val.png}
-              }
-              \caption{Gráfico de validação do modelo  RNN\_EXO\_3. \label{fig:case2_rnn_exo3_val} }
+              
+              \caption{Gráfico de validação do modelo  RNN\_EXO\_3.} \label{fig:case2_rnn_exo3_val} }
             \end{figure}
             
     	    Nesta etapa experimental, todos os modelos foram definidos com a mesma topologia da primeira fase.
     	    Os modelos endógenos obtiveram melhoria nos resultados avaliados sobre o conjunto de validação.
     	    Já os modelos exógenos, apenas 1 obteve melhoria significativa nos resultados, o modelo RNN\_EXO\_1, porém os outros obtiveram resultados anômalos no plot dos gráficos de treino e validação.
     	    Os gráficos de treino e validação podem ser conferidos da figura \ref{fig:case2_mlp_endo1_train} à figura \ref{fig:case2_rnn_exo3_val}
-    	    MÉTRICAS:\newline
-    	    MLP\_ENDO\_1 \newline
-            TOTAL DE REFEIÇÕES CONSUMIDAS = 65637 : 184 linhas\newline
-            TOTAL DE REFEIÇÕES PROJETADAS = 62781.324 : 184 linhas\newline
-            CORRELAÇÃO (r): 0.7649396511306203 Pi (p) :1.3054591862307924e-36\newline
-            RMSE = 89.32526704475531\newline
-            TOTAL DE REFEIÇÕES SUB PROJETADAS = -4257.537273406982\newline
-            TOTAL DE REFEIÇÕES SUPER PROJETADAS = 7113.216419219971\newline
-            ERRO ABSOLUTO MEDIANO = 47.23118591308594\newline
-            ERRO ABSOLUTO PERCENTUAL MEDIO = 3234942340.243013\% \newline
+    	    
+    	   \textbf{ MÉTRICAS}
+    	   
+    	    \rowcolors{2}{gray!25}{white}
+                    \begin{tabular}{|c|c|}
+                    \rowcolor{gray!50}
+                    \hline
+    	   \multicolumn{2}{c}{MLP\_ENDO\_1} \\  \hline
+            TOTAL DE REFEIÇÕES CONSUMIDAS & 65637 : 184 \\
+            TOTAL DE REFEIÇÕES PROJETADAS & 62781.324 : 184 \\
+            CORRELAÇÃO (r) & 0.7649396511306203 \\ Pi (p) & 1.3054591862307924e-36\\
+            RMSE & 89.32526704475531\\
+            TOTAL DE REFEIÇÕES SUB PROJETADAS &-4257.537273406982\\
+            TOTAL DE REFEIÇÕES SUPER PROJETADAS & 7113.216419219971\\
+            ERRO ABSOLUTO MEDIANO & 47.23118591308594\\
+            ERRO ABSOLUTO PERCENTUAL MEDIO & 3234942340.243013\% \\ \hline \end{tabular}
             
-            RNN\_ENDO\_1\newline
-            TOTAL DE REFEIÇÕES CONSUMIDAS = 65637 : 184 linhas\newline
-            TOTAL DE REFEIÇÕES PROJETADAS = 65219.613 : 184 linhas\newline
-            CORRELAÇÃO (r): 0.7538102329191316 Pi (p) :5.014834155014456e-35\newline
-            RMSE = 89.73281442880939\newline
-            TOTAL DE REFEIÇÕES SUB PROJETADAS = -5666.187889099121\newline
-            TOTAL DE REFEIÇÕES SUPER PROJETADAS = 6083.576965332031\newline
-            ERRO ABSOLUTO MEDIANO = 48.55305480957031\newline
-            ERRO ABSOLUTO PERCENTUAL MEDIO = 4145884336.345922\% \newline
+            \rowcolors{2}{gray!25}{white}
+                    \begin{tabular}{|c|c|}
+                    \rowcolor{gray!50}
+                    \hline
+            \multicolumn{2}{c}{ RNN\_ENDO\_1} \\ \hline
+            TOTAL DE REFEIÇÕES CONSUMIDAS & 65637 : 184\\
+            TOTAL DE REFEIÇÕES PROJETADAS & 65219.613 : 184 \\
+            CORRELAÇÃO (r) & 0.7538102329191316\\ Pi (p) & 5.014834155014456e-35\\
+            RMSE & 89.73281442880939\\
+            TOTAL DE REFEIÇÕES SUB PROJETADAS & -5666.187889099121\\
+            TOTAL DE REFEIÇÕES SUPER PROJETADAS & 6083.576965332031\\
+            ERRO ABSOLUTO MEDIANO & 48.55305480957031\\
+            ERRO ABSOLUTO PERCENTUAL MEDIO &  4145884336.345922\% \\ \hline  \end{tabular}
             
-            RNN\_ENDO\_2\newline
-            TOTAL DE REFEIÇÕES CONSUMIDAS = 65637 : 184 linhas\newline
-            TOTAL DE REFEIÇÕES PROJETADAS = 64170.63 : 184 linhas\newline
-            CORRELAÇÃO (r): 0.6606462451035008 Pi (p) :1.9184607118463233e-24\newline
-            RMSE = 102.80909876605612\newline
-            TOTAL DE REFEIÇÕES SUB PROJETADAS = -6437.710876464844\newline
-            TOTAL DE REFEIÇÕES SUPER PROJETADAS = 7904.081573486328\newline
-            ERRO ABSOLUTO MEDIANO = 61.39728546142578\newline
-            ERRO ABSOLUTO PERCENTUAL MEDIO = 4124092635.50105\% \newline
+            \rowcolors{2}{gray!25}{white}
+                    \begin{tabular}{|c|c|}
+                    \rowcolor{gray!50}
+                    \hline
+                    \multicolumn{2}{c}{  RNN\_ENDO\_2} \\ \hline
+            TOTAL DE REFEIÇÕES CONSUMIDAS & 65637 : 184 \\
+            TOTAL DE REFEIÇÕES PROJETADAS & 64170.63 : 184 \\
+            CORRELAÇÃO (r)&  0.6606462451035008\\ 
+            Pi (p) & 1.9184607118463233e-24\\
+            RMSE & 102.80909876605612\\
+            TOTAL DE REFEIÇÕES SUB PROJETADAS & -6437.710876464844\\
+            TOTAL DE REFEIÇÕES SUPER PROJETADAS & 7904.081573486328\\
+            ERRO ABSOLUTO MEDIANO & 61.39728546142578 \\
+            ERRO ABSOLUTO PERCENTUAL MEDIO &  4124092635.50105\% \\ \hline \end{tabular}           
             
-            RNN\_EXO\_1\newline
-            RMSE:  109.97634427462593\newline
-            TOTAL DE REFEIÇÕES CONSUMIDAS = 65637 : 184 linhas\newline
-            TOTAL DE REFEIÇÕES PROJETADAS = 62530.465 : 184 linhas\newline
-            CORRELAÇÃO (r): 0.6052852633603059 Pi (p) :8.961737817855194e-20\newline
-            RMSE = 109.97634427462593\newline
-            TOTAL DE REFEIÇÕES SUB PROJETADAS = -6378.557273864746\newline
-            TOTAL DE REFEIÇÕES SUPER PROJETADAS = 9485.092361450195\newline
-            ERRO ABSOLUTO MEDIANO = 67.952392578125\newline
-            ERRO ABSOLUTO PERCENTUAL MEDIO = 3590946402.38917\% \newline
+            \rowcolors{2}{gray!25}{white}
+                    \begin{tabular}{|c|c|}
+                    \rowcolor{gray!50}
+                    \hline
+            \multicolumn{2}{c}{RNN\_EXO\_1} \\ \hline
+            RMSE &  109.97634427462593\\
+            TOTAL DE REFEIÇÕES CONSUMIDAS & 65637 : 184 \\
+            TOTAL DE REFEIÇÕES PROJETADAS & 62530.465: 184 \\
+            CORRELAÇÃO (r)&  0.6052852633603059 \\
+            Pi (p) & 8.961737817855194e-20\\
+            RMSE & 109.97634427462593\\
+            TOTAL DE REFEIÇÕES SUB PROJETADAS & -6378.557273864746\\
+            TOTAL DE REFEIÇÕES SUPER PROJETADAS & 9485.092361450195\\
+            ERRO ABSOLUTO MEDIANO & 67.952392578125\\
+            ERRO ABSOLUTO PERCENTUAL MEDIO & 3590946402.38917\% \\  \hline \end{tabular}
             
-            RNN\_EXO\_2\newline
-            RMSE:  373.5611599422393\newline
-            TOTAL DE REFEIÇÕES CONSUMIDAS = 65637 : 184 linhas\newline
-            TOTAL DE REFEIÇÕES PROJETADAS = 1656.0 : 184 linhas\newline
-            CORRELAÇÃO (r): nan Pi (p) :nan\newline
-            RMSE = 373.5611599422393\newline
-            TOTAL DE REFEIÇÕES SUB PROJETADAS = -18.0\newline
-            TOTAL DE REFEIÇÕES SUPER PROJETADAS = 63999.0\newline
-            ERRO ABSOLUTO MEDIANO = 380.0\newline
-            ERRO ABSOLUTO PERCENTUAL MEDIO = 97826180.62563947\% \newline
+            \rowcolors{2}{gray!25}{white}
+                    \begin{tabular}{|c|c|}
+                    \rowcolor{gray!50}
+                    \hline
+            \multicolumn{2}{c}{RNN\_EXO\_2} \\ \hline
+            RMSE&  373.5611599422393\\
+            TOTAL DE REFEIÇÕES CONSUMIDAS & 65637 : 184\\
+            TOTAL DE REFEIÇÕES PROJETADAS & 1656.0 : 184 \\
+            CORRELAÇÃO (r) & nan \\ Pi (p) & nan\\
+            RMSE & 373.5611599422393\\
+            TOTAL DE REFEIÇÕES SUB PROJETADAS & -18.0\\
+            TOTAL DE REFEIÇÕES SUPER PROJETADAS & 63999.0\\
+            ERRO ABSOLUTO MEDIANO & 380.0\\
+            ERRO ABSOLUTO PERCENTUAL MEDIO & 97826180.62563947\% \\ \hline \end{tabular}
             
-            RNN\_EXO\_3\newline
-            RMSE:  131.93314687496996\newline
-            TOTAL DE REFEIÇÕES CONSUMIDAS = 65637 : 184 linhas\newline
-            TOTAL DE REFEIÇÕES PROJETADAS = 59270.867 : 184 linhas\newline
-            CORRELAÇÃO (r): 0.3675645280265282 Pi (p) :2.8557023726066666e-07\newline
-            RMSE = 131.93314687496996\newline
-            TOTAL DE REFEIÇÕES SUB PROJETADAS = -6869.128311157227\newline
-            TOTAL DE REFEIÇÕES SUPER PROJETADAS = 13235.260711669922\newline
-            ERRO ABSOLUTO MEDIANO = 101.04127502441406\newline
-            ERRO ABSOLUTO PERCENTUAL MEDIO = 3493320353.99382\% \newline
+            
+            \rowcolors{2}{gray!25}{white}
+                    \begin{tabular}{|c|c|}
+                    \rowcolor{gray!50}
+                    \hline
+            \multicolumn{2}{c}{RNN\_EXO\_3} \\ \hline
+            RMSE &  131.93314687496996\\
+            TOTAL DE REFEIÇÕES CONSUMIDAS & 65637 : 184 \\
+            TOTAL DE REFEIÇÕES PROJETADAS & 59270.867 : 184 \\
+            CORRELAÇÃO (r) & 0.3675645280265282 \\
+            Pi (p) & 2.8557023726066666e-07\\
+            RMSE & 131.93314687496996\\
+            TOTAL DE REFEIÇÕES SUB PROJETADAS & -6869.128311157227\\
+            TOTAL DE REFEIÇÕES SUPER PROJETADAS & 13235.260711669922\\
+            ERRO ABSOLUTO MEDIANO & 101.04127502441406\\
+            ERRO ABSOLUTO PERCENTUAL MEDIO & 3493320353.99382\% \\ \hline \end{tabular}
     	    
     	    
     	\subsection{Teste e métricas}
             %%% MLP_ENDO_1
-            \begin{figure}[!ht]
+            \begin{figure}[H]
               \center{
                 \includegraphics[width=0.7\textwidth]{./Figuras/resultados/case2/case2_mlp_endo1_test.png}
-              }
-              \caption{Gráfico de teste do modelo MLP\_ENDO\_1. \label{fig:case2_mlp_endo1_test} }
+              
+              \caption{Gráfico de teste do modelo MLP\_ENDO\_1.} \label{fig:case2_mlp_endo1_test} }
             \end{figure}
-            \begin{figure}[!ht]
+            \begin{figure}[H]
               \center{
                 \includegraphics[width=0.7\textwidth]{./Figuras/resultados/case2/case2_mlp_endo1_test_scatter.png}
-              }
-              \caption{Gráfico de scatter do modelo MLP\_ENDO\_1. \label{fig:case2_mlp_endo1_test_scatter} }
+              
+              \caption{Gráfico de scatter do modelo MLP\_ENDO\_1.} \label{fig:case2_mlp_endo1_test_scatter} }
             \end{figure}
               
             %%% RNN_ENDO_1
-            \begin{figure}[!ht]
+            \begin{figure}[H]
               \center{
                 \includegraphics[width=0.7\textwidth]{./Figuras/resultados/case2/case2_rnn_endo1_test.png}
-              }
-              \caption{Gráfico de teste do modelo RNN\_ENDO\_1. \label{fig:case2_rnn_endo1_test} }
+              
+              \caption{Gráfico de teste do modelo RNN\_ENDO\_1.} \label{fig:case2_rnn_endo1_test} }
             \end{figure}
-            \begin{figure}[!ht]
+            \begin{figure}[H]
               \center{
                 \includegraphics[width=0.7\textwidth]{./Figuras/resultados/case2/case2_rnn_endo1_test_scatter.png}
-              }
-              \caption{Gráfico de scatter do modelo RNN\_ENDO\_1. \label{fig:case2_rnn_endo1_test_scatter} }
+              
+              \caption{Gráfico de scatter do modelo RNN\_ENDO\_1.} \label{fig:case2_rnn_endo1_test_scatter} }
             \end{figure}
               
              %%% RNN_ENDO_2
-            \begin{figure}[!ht]
+            \begin{figure}[H]
               \center{
                 \includegraphics[width=0.7\textwidth]{./Figuras/resultados/case2/case2_rnn_endo2_test.png}
-              }
-              \caption{Gráfico de teste do modelo RNN\_ENDO\_2. \label{fig:case2_rnn_endo2_test} }
+              
+              \caption{Gráfico de teste do modelo RNN\_ENDO\_2.} \label{fig:case2_rnn_endo2_test} }
             \end{figure}
-            \begin{figure}[!ht]
+            \begin{figure}[H]
               \center{
                 \includegraphics[width=0.7\textwidth]{./Figuras/resultados/case2/case2_rnn_endo2_test_scatter.png}
-              }
-              \caption{Gráfico de scatter do modelo RNN\_ENDO\_2. \label{fig:case2_rnn_endo2_test_scatter} }
+             
+              \caption{Gráfico de scatter do modelo RNN\_ENDO\_2. } \label{fig:case2_rnn_endo2_test_scatter} }
             \end{figure}
               
             %%% RNN_EXO_1
-            \begin{figure}[!ht]
+            \begin{figure}[H]
               \center{
                 \includegraphics[width=0.7\textwidth]{./Figuras/resultados/case2/case2_rnn_exo1_test.png}
-              }
-              \caption{Gráfico de teste do modelo RNN\_EXO\_1. \label{fig:case2_rnn_exo1_test} }
+              
+              \caption{Gráfico de teste do modelo RNN\_EXO\_1.} \label{fig:case2_rnn_exo1_test} }
             \end{figure}
-            \begin{figure}[!ht]
+            \begin{figure}[H]
               \center{
                 \includegraphics[width=0.7\textwidth]{./Figuras/resultados/case2/case2_rnn_exo1_test_scatter.png}
-              }
-              \caption{Gráfico de scatter do modelo  RNN\_EXO\_1. \label{fig:case2_rnn_exo1_test_scatter} }
+              
+              \caption{Gráfico de scatter do modelo  RNN\_EXO\_1.} \label{fig:case2_rnn_exo1_test_scatter} }
             \end{figure}
               
             %%% RNN_EXO_2
-            \begin{figure}[!ht]
+            \begin{figure}[H]
               \center{
                 \includegraphics[width=0.7\textwidth]{./Figuras/resultados/case2/case2_rnn_exo2_test.png}
-              }
-              \caption{Gráfico de teste do modelo RNN\_EXO\_2. \label{fig:case2_rnn_exo2_test} }
+              
+              \caption{Gráfico de teste do modelo RNN\_EXO\_2.} \label{fig:case2_rnn_exo2_test} }
             \end{figure}
-            \begin{figure}[!ht]
+            \begin{figure}[H]
               \center{
                 \includegraphics[width=0.7\textwidth]{./Figuras/resultados/case2/case2_rnn_exo2_test_scatter.png}
-              }
-              \caption{Gráfico de scatter do modelo  RNN\_EXO\_2. \label{fig:case2_rnn_exo2_test_scatter} }
+              
+              \caption{Gráfico de scatter do modelo  RNN\_EXO\_2.} \label{fig:case2_rnn_exo2_test_scatter} }
             \end{figure}
               
             %%% RNN_EXO_3
-            \begin{figure}[!ht]
+            \begin{figure}[H]
               \center{
                 \includegraphics[width=0.7\textwidth]{./Figuras/resultados/case2/case2_rnn_exo3_test.png}
-              }
-              \caption{Gráfico de teste do modelo RNN\_EXO\_3. \label{fig:case2_rnn_exo3_test} }
+              
+              \caption{Gráfico de teste do modelo RNN\_EXO\_3.} \label{fig:case2_rnn_exo3_test} }
             \end{figure}
-            \begin{figure}[!ht]
+            \begin{figure}[H]
               \center{
                 \includegraphics[width=0.7\textwidth]{./Figuras/resultados/case2/case2_rnn_exo3_test_scatter.png}
-              }
-              \caption{Gráfico de scatter do modelo  RNN\_EXO\_3. \label{fig:case2_rnn_exo3_test_scatter} }
+              
+              \caption{Gráfico de scatter do modelo  RNN\_EXO\_3.} \label{fig:case2_rnn_exo3_test_scatter} }
 \end{figure}
     	    Após o teste de todos os modelos da 2a fase, o modelo que obteve as melhores métricas entre todos, foi RNN\_EXO\_2, onde o gráfico de predições e scatter podem ser conferidos na figura \ref{fig:case2_mlp_endo1_test}.
     	    Todos os gráficos de teste estão entre a figura \ref{fig:case2_mlp_endo1_test} à \ref{fig:case2_rnn_exo3_test_scatter}
@@ -2471,12 +2629,14 @@
     \section{Sobre o modelo com melhor resultado}
         No primeiro split, com validação restrita ao primeiro semestre de 2018, os modelos endógenos se saíram melhor do que os modelos mistos. Isso pode significar que as features exógenas (onde a maioria tem sazonalidade anual como as climáticas limitadas às estações do ano) foram ruidosas no aprendizado.
         Para o modelo RNN\_EXO\_1 da 2a fase, se saindo melhor que todos os modelos deste trabalho, algumas melhorias são indicadas para os trabalhos futuros.\newline
-        AUMENTAR O CONJUNTO DE DADOS PARA O MODELO SE AJUSTAR AS SAZONALIDADES SEMESTRAIS E À ALTERNACIA DE SEMESTRES. AS FEATURES CATEGÓRICAS QUE INDICAM OS SEMESTRES E DIA DA SEMANA, BEM COM AS FEATURES QUE QUANTIFICAM RECESSOS (DISTANCIA REGISTRO ANTERIOR E POSTERIOR) TEM POTENCIAL DE AGREGAR APRENDIZADO NESSA QUESTÃO, MAS É NECESSÁRIO UMA DIVERSIFICAÇÃO MAIOR DO CONJUNTO DE DADOS POIS TREINAMOS APENAS COM 1 PERÍODO SAZONAL! (1 ANO PARA TREINO, 1 PARA VALIDAÇÃO E 1 PARA TESTE)\newline
-        ACRESCENTAR FEATURES DE EVENTOS IMPORTANTES PARA IDENTIFICAR PARALISAÇÕES E EVENTOS DO TIPO.\newline
-        UMA FEATURE DE CARDÁPIO TEM POTENCIAL DE AUMENTAR A QUALIDADE DA PREDIÇÃO\newline
-        UMA FEATURE REPRESENTANDO O NÚMERO DE ALUNOS MATRICULADOS EM CADA PERÍODO DE CADA DIA DA SEMANA TEM GRANDE POTENCIAL DE AUMENTAR A PREDIÇÃO.\newline
-        PESQUISAS PODEM SER FEITAS PARA UMA MELHOR TRANSFORMAÇÃO DOS DADOS DE ENTRADA NO MODELO PERCEPTRON POIS SÃO DADOS DISCRETOS, ENQUANTO OS DADOS QUE ENTRAM NA CAMADA GRU SÃO TEMPORAIS (COM INTERVALO DE 5 DIAS).\newline
-
+        \begin{itemize}
+            \item Aumentar o conjunto de dados para o modelo se ajustar as sazonalidades semestrais e à troca de semestres. As features categóricas que indicam os semestres e dia da semana, bem com as features que quantificam recessos (distancia registro anterior e posterior) tem potencial de agregar aprendizado nessa questão, mas é necessário uma diversificação maior do conjunto de dados pois treinamos apenas com 1 período sazonal! (1 ano para treino, 1 para validação e 1 para teste)
+            \item Acrescentar features de eventos importantes para identificar paralisações e eventos do tipo.
+            \item Uma feature de cardápio tem potencial de aumentar a qualidade da predição.
+            \item Uma feature representando o número de alunos matriculados em cada período de cada dia da semana tem grande potencial de aumentar a predição.
+            \item Pesquisas podem ser feitas para uma melhor transformação dos dados de entrada no modelo perceptron pois são dados discretos, enquanto os dados que entram na camada GRU são temporais (com intervalo de 5 dias).
+        \end{itemize}
+        
     \section{Conclusões gerais}
          As análises diversas de previsão de demanda para o tema abordado requerem extensos métodos de implementação e estruturação de dados.
         Uma das etapas mais importantes do trabalho, é o método de coleta de dados. Muitos podem ser de acesso burocrático, ou de difícil busca. E são o requisito primordial para o inicio de qualquer análise.
@@ -2486,7 +2646,7 @@
         
          Todavia foi notório a eficiência dos modelos de aprendizado de máquina em trabalhos relacionados à restaurantes universitários. 
         
-         Como no ICT - Unifesp, não há qualquer modelo atual de previsão, e a falta de um modelo causa desperdício de alimentos e prejuízo ao restaurante, a abordagem dessa pesquisa e sua continuação com novos métodos após a conclusão deste trabalho torna-se viável.
+         Como no ICT - Unifesp não há qualquer modelo atual de previsão, e a falta de um modelo causa desperdício de alimentos e prejuízo ao restaurante, a abordagem dessa pesquisa e sua continuação com novos métodos após a conclusão deste trabalho torna-se viável.
   %\begin{itemize}
   %\item Contextualização e Motivação; 
   %\item Definição do problema; 

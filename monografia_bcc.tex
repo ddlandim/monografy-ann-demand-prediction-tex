@@ -23,14 +23,15 @@
  \usepackage{glossaries}
  \usepackage{float}
  \usepackage{multicol,multirow}
+ \usepackage{adjustbox}
 % ---
 % Pacotes de citações
 % ---
   \usepackage[brazilian,hyperpageref]{backref}	 % Paginas com as citações na bibl
   \usepackage[alf]{abntex2cite}	% Citações padrão ABNT
   \usepackage{datatool}
-  \usepackage{subcaption}
-  
+  \usepackage[labelformat=empty]{subcaption}
+  \usepackage{lscape,pdflscape}
   
   \usepackage{booktabs} % For \toprule, \midrule and \bottomrule
   \usepackage{siunitx} % Formats the units and values
@@ -531,7 +532,7 @@
           \end{figure}
 
         \subsection{Séries Temporais}
-          De acordo com  \cite{Morettin1987} uma série temporal é um conjunto de observações ordenadas em função do tempo, comumente iguais, apresentando uma dependência serial entre elas, sendo um dos objetivos do estudo de séries temporais, analisar e modelar essa dependência. Além disso, séries temporais são analisadas pelos seus principais movimentos, como tendência, sazonalidade e a componente aleatória, sendo a tendencia e sazonalidade as propriedades que mais ganham destaque em pesquisas de previsão de demanda de carga elétrica. Os meios mais comuns de se analisar a componente sazonal são o Método de Regressão (paramétrico), Método de Médias Móveis (não paramétrico), e Método de Diferença Sazonal (sazonalidade determinística).  Neste trabalho, a distribuição dos dados do Restaurante se dá de forma paramétrica, ou seja, as vendas do restaurante se distribuem em função do tempo e com influências de parâmetros como o dia da semana por exemplo, sendo ideal as análises de regressão. 
+          De acordo com  \cite{Morettin1987} uma série temporal é um conjunto de observações ordenadas em função do tempo, comumente iguais, apresentando uma dependência serial entre elas, sendo um dos objetivos do estudo de séries temporais, analisar e modelar essa dependência. Além disso, séries temporais são analisadas pelos seus principais movimentos, como tendência, sazonalidade e a componente aleatória, sendo a tendencia e sazonalidade as propriedades que mais ganham destaque em pesquisas de previsão de demanda de carga elétrica. Os meios mais comuns de se analisar a componente sazonal são o Método de Regressão (paramétrico), Método de Médias Móveis (não paramétrico), e Método de Diferença Sazonal (sazonalidade determinística).  Neste trabalho, a distribuição dos dados do Restaurante se dá de forma paramétrica, ou seja, as vendas do restaurante se distribuem em função do tempo e com influências de parâmetros como o dia da semana por exemplo. 
 
           \cite{Almeida2013} também cita que para realizar a previsão de uma determinada série temporal é possível utilizar diferentes métodos. Pode-se classificá-los basicamente entre métodos estatísticos e baseados em inteligência artificial.
           Dentre os métodos estatísticos destacam-se:
@@ -779,12 +780,13 @@
         A utilização do perceptron com o modelo de aprendizado supervisionado, busca então conseguir de forma autônoma os valores de pesos $W_i$ e desta forma aprender o funcionamento da logica E, sem que seja necessário a tarefa humana de ajustar o mesmo.\\
                  \begin{table}[!ht]
                  \centering
+                 \caption{Perceptron para logica AND}
   				  \begin{tabular}{|c|c|c|c|}
   				 	\hline  \textbf{linha} & \textbf{$X_0$} & \textbf{$X_1$} &  \textbf{$Y$}\\
   				 	\hline 0 & 0 & 0 & 0\\
   				 	\hline 1 & 0 & 1 & 0\\
   				 	\hline 2 & 1 & 0 & 0\\
-  				 	\hline 3 & 1 & 1 & 1\\
+  				 	\hline 3 & 1 & 1 & 1\\ \hline
   				  \end{tabular}
                 \end{table}
 					
@@ -823,7 +825,7 @@
                     \centering
     				\begin{tabular}{|c|c|c|c|}
     					\hline  \textbf{linha} & \textbf{$X_0$} & \textbf{$X_1$} &  \textbf{$Y$}\\
-  				 	    \hline 1 & 0 & 1 & 0\\
+  				 	    \hline 1 & 0 & 1 & 0\\ \hline
     				\end{tabular}
     				\end{table}
     				
@@ -850,7 +852,7 @@
                     \centering
     				\begin{tabular}{|c|c|c|c|}
     					\hline  \textbf{linha} & \textbf{$X_0$} & \textbf{$X_1$} &  \textbf{$Y$}\\
-  				 	    \hline 2 & 1 & 0 & 0\\
+  				 	    \hline 2 & 1 & 0 & 0\\ \hline
     				\end{tabular}
     				\end{table}
             	
@@ -878,7 +880,7 @@
                     \centering
     				\begin{tabular}{|c|c|c|c|}
     					\hline  \textbf{linha} & \textbf{$X_0$} & \textbf{$X_1$} &  \textbf{$Y$}\\
-  				 	    \hline 3 & 1 & 1 & 1\\
+  				 	    \hline 3 & 1 & 1 & 1\\ \hline
     				\end{tabular}
     				\end{table}
             	
@@ -914,7 +916,7 @@
                     \centering
     				\begin{tabular}{|c|c|c|c|}
     					\hline  \textbf{linha} & \textbf{$X_0$} & \textbf{$X_1$} &  \textbf{$Y$}\\
-  				 	    \hline 0 & 0 & 0 & 0\\
+  				 	    \hline 0 & 0 & 0 & 0\\ \hline
     				\end{tabular}
     				\end{table}
     				
@@ -931,7 +933,7 @@
                     \centering
     				\begin{tabular}{|c|c|c|c|}
     					\hline  \textbf{linha d} & \textbf{$X_0$} & \textbf{$X_1$} &  \textbf{$Y$}\\
-  				 	    \hline 1 & 0 & 1 & 0\\
+  				 	    \hline 1 & 0 & 1 & 0\\ \hline
     				\end{tabular}
     				\end{table}
     				
@@ -948,7 +950,7 @@
                     \centering
     				\begin{tabular}{|c|c|c|c|}
     					\hline  \textbf{linha d} & \textbf{$X_0$} & \textbf{$X_1$} &  \textbf{$Y$}\\
-  				 	    \hline 2 & 1 & 0 & 0\\
+  				 	    \hline 2 & 1 & 0 & 0\\ \hline
     				\end{tabular}
     				\end{table}
     				
@@ -965,7 +967,7 @@
                     \centering
     				\begin{tabular}{|c|c|c|c|}
     					\hline  \textbf{linha d} & \textbf{$X_0$} & \textbf{$X_1$} &  \textbf{$Y$}\\
-  				 	    \hline 3 & 1 & 1 & 1\\
+  				 	    \hline 3 & 1 & 1 & 1\\ \hline
     				\end{tabular}
     				\end{table}
     				
@@ -1326,8 +1328,9 @@
     		\caption{Registros de consumo de refeições com intervalo temporal de 5 dias.}\label{fig:entr_almoco_offset}}
 	    \end{figure}
 	    
-       
-         { \centering
+       \begin{table}[!ht]
+            \centering
+           \caption{Estrutura final do conjunto de dados indexados por data} 
           \rowcolors{2}{gray!25}{white}
         \begin{tabular}{|c|c|c|} \hline
         \multicolumn{3}{c}{ Estrutura final do conjunto de dados indexados por data: } \\
@@ -1368,7 +1371,7 @@
         31&	ENTR\_JANTAR\_4				&int64 \\
         32&	ENTR\_JANTAR\_5				&int64\\
               \hline
-    \end{tabular} }
+    \end{tabular} \end{table}
     
         %TODO: INCLUIR TABELA COM O DATAFRAME COMPLETO: (./Tabelas/Todos.csv)
         % PERDI HORAS NESSA DISGRAÇA DE IMPORTAÇÃO DE TABELA.... DESISTO
@@ -1564,6 +1567,9 @@
                     
                     Métricas:
                     
+                   \begin{table}[!ht]
+                   \centering
+                   \caption{Comparação de consumo com um dia anterior}
                      \rowcolors{2}{gray!25}{white}
                      \begin{tabular}{|c|c|}\hline
                     \multicolumn{2}{c}{CONSUMO EM RELAÇÃO ÀS VENDAS DE 1 DIA ANTERIOR}\\ \hline
@@ -1576,7 +1582,7 @@
                     TOTAL DE REFEIÇÕES SUPER PROJETADAS & 39853\\
                     ERRO ABSOLUTO MEDIANO & 139.0\\
                     ERRO ABSOLUTO PERCENTUAL MEDIO & 90.18\\\hline
-                    \end{tabular}
+                    \end{tabular} \end{table}
                     
         	      \paragraph*{}É possível notar na figura \ref{fig:case1_consumo_vendas_almoco} que as  vendas de ticket de almoço apresentaram comportamento diferente no ano de 2017 em comparação aos anos seguintes devido à uma limitação imposta pelo restaurante, a partir de 2018, que os alunos comprassem apenas 2 tickets por dia. Possivelmente esta limitação foi dada para aproximar o comportamento de consumo de 1 até 2 dias seguintes à vendas de tickets no dia vigente, esta limitação pode ser interpretada como método de auxílio à gestão para a produção de refeições e para o tratamento de desperdício.
         	        
@@ -1836,7 +1842,9 @@
                   \caption{Avaliação do modelo MLP\_ENDO\_1} \label{fig:case1_mlp_endo1_val} }
                 \end{figure}
                 
-                
+                   \begin{table}[!ht]
+                   \centering
+                   \caption{Métricas do modelo MLP\_ENDO\_1.}
                  \rowcolors{2}{gray!25}{white}
                 \begin{tabular}{|c|c|}
                 \hline
@@ -1847,7 +1855,7 @@
                 TOTAL DE REFEIÇÕES SUB PROJETADAS & -4328.862397193909\\
                 TOTAL DE REFEIÇÕES SUPER PROJETADAS & 2385.236701965332\\
                 \hline
-                 \end{tabular}
+                 \end{tabular} \end{table}
                  
                  
               %%%%%%%%%%%%%%%%% RNN ENDO 1
@@ -1873,6 +1881,9 @@
                   \caption{Avaliação do modelo RNN\_ENDO\_1} \label{fig:case1_rnn_endo1_val} }
                 \end{figure}
                 
+                \begin{table}[!ht]
+                   \centering
+                   \caption{Métricas do modelo RNN\_ENDO\_1.}
                  \rowcolors{2}{gray!25}{white}
                 \begin{tabular}{|c|c|}
                 \rowcolor{gray!50} \hline
@@ -1883,7 +1894,7 @@
                 TOTAL DE REFEIÇÕES SUB PROJETADAS & -5248.0078125\\
                 TOTAL DE REFEIÇÕES SUPER PROJETADAS & 3116.9752044677734\\
                 \hline
-                \end{tabular}
+                \end{tabular}\end{table}
 
             %%%%%%%%%%%%%%%%% RNN ENDO 2
              {\textbf{RNN\_ENDO\_2}}
@@ -1908,6 +1919,10 @@
                   \caption{Avaliação do modelo RNN\_ENDO\_2} \label{fig:case1_rnn_endo2_val} }
                 \end{figure}
                 
+                
+                   \begin{table}[!ht]
+                   \centering
+                   \caption{Métricas do modelo RNN\_ENDO\_2 }
                 \rowcolors{2}{gray!25}{white}
                     \begin{tabular}{|c|c|}
                     \rowcolor{gray!50}
@@ -1918,7 +1933,7 @@
                 TOTAL DE REFEIÇÕES CONSUMIDAS & 35555\\
                 TOTAL DE REFEIÇÕES SUB PROJETADAS & -4821.583518981934\\
                 TOTAL DE REFEIÇÕES SUPER PROJETADAS & 2251.554048538208\\
-                \hline \end{tabular}
+                \hline \end{tabular} \end{table}
 
                 \textbf{Comparativo gráfico da etapa de avaliação no teste no conjunto de validação, entre os melhores modelos endógenos treinados, RNN\_ENDO\_2 e MLP\_ENDO\_1}
                 
@@ -1974,6 +1989,9 @@
                   \caption{Grafico scatter de avaliação do modelo RNN\_EXO\_1} \label{fig:case1_rnn_exo_1_val_scatter} }
                 \end{figure}
                 
+                \begin{table}{!ht}
+                \centering
+                \caption{Métricas do modelo  RNN\_EXO\_1 }
                 \rowcolors{2}{gray!25}{white}
                 \begin{tabular}{|c|c|}
                 \rowcolor{gray!50}
@@ -1984,7 +2002,7 @@
                 TOTAL DE REFEIÇÕES CONSUMIDAS & 35555\\
                 TOTAL DE REFEIÇÕES SUB PROJETADAS & -7585.754409790039\\
                 TOTAL DE REFEIÇÕES SUPER PROJETADAS & 2254.5191192626953\\
-                \hline \end{tabular}
+                \hline \end{tabular} \end{table}
 
                 \newpage
               %%%%%%%%%%%%%%%%% RNN_EXO_2
@@ -2016,6 +2034,10 @@
                   \caption{Grafico scatter de avaliação do modelo RNN\_EXO\_2 \label{fig:case1_rnn_exo_2_val_scatter} }
                 \end{figure}
                 
+                
+                 \begin{table}{!ht}
+                \centering
+                \caption{Métricas do modelo  RNN\_EXO\_2 }
                 \rowcolors{2}{gray!25}{white}
                  \begin{tabular}{|c|c|}
                  \rowcolor{gray!50}
@@ -2027,6 +2049,7 @@
                 TOTAL DE REFEIÇÕES SUB PROJETADAS & -5875.795913696289\\
                 TOTAL DE REFEIÇÕES SUPER PROJETADAS & 2466.9088287353516\\
                 \hline \end{tabular}
+                \end{table}
                 
              \newpage   
                 
@@ -2061,6 +2084,10 @@
                   \caption{Grafico scatter de avaliação do modelo RNN\_EXO\_3 \label{fig:case1_rnn_exo_3_val_scatter} }
                 \end{figure}
                 
+                
+                 \begin{table}{!ht}
+                \centering
+                \caption{Métricas do modelo  RNN\_EXO\_3 }
                    \rowcolors{2}{gray!25}{white}
                  \begin{tabular}{|c|c|}
                      \rowcolor{gray!50}
@@ -2071,7 +2098,7 @@
                         TOTAL DE REFEIÇÕES CONSUMIDAS &  35555\\
                         TOTAL DE REFEIÇÕES SUB PROJETADAS & -4471.480010986328\\
                         TOTAL DE REFEIÇÕES SUPER PROJETADAS & 3920.041976928711 \\ \hline 
-                \end{tabular}
+                \end{tabular} \end{table}
         \newpage
         
         
@@ -2129,7 +2156,11 @@
             \hline \end{tabular}
 
             Métricas do melhor modelo: 
-            
+           
+           
+            \begin{table}{!ht}
+                \centering
+                \caption{Métricas do melhor modelo:  RNN\_ENDO\_2 } 
            \rowcolors{2}{gray!25}{white}
                     \begin{tabular}{|c|c|}
                     \rowcolor{gray!50}
@@ -2143,7 +2174,7 @@
             P-value & 9,42215E-10    \\
              RMSE &  108,0663015\\
             Total de Refeições em falta & -2982,567947 \\Total Descartadas & 3478,957266\\
-            ERRO\_ABS\_MEDIANO & 46,70721436 \\ ERRO\_ABSOLUTO\_PERCENTUAL\_MEDIO & 74,93539002 \\ \hline \end{tabular}
+            ERRO\_ABS\_MEDIANO & 46,70721436 \\ ERRO\_ABSOLUTO\_PERCENTUAL\_MEDIO & 74,93539002 \\ \hline \end{tabular} \end{table}
             
                         \begin{figure}[H]
             
@@ -2169,6 +2200,10 @@
                   \caption{Grafico scatter de teste do modelo RNN\_EXO\_1} \label{fig:case1_rnn_exo_1_test_scatter} }
                 \end{figure}
                 
+                
+                 \begin{table}{!ht}
+                \centering
+                \caption{Erros do modelo  RNN\_EXO\_1 }
                 \rowcolors{2}{gray!25}{white}
                     \begin{tabular}{|c|c|}
                     \rowcolor{gray!50}
@@ -2184,7 +2219,7 @@
                 ERRO TOTAL DE REFEIÇÕES SUB PROJETADAS & -2709.1732788085938\\
                 ERRO TOTAL DE REFEIÇÕES SUPER PROJETADAS & 5942.356475830078\\
                 ERRO ABSOLUTO MEDIANO & 85.59107971191406\\
-                ERRO ABSOLUTO PERCENTUAL MEDIO & 90.98694558104974\% \\ \hline \end{tabular}
+                ERRO ABSOLUTO PERCENTUAL MEDIO & 90.98694558104974\% \\ \hline \end{tabular} \end{table}
                 
               \newpage  
              %%%%%%%%%%%%%%%%% RNN_EXO_2
@@ -2202,7 +2237,11 @@
                   
                   \caption{Grafico scatter de teste do modelo RNN\_EXO\_2} \label{fig:case1_rnn_exo_2_test_scatter} }
                 \end{figure}
-                
+               
+               
+                \begin{table}{!ht}
+                \centering
+                \caption{Erros do modelo  RNN\_EXO\_2 } 
                 \rowcolors{2}{gray!25}{white}
                     \begin{tabular}{|c|c|}
                     \rowcolor{gray!50}
@@ -2218,7 +2257,7 @@
                 ERRO TOTAL DE REFEIÇÕES SUB PROJETADAS & -3044.8834533691406\\
                 ERRO TOTAL DE REFEIÇÕES SUPER PROJETADAS & 4183.734128952026\\
                 ERRO ABSOLUTO MEDIANO & 63.59894561767578\\
-                ERRO ABSOLUTO PERCENTUAL MEDIO & 88.26875085831726\% \\ \hline \end{tabular}
+                ERRO ABSOLUTO PERCENTUAL MEDIO & 88.26875085831726\% \\ \hline \end{tabular}\end{table}
                 
                 
              %%%%%%%%%%%%%%%%% RNN_EXO_3
@@ -2237,6 +2276,9 @@
                   \caption{Grafico scatter de teste do modelo RNN\_EXO\_3} \label{fig:case1_rnn_exo_3_test_scatter} }
                 \end{figure}
                 
+                 \begin{table}{!ht}
+                \centering
+                \caption{Erros do modelo  RNN\_EXO\_3 }
                 \rowcolors{2}{gray!25}{white}
                     \begin{tabular}{|c|c|}
                     \rowcolor{gray!50}
@@ -2251,7 +2293,7 @@
                 ERRO TOTAL DE REFEIÇÕES SUB PROJETADAS & -3417.6602630615234\\
                 ERRO TOTAL DE REFEIÇÕES SUPER PROJETADAS & 5953.868759155273\\
                 ERRO ABSOLUTO MEDIANO & 100.44429016113281\\
-                ERRO ABSOLUTO PERCENTUAL MEDIO & 98.79064922123037\% \\ \hline \end{tabular}
+                ERRO ABSOLUTO PERCENTUAL MEDIO & 98.79064922123037\% \\ \hline \end{tabular} \end{table}
 
     	    \subsubsection{Melhor modelo da 1a fase}
                 Entre todos os modelos, o melhor modelo, produzindo o menor RMSE, e com vantagem em todas as outras métricas foi o modelo endógeno, RNN\_ENDO\_2, ressaltando que o gráfico de predições deste modelo se encontra na figura \ref{fig:case1_rnn_endo2_test}
@@ -2303,6 +2345,9 @@
                 
                 Para a produção de refeições com margem de 30\% acima do consumo do 5o dia anterior, conforme figura \ref{fig:ru_pred} e \ref{fig:ru_pred_scatter} obtemos as seguintes métricas:
                 
+                 \begin{table}{!ht}
+                \centering
+                \caption{Consumo com margem de 30\% acima do quinto dia anterior.}
                 \rowcolors{2}{gray!25}{white}
                     \begin{tabular}{|c|c|}
                     \rowcolor{gray!50}
@@ -2316,7 +2361,7 @@
                 TOTAL DE REFEIÇÕES SUPER PROJETADAS & 23412 \\
                 TOTAL DE REFEIÇÕES SUB PROJETADAS & -5803 \\
                 ERRO ABSOLUTO MEDIANO & 133.0 \\
-                ERRO ABSOLUTO PERCENTUAL MEDIO & 205.61135949728225\% \\  \hline \end{tabular}
+                ERRO ABSOLUTO PERCENTUAL MEDIO & 205.61135949728225\% \\  \hline \end{tabular}\end{table}
                 
                 
     	\subsection{Treino e Validação dos modelos}
@@ -2411,6 +2456,9 @@
     	    
     	   \textbf{ MÉTRICAS}
     	   
+    	    \begin{table}{!ht}
+                \centering
+                \caption{Métricas do modelo  MLP\_ENDO\_1 }
     	    \rowcolors{2}{gray!25}{white}
                     \begin{tabular}{|c|c|}
                     \rowcolor{gray!50}
@@ -2423,8 +2471,12 @@
             TOTAL DE REFEIÇÕES SUB PROJETADAS &-4257.537273406982\\
             TOTAL DE REFEIÇÕES SUPER PROJETADAS & 7113.216419219971\\
             ERRO ABSOLUTO MEDIANO & 47.23118591308594\\
-            ERRO ABSOLUTO PERCENTUAL MEDIO & 3234942340.243013\% \\ \hline \end{tabular}
+            ERRO ABSOLUTO PERCENTUAL MEDIO & 3234942340.243013\% \\ \hline \end{tabular}\end{table}
             
+           
+            \begin{table}{!ht}
+                \centering
+                \caption{Métricas do modelo  RNN\_ENDO\_1 }
             \rowcolors{2}{gray!25}{white}
                     \begin{tabular}{|c|c|}
                     \rowcolor{gray!50}
@@ -2437,8 +2489,12 @@
             TOTAL DE REFEIÇÕES SUB PROJETADAS & -5666.187889099121\\
             TOTAL DE REFEIÇÕES SUPER PROJETADAS & 6083.576965332031\\
             ERRO ABSOLUTO MEDIANO & 48.55305480957031\\
-            ERRO ABSOLUTO PERCENTUAL MEDIO &  4145884336.345922\% \\ \hline  \end{tabular}
+            ERRO ABSOLUTO PERCENTUAL MEDIO &  4145884336.345922\% \\ \hline  \end{tabular}\end{table}
             
+            
+             \begin{table}{!ht}
+                \centering
+                \caption{Métricas do modelo  RNN\_ENDO\_2 }
             \rowcolors{2}{gray!25}{white}
                     \begin{tabular}{|c|c|}
                     \rowcolor{gray!50}
@@ -2452,9 +2508,13 @@
             TOTAL DE REFEIÇÕES SUB PROJETADAS & -6437.710876464844\\
             TOTAL DE REFEIÇÕES SUPER PROJETADAS & 7904.081573486328\\
             ERRO ABSOLUTO MEDIANO & 61.39728546142578 \\
-            ERRO ABSOLUTO PERCENTUAL MEDIO &  4124092635.50105\% \\ \hline \end{tabular}           
+            ERRO ABSOLUTO PERCENTUAL MEDIO &  4124092635.50105\% \\ \hline \end{tabular}           \end{table}
             
-            \rowcolors{2}{gray!25}{white}
+            
+             \begin{table}{!ht}
+                \centering
+                \caption{Métricas do modelo  RNN\_EXO\_1 }
+                \rowcolors{2}{gray!25}{white}
                     \begin{tabular}{|c|c|}
                     \rowcolor{gray!50}
                     \hline
@@ -2468,8 +2528,11 @@
             TOTAL DE REFEIÇÕES SUB PROJETADAS & -6378.557273864746\\
             TOTAL DE REFEIÇÕES SUPER PROJETADAS & 9485.092361450195\\
             ERRO ABSOLUTO MEDIANO & 67.952392578125\\
-            ERRO ABSOLUTO PERCENTUAL MEDIO & 3590946402.38917\% \\  \hline \end{tabular}
+            ERRO ABSOLUTO PERCENTUAL MEDIO & 3590946402.38917\% \\  \hline \end{tabular} \end{table}
             
+            \begin{table}{!ht}
+                \centering
+                \caption{Métricas do modelo  RNN\_EXO\_2 }
             \rowcolors{2}{gray!25}{white}
                     \begin{tabular}{|c|c|}
                     \rowcolor{gray!50}
@@ -2483,9 +2546,11 @@
             TOTAL DE REFEIÇÕES SUB PROJETADAS & -18.0\\
             TOTAL DE REFEIÇÕES SUPER PROJETADAS & 63999.0\\
             ERRO ABSOLUTO MEDIANO & 380.0\\
-            ERRO ABSOLUTO PERCENTUAL MEDIO & 97826180.62563947\% \\ \hline \end{tabular}
+            ERRO ABSOLUTO PERCENTUAL MEDIO & 97826180.62563947\% \\ \hline \end{tabular} \end{table}
             
-            
+             \begin{table}{!ht}
+                \centering
+                \caption{Métricas do modelo  RNN\_EXO\_3 }
             \rowcolors{2}{gray!25}{white}
                     \begin{tabular}{|c|c|}
                     \rowcolor{gray!50}
@@ -2501,7 +2566,7 @@
             TOTAL DE REFEIÇÕES SUPER PROJETADAS & 13235.260711669922\\
             ERRO ABSOLUTO MEDIANO & 101.04127502441406\\
             ERRO ABSOLUTO PERCENTUAL MEDIO & 3493320353.99382\% \\ \hline \end{tabular}
-    	    
+    	    \end{table}
     	    
     	\subsection{Teste e métricas}
             %%% MLP_ENDO_1
@@ -2595,12 +2660,124 @@
     	        Como o melhor modelo obtido na 2a fase, se saiu melhor do que o melhor modelo da primeira fase, foi feito um novo teste do modelo RNN\_EXO\_1 com o domínio de testes restrito para o primeiro semestre (domínio da primeira fase) a fim de uma comparação justa com o melhor modelo da primeira fase, o RNN\_ENDO\_2.
     	        
     
-    \section{Tabela de resultados}
+    \section{Comparação dos resultados obtidos }
         \subsection{Melhores Resultados}
             %TODO: INCLUIR PLANILHA METRICAS TESTE FINAIS, ABA MELHORES MODELOS
         \subsection{Tabela completa de todos os modelos}
-            %TODO: INCLUIR PLANILHA METRICAS TESTE FINAIS, ABA TODOS
+        
+     
+        \begin{table}[!ht]
+        \caption{Previsões e erros de todos os modelos}
+        \begin{adjustbox}{width=\columnwidth,center}
+           \begin{tabular}{ | c | c| c | c| c | }
+     \rowcolor{gray!50}
+    \multirow{2}{*}{	MODELO} & TOTAL  & TOTAL  & ERRO TOTAL & ERRO TOTAL  \\ \rowcolor{gray!50}
+   &                        CONSUMIDAS & PREVISTAS &  PREVISAO &  PERC PREVISAO  \\ 
+    \multicolumn{5}{c}{	MODELOS ENDÓGENOS }  \\ \hline
+	RNN\_ENDO\_1 1A FASE & 31962 & 30927 & -1035 & -3.239405876509605 \\ \hline
+	RNN\_ENDO\_1 2A FASE & 58653 & 60412 & 1759 & 2.9991006427633708 \\ \hline
+	RNN\_ENDO\_1\_NEW 1A FASE & 31962 & 32340 & 378 & 1.183118820787185 \\ \hline
+	RNN\_ENDO\_1\_NEW 2A FASE & 58653 & 63005& 4352 & 7.4192976062605496 \\ \hline
+	RNN\_ENDO\_2 1A FASE & 31962 & 31466 & -496 & -1.5530588570020649 \\ \hline
+	RNN\_ENDO\_2 2A FASE & 58653 & 61855 & 3202 & 5.4594660545922631 \\ \hline
+	MLP\_ENDO\_1 1A FASE & 31962 & 32370 & 408 & 1.2754342559132721 \\ \hline
+	MLP\_ENDO\_1 2A FASE & 58653 & 60039 & 1385 & 2.361165722554686 \\ \hline
+	\multicolumn{5}{c}{ MODELOS EXÓGENOS }\\ \hline
+	RNN\_EXO\_1 1A FASE & 31962 & 28729 & -3233. & -10.115711137444469 \\ \hline
+	RNN\_EXO\_1 2A FASE & 58653 & 62048 & 3395 & 5.7883601435561687 \\ \hline
+	RNN\_EXO\_2 1A FASE & 31962 & 30823 & -1139& -3.5631362535980231 \\ \hline
+	RNN\_EXO\_2 2A FASE & 58653 & 63161 & 4507 & 7.6849622994561244 \\ \hline
+	RNN\_EXO\_1 1A FASE & 31962 & 29426 & -2536 & -7.9350759788968146 \\ \hline
+	RNN\_EXO\_3 2A FASE & 58653 & 58348 & -305 & -0.51967450514040203 \\ \hline
+	MLP\_ENDO\_1 (**) & 31962 & 31678 & -285 & -0.89014396001501783 \\ \hline
+	RNN\_EXO\_1 (**) & 31962 & 32170 & 208 & 0.65154274998435635 \\ \hline
+\end{tabular} \end{adjustbox} \subcaption{(**) \textbf{MODELOS TREINADOS NA 2A FASE E TESTADOS NO DOMÍNIO DA 1A FASE}}\end{table} 
+
+\begin{table}[!ht]
+        \caption{Erros quantitativos de todos os modelos}
+        \begin{adjustbox}{width=\columnwidth,center}
+           \begin{tabular}{ | c | c| c | c| c | }
+     \rowcolor{gray!50}
+    \multirow{2}{*}{	MODELO} & TOTAL  & TOTAL  & ERRO ABS & ERRO ABS \\ \rowcolor{gray!50}
+   &                         FALTA & DESCARTE &  MEDIANO&  PERC MEDIO \\ 
+    \multicolumn{5}{c}{	MODELOS ENDÓGENOS }  \\ \hline
+RNN\_ENDO\_1 1A FASE & -3281 & 4316 & 74.01922607421875 & 87.498764275186574 \\ \hline
+	RNN\_ENDO\_1 2A FASE & -7709 & 5950 & 58.424896240234382 & 107.879362802119 \\ \hline
+	RNN\_ENDO\_1\_NEW 1A FASE & -3790& 3412 & 61.992218017578118 & 84.551097335540604 \\ \hline
+	RNN\_ENDO\_1\_NEW 2A FASE & -8836 & 4485 & 50.561531066894531 & 106.1737733320671 \\ \hline
+	RNN\_ENDO\_2 1A FASE & -2983 & 3479 & 46.70721435546875 & 74.935390020580499 \\ \hline
+	RNN\_ENDO\_2 2A FASE & -8335 & 5133. & 55.779953002929688 & 101.28461523309871 \\ \hline
+	MLP\_ENDO\_1 1A FASE & -4306 & 3898 & 71.895050048828125 & 92.581572674093621 \\ \hline
+	MLP\_ENDO\_1 2A FASE & -7097 & 5712 & 53.880401611328118 & 98.551651813961143 \\ \hline
+	\multicolumn{5}{c}{ MODELOS EXÓGENOS }\\ \hline
+RNN\_EXO\_1 1A FASE & -2709 & 5942 & 85.591079711914063 & 90.986939760645683 \\ \hline
+	RNN\_EXO\_1 2A FASE & -8163 & 4768 & 55.235549926757813 & 224.90689710891991 \\ \hline
+	RNN\_EXO\_2 1A FASE & -3045 & 4184 & 63.59893798828125 & 88.268751944415627 \\ \hline
+	RNN\_EXO\_2 2A FASE & -9677 & 5170 & 64.686370849609375 & 230.9423750370137 \\ \hline
+	RNN\_EXO\_1 1A FASE & -3418 & 5954 & 100.4442901611328 & 98.790654534511432 \\ \hline
+	RNN\_EXO\_3 2A FASE & -8608 & 8913 & 85.186691284179688 & 236.56705215095431 \\ \hline
+	MLP\_ENDO\_1(**) & -351 & 3797 & 65.664161682128906 & 84.968453579705567 \\ \hline
+	RNN\_EXO\_1  (**) & -3455 & 3247 & 59.541488647460938 & 83.267123246967984
+\end{tabular} \end{adjustbox}\subcaption{(**) \textbf{MODELOS TREINADOS NA 2A FASE E TESTADOS NO DOMÍNIO DA 1A FASE}} \end{table} 
 	    
+	    
+	    
+	    
+	    \begin{table}[!ht]
+        \caption{XXX , desviação estândar e erro mínimo quadrático de todos os modelos}
+        \begin{adjustbox}{width=0.8\columnwidth,center}
+           \begin{tabular}{ |c | c| c | c| }
+     \rowcolor{gray!50}
+   {	MODELO} & r\_2 value &	std\_err & RMSE \\ \hline
+     \multicolumn{4}{c}{	MODELOS ENDÓGENOS }  \\ \hline
+RNN\_ENDO\_1 1A FASE&	0,227790684	&0,060015329&	115,5925727\\ \hline
+RNN\_ENDO\_1 2A FASE&	0,403421735	&0,041709544&	101,1817723\\ \hline
+RNN\_ENDO\_1\_NEW 1A FASE&	0,297403256&	0,076707056&	114,9298596\\ \hline
+RNN\_ENDO\_1\_NEW 2A FASE&	0,406723755&	0,049286722&	106,5097754\\ \hline
+RNN\_ENDO\_2 1A FASE&	0,354548669	&0,07211072&	108,0663015\\ \hline
+RNN\_ENDO\_2 2A FASE&	0,393368691	&0,047437759&	105,3284058\\ \hline
+MLP\_ENDO\_1 1A FASE&	0,271692371	&0,094729706&	128,0541521\\ \hline
+MLP\_ENDO\_1 2A FASE&	0,435499457	&0,048407537&	101,1515612\\ \hline
+	\multicolumn{4}{c}{ MODELOS EXÓGENOS }\\ \hline
+RNN\_EXO\_1 1A FASE &	0,169921969	&0,055137798&	124,4907583\\ \hline
+RNN\_EXO\_1 2A FASE	&0,450817978&	0,044599046	&99,3650953\\ \hline
+RNN\_EXO\_2 1A FASE&	0,271069515&	0,063900355&	112,9921125\\ \hline
+RNN\_EXO\_2 2A FASE&	0,353903426&	0,041791587	&107,8493502\\ \hline
+RNN\_EXO\_1 1A FASE	&0,115350372&	0,030618267	&124,658106\\ \hline
+RNN\_EXO\_3 2A FASE&	0,195308809	&0,036685013&	117,0316729\\ \hline
+MLP\_ENDO\_1 (**)&	0,289679534	&0,078827728&	116,6204195\\ \hline
+RNN\_EXO\_1  (**)&	0,348544598	&0,065875446&	106,2080123 \\ \hline
+\end{tabular} \end{adjustbox}\subcaption{(**) \textbf{MODELOS TREINADOS NA 2A FASE E TESTADOS NO DOMÍNIO DA 1A FASE}} \end{table} 
+	    
+\begin{table}[!ht]
+        \caption{XXX XXX XXX  XXX de todos os modelos}
+        \begin{adjustbox}{width=\columnwidth,center}
+           \begin{tabular}{ | c | c| c | c| c |}
+     \rowcolor{gray!50}
+   {	MODELO} & CORRELAÇÂO &	p-value &	slope & 	intercept\\ \hline
+     \multicolumn{5}{c}{	MODELOS ENDÓGENOS }  \\ \hline
+RNN\_ENDO\_1 1A FASE &	0,477274223	&2,58153E-06&	0,302281717&241,6487795 \\ \hline
+RNN\_ENDO\_1 2A FASE&	0,63515489&	5,99003E-22&	0,460169282&	183,6360173\\ \hline
+RNN\_ENDO\_1\_NEW 1A FASE&	0,545346913	&3,92771E-08&	0,462811705&	199,4063637\\ \hline
+RNN\_ENDO\_1\_NEW 2A FASE&	0,637748975&	3,62045E-22	&0,547504225&	169,7355865\\ \hline
+RNN\_ENDO\_2 1A FASE&	0,595439895&	9,42215E-10	&0,495627318&	177,5496565\\ \hline
+RNN\_ENDO\_2 2A FASE&	0,627191112&2,72853E-21&	0,512504755	&174,6988902\\ \hline
+MLP\_ENDO\_1 1A FASE&	0,521241183	&1,92116E-07&	0,536558041	&172,9566557\\ \hline
+MLP\_ENDO\_1 2A FASE&	0,659923827	&3,98987E-24&	0,570441175&	146,0429015\\ \hline
+	\multicolumn{5}{c}{ MODELOS EXÓGENOS }\\ \hline
+RNN\_EXO\_1 1A FASE &	0,412215925&	6,59074E-05&	0,231347042&	242,4375396 \\ \hline
+RNN\_EXO\_1 2A FASE &	0,671429801	&3,29843E-25&	0,542131051&	166,211183 \\ \hline
+RNN\_EXO\_2 1A FASE&	0,520643366	&1,99521E-07&	0,36136807&	219,0125358 \\ \hline
+RNN\_EXO\_2 2A FASE&	0,594897828&8,35169E-19&	0,414971987&	213,302789 \\ \hline
+RNN\_EXO\_1 1A FASE&	0,339632701&	0,001206742	&0,102530642&	297,1444074 \\ \hline
+RNN\_EXO\_3 2A FASE&	0,441937562&	4,22316E-10&	0,242477375	&242,4514853 \\ \hline
+MLP\_ENDO\_1 (**)&	0,538218854	&6,36258E-08&	0,466831313&190,4162416 \\ \hline
+RNN\_EXO\_1  (**)&	0,590376657	&1,41433E-09&	0,446847803	&203,2738308 \\ \hline
+\end{tabular} \end{adjustbox} \subcaption{(**) \textbf{MODELOS TREINADOS NA 2A FASE E TESTADOS NO DOMÍNIO DA 1A FASE}}\end{table} 
+
+
+
+
   % ----------------------------------------------------------
   % \chapter{Plano de atividades para o TCC II}
   % ----------------------------------------------------------

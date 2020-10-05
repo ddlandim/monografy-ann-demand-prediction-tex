@@ -18,6 +18,10 @@
   % ---
   \usepackage[portuguese, ruled, linesnumbered]{algorithm2e} %Peseudocodigo
   \usepackage{amssymb} %checkmarker
+  \let\su@ExpandTwoArgs\relax
+ \let\IfSubStringInString\relax
+ \let\su@IfSubStringInString\relax 
+ \usepackage{glossaries}
 % ---
 % Pacotes de citações
 % ---
@@ -78,18 +82,18 @@
 % ---
 % Configurações do pacote backref
 % Usado sem a opção hyperpageref de backref
- % \renewcommand{\backrefpagesname}{Citado na(s) página(s):~}
-  % Texto padrão antes do número das páginas
-%  \renewcommand{\backref}{}
-  % Define os textos da citação
-%  \renewcommand*{\backrefalt}[4]{
-%  	\ifcase #1 %
-% 		Nenhuma citação no texto.%
-%  	\or
- % 		Citado na página #2.%
-%  	\else
-%  		Citado #1 vezes nas páginas #2.%
-%  	\fi}%
+  \renewcommand{\backrefpagesname}{Citado na(s) página(s):~}
+%   Texto padrão antes do número das páginas
+  \renewcommand{\backref}{}
+%   Define os textos da citação
+  \renewcommand*{\backrefalt}[4]{
+  	\ifcase #1 %
+ 		Nenhuma citação no texto.%
+  	\or
+  		Citado na página #2.%
+  	\else
+  		Citado #1 vezes nas páginas #2.%
+  	\fi}%
   % ---
 
   % numeração de figuras e elas 
@@ -425,17 +429,17 @@
 
       \section{Objetivos}
         \subsection{Objetivo geral}
-          Construir um modelo utilizando uma Rede Neural Artificial para a previsão da demanda de
-          refeições do restaurante universitário do ICT-UNIFESP com menos de 10\% de erro.
+          Construir e comparar modelos de Redes Neurais Artificiais para a previsão da demanda de
+          refeições do restaurante universitário do ICT-UNIFESP.
         
         \subsection{Objetivos específicos}
           \begin{itemize}
-          \item Construir dois modelos utilizando algoritmos de regressão, por métodos estatísticos e de aprendizado de máquina; 
-          \item Realizar análise e comparação da qualidade dos modelos; %XXX SE VAI FAZER OS DOIS, PRECISA MUDAR O TÍTULO, RESUMO, INTRO...
+          \item Estruturar o conjunto de dados, e realizar análises exploratórias sobre os dados; 
+          \item Construir realizar análise e comparação da qualidade dos modelos de redes neurais; %XXX SE VAI FAZER OS DOIS, PRECISA MUDAR O TÍTULO, RESUMO, INTRO...
           \end{itemize}
-%TODO-T: REVER METODOLOGIA
+            %TODO-T: REVER METODOLOGIA
       \section{Metodologia}
-        \paragraph*{Análise de regressão}
+        \paragraph*{Análises dos dados}
 
           Por se tratar de um trabalho de previsão de demanda,  este trabalho irá realizar a coleta e tratamento dos dados de consumo do restaurante universitário da Unifesp, a coleta de dados climáticos que influenciam em tal demanda, calcular os dados de calendário derivados das datas de coleta, por exemplo, o dia da semana, a estação do ano, o número do semestre (se par ou ímpar), horário, etc.
 
@@ -444,12 +448,12 @@
 
           Os trabalhos de \cite{Junior2007} e \cite{Silva2010} fundamentam também uma classificação de análises dos dados estruturados indicando os métodos de previsão de demanda para este modelo quantitavo que são a Regressão Linear Múltipla e RNAs.
 
-          Assim, a primeira investigação usará a análise estatística de regressão linear múltipla fundamentada por \cite{Clarice2011} para se obter um modelo de previsão de demanda do R.U. do ICT-UNIFESP.
+          Assim, a primeira investigação usará a análise estatística de regressão linear múltipla fundamentada por \cite{Clarice2011} por meio de métricas aplicadas pelo framework scipy e plot de gráficos scatter por meio da biblioteca seaborn, que além de realizar nos plots dos gráficos, uma regressão linear simples entre 2 valores supervisionados, também são retornadas outras métricas como medidas de correlação, p-value, $R^2$ , entre outras méticas que serão documentadas para trabalhos futuros.
 
         \paragraph*{Estudo de Aprendizado de máquina}
           As análises de inteligência artificial, fundamentadas por trabalhos de previsão de demanda em R.U. da Universidade Federal de Viçosa, de acordo \cite{Lopes2008} e na Universidade Estadual Paulista Júlio de Mesquita por \cite{Rocha2011}, concluem a segunda aplicação da técnica de redes neurais artificiais com o método de Perceptron de Múltiplas Camadas (PMC) fundamentado em \cite{Haykin1994}, incrementando-se na técnica a inclusão de variáveis climáticas utilizadas nos trabalhos de previsão de  \cite{Almeida2013, RUAS2012, Silva2010}, modificando a topologia como em \cite{Lopes2008} para receber tais dados. 
 
-          Após a modificação da topologia, os dados serão estruturados com a retirada de amostras aleatórias de validação e será construído um comitê de PMCs usando a média aritmética como agregador para a estimação.
+          Após a modificação da topologia, os dados serão estruturados em 2 fases experimentas, sendo a primeira com os experimentos focados para validação e teste no primeiro semestre de 2019, e na segunda fase os experimentos contemplarão o ano de 2018 inteiro para validação e o ano de 2019 inteiro para teste.
 
         % \paragraph*{Meta-análise}
         %   De acordo com \cite{Flavia2014} que realiza um trabalho de previsão de consumo em aves, a técnica de meta-análise, a análise das análises, 
@@ -457,9 +461,6 @@
         %TODO : VERIFICAR OS INDICES
         \paragraph*{Análise dos resultados}
         De acordo com \cite{Flavia2014}, a comparação e a discussão dos resultados deve ser feita com base em medidas de avaliação de erro absoluto médio (EAM), erro quadrado médio (EQM) e raiz do erro quadrado médio (REQM).
-
-      \section{Organização do documento}
-        Este trabalho está organizado da seguinte maneira: o Capítulo 2 possui os conceitos básicos para o entendimento do trabalho. No Capítulo 3, apresenta-se alguns trabalhos relacionados. O Capítulo 4 contém o plano de atividades para o TCC II. A conclusão é apresentada no Capítulo 5.
   % ----------------------------------------------------------
   % CAPÍTULO 2 - Fundamentação Teórica
   % ----------------------------------------------------------

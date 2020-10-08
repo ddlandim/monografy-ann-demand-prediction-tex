@@ -411,7 +411,7 @@
 
         Tal problema tem sido impactante e frequente para o restaurante que informa que em alguns dias no mês passa por sobrestimação e desperdício superior a 30\% do total produzido.
 
-        O modelo a ser analisado neste trabalho é o comportamento dos consumidores de um restaurante universitário (R.U), o qual precisa projetar sua compra de insumos e alocação de recursos na entrada de seu modelo de negócio, e projetar sua saída, que é a produção de refeições em quantidade numérica e inteira distribuída em função do tempo em dias. O consumo feito por alunos não se comporta de maneira determinística, já que este consumo é facultativo. Portanto, nem todos os alunos que estão na universidade se alimentarão no R.U. todos os dias.
+        O modelo analisado neste trabalho é o comportamento dos consumidores de um restaurante universitário (R.U), o qual projeta sua compra de insumos e alocação de recursos na entrada de seu modelo de negócio, e projeta sua saída, que é a produção de refeições em quantidade numérica e inteira distribuída em função do tempo em dias. O consumo feito por alunos não se comporta de maneira determinística, já que este consumo é facultativo. Portanto, nem todos os alunos que estão na universidade se alimentarão no R.U. todos os dias.
 
         De acordo com o contrato presente entre o R.U e a universidade, o mesmo deve atender totalmente à demanda do público, sendo multado se caso algum consumidor fique sem alimentação. Porém, este mesmo contrato não trata refeições que não são consumidas; logo, o R.U. deve lidar integralmente o prejuízo de refeições produzidas acima da demanda de consumo. O que o R.U. faz com essas sobras está fora do escopo deste trabalho.
 
@@ -419,14 +419,12 @@
 
         De agosto em diante, iniciando no segundo semestre de 2018, a universidade subsidia R\$5,44 da refeição do aluno e o mesmo R\$2,50, o R.U. recebe o total de R\$7,94. Logo, esta previsão de demanda corresponde também aos interesses da administração do campus local, que periodicamente deve realizar uma alocação de recursos financeiros para subsidiar todas estas refeições consumidas.
 
-        É necessário então entender e descobrir quais elementos influenciam este consumo humano, de que forma estes elementos exercem tal influência e em qual intensidade ela ocorre.
+        É necessário então entender e descobrir quais elementos influenciam este consumo, de que forma estes elementos exercem tal influência e em qual intensidade ela ocorre.
 
-        E para explorar tais elementos, é necessário explorar como este consumo ocorreu historicamente a fim de se encontrar padrões de comportamento, que no cenário deste trabalho acontece com informações distribuídas através do tempo. 
-
-        Neste capítulo o principal objetivo é definir todos os conceitos que serão necessários para o entendimento total deste trabalho, analisando a forma que os dados são entendidos, e as ferramentas com os quais possam ser trabalhados.        
+        Neste capítulo o principal objetivo é definir todos os conceitos que são necessários para o entendimento total deste trabalho, analisando a forma que os dados são entendidos, e as ferramentas com os quais possam ser trabalhados.        
 
       \section{Definição do problema}
-        O problema a definir neste trabalho é encontrar um modelo de previsão de demanda por meio de algoritmos de regressão via aprendizado de máquina.
+        O problema definido neste trabalho é encontrar um modelo de previsão de demanda por meio de algoritmos de regressão via aprendizado de máquina.
 
       \section{Justificativas}
         As atuais abordagens de previsão do restaurante universitário, que envolvem análise exploratória semanal e dedução subjetiva dos dados de consumo de refeições, chamados de dados endógenos, executadas pelos responsáveis pelo restaurante são falhas por não serem calculadas considerando-se uma visão ampla de todo um histórico de dados de grande amostragem. Além disso, não são consideradas outras informações, chamadas de dados exógenos, como dados climáticos, dados de calendário anual, feriados próximos, dentre outros. Essas falhas causam desperdício de alimentos por super-estimação de demanda e prejuízo de refeições descartadas, e falta de atendimento por sub-estimação de demanda de consumo.
@@ -447,40 +445,40 @@
       \section{Metodologia e Experimentos}
         \subsection{Análises dos dados}
 
-          Por se tratar de um trabalho de previsão de demanda,  este trabalho irá realizar a coleta e tratamento dos dados de consumo do restaurante universitário da Unifesp, a coleta de dados climáticos que influenciam em tal demanda, calcular os dados de calendário derivados das datas de coleta, por exemplo, o dia da semana, a estação do ano, o número do semestre (se par ou ímpar), horário, etc.
+          Por se tratar de um trabalho de previsão de demanda,  este trabalho realizou a coleta e tratamento dos dados de consumo do restaurante universitário da Unifesp, a coleta de dados climáticos que influenciam em tal demanda e o cálculo dos dados de calendário derivados das datas de coleta, por exemplo, o dia da semana, a estação do ano, o número do semestre (se par ou ímpar), horário, etc.
 
-          Após a estruturação dos dados, será realizada uma análise exploratória fundamentada por \cite{Junior2007}, para previsões de demanda em geral.
-          O modelo de dados de venda estruturados receberá o acréscimo de dados exógenos de variáveis climáticas, como possíveis fatores de influencia no consumo, conforme ocorre no trabalho de previsão de demanda de energia elétrica fundamentado por \cite{Almeida2013,RUAS2012,Silva2010}.
+          Após a estruturação dos dados, realizou-se uma análise exploratória fundamentada pelo trabalho de \cite{Junior2007}, para previsões de demanda em geral.
+          O modelo de dados de venda estruturados recebeu o acréscimo de dados exógenos de variáveis climáticas, como possíveis fatores de influencia no consumo, conforme ocorre no trabalho de previsão de demanda de energia elétrica fundamentado pelo trabalho de \cite{Almeida2013,RUAS2012,Silva2010}.
 
-          Os trabalhos de \cite{Junior2007} e \cite{Silva2010} fundamentam também uma classificação de análises dos dados estruturados indicando os métodos de previsão de demanda para este modelo quantitavo que são a Regressão Linear Múltipla e RNAs.
+          Os trabalhos de \cite{Junior2007} e \cite{Silva2010} fundamentam também uma classificação de análises dos dados estruturados indicando os métodos de previsão de demanda para este modelo quantitativo que são a Regressão Linear Múltipla e RNAs.
 
-          Assim, a primeira investigação usará a análises estatísticas de regressão linear múltipla fundamentada por \cite{Clarice2011} por meio de métricas aplicadas pelo framework scipy e plot de gráficos scatter por meio da biblioteca seaborn, que além de realizar nos uma construção dos gráficos relacionando os dados exógenos considerados e o comportamento de consumo, obtendo uma regressão linear simples entre estes 2 valores supervisionados, também são retornadas outras métricas como medidas de correlação, p-value, $R^2$ , e outras méticas que serão documentadas para trabalhos futuros.
+          Assim, a primeira investigação usa a análises estatísticas de regressão linear múltipla fundamentada pela pesquisa de \cite{Clarice2011} por meio de métricas aplicadas pelo framework scipy e plot de gráficos scatter por meio da biblioteca seaborn, que além de realizar nos uma construção dos gráficos relacionando os dados exógenos considerados e o comportamento de consumo, obtendo uma regressão linear simples entre estes 2 valores supervisionados, também são retornadas outras métricas como medidas de correlação, p-value, $R^2$ , e outras métricas que serão documentadas para trabalhos futuros.
 
         \subsection{Aprendizado de máquina}
           As análises de inteligência artificial, fundamentadas por trabalhos de previsão de demanda em R.U. da Universidade Federal de Viçosa, de acordo \cite{Lopes2008} e na Universidade Estadual Paulista Júlio de Mesquita por \cite{Rocha2011}, concluem a segunda aplicação da técnica de redes neurais artificiais com o modelo de Multilayer Perceptron (MLP) fundamentado em \cite{Haykin1994}, incrementando-se na técnica a inclusão de variáveis climáticas utilizadas nos trabalhos de previsão de  \cite{Almeida2013, RUAS2012, Silva2010}, modificando a topologia como em \cite{Lopes2008} para receber tais dados.
           
-          E também serão considerados modelos modernos, como as redes recorrentes GRU (Gated Recurrent Unit), fundamentados por \cite{DLB}.
+          E também são considerados modelos modernos, como as redes recorrentes GRU (Gated Recurrent Unit), fundamentados por \cite{DLB}.
 
-          Após a modificação da topologia, os modelos serão duplicados e executados em 2 fases experimentas, sendo a primeira com os experimentos focados para validação e teste no primeiro semestre de 2019, e na segunda fase os experimentos contemplarão o ano de 2018 inteiro para validação e o ano de 2019 inteiro para teste.
+          Após a modificação da topologia, os modelos são duplicados e executados em 2 fases experimentas, sendo a primeira com os experimentos focados para validação e teste no primeiro semestre de 2019, e na segunda fase os experimentos contemplaram o ano de 2018 inteiro para validação e o ano de 2019 inteiro para teste.
           
-          Portanto na primeira fase experimental, são considerados 2 modelos MLP para a exploração e aprendizado do problema.
+          Portanto na primeira fase experimental,  considerou-se 2 modelos MLP para a exploração e aprendizado do problema.
           3 modelos que tem parâmetros de entrada endógenos, e 3 modelos mistos que tem parâmetros endógenos e exógenos de entrada.
           
-          Na segunda fase experimental, serão alterados os domínios de treino, validação e teste dos modelos da primeira fase e serão coletados novos resultados.
+          Na segunda fase experimental, alterou-se os domínios de treino, validação e teste dos modelos da primeira fase e coletou-se novos resultados.
           
-          Estes novos resultados serão comparados com a primeira fase experimental para a tomada de decisão se devemos ter um modelo específico para cada período sazonal do ano (semestres) ou se devemos ter um modelo para todo o período anual.
+          Estes novos resultados foram comparados com a primeira fase experimental para decidir se o melhor modelo para cada semestre é treinado e validado com um semestre ou com o ano todo.
         
         \section{Resultados} % alterar serao pra sao, sumario de resultados...  %juntar 1.6 com 1.7
         % quais foram os experimentos obtidos, e quais foram os resultados.
             %JUNTAR
-            O capítulo de resultados irá demonstrar graficamente as análises de parâmetros de predição com a passagem de alunos no ponto de acesso do restaurante, bem como as predições dos modelos sobre a real passagem.
-            Através destas análises gráficas e de valores estatísticos retornados, serão selecionados os melhores modelos para o objetivo final do trabalho que é determinar um modelo de aprendizado de máquina para realizar predições de consumo.
+            O capítulo de resultados demonstrou graficamente as análises de parâmetros de predição com a passagem de alunos no ponto de acesso do restaurante, bem como as predições dos modelos sobre a real passagem.
+            Através destas análises gráficas e de valores estatísticos retornados, selecionou-se os melhores modelos para o objetivo final do trabalho que é determinar um modelo de aprendizado de máquina para realizar predições de consumo.
         
         %TODO : VERIFICAR OS INDICES
         \section{Análise dos resultados}
         %JUNTAR
-            De acordo com \cite{Flavia2014}, a comparação e a discussão dos resultados de uma predição com redes neurais artificiais deve ser feita com base em medidas de avaliação de erro absoluto médio (EAM), e raiz do erro quadrado médio (REQM). 
-            Além destas análises, para o tema deste trabalho, serão considerados os valores de refeições descartadas e em falta (quando o valor previsto é menor que o consumo real), bem como serão documentados outras métricas obtidas pela plataforma experimental (TensorFlow e bibliotecas seaborn, scipy, scikit-learning) para a realização de análises e trabalhos futuros.
+            De acordo com  o trabalho de \cite{Flavia2014}, a comparação e a discussão dos resultados de uma predição com redes neurais artificiais deve ser feita com base em medidas de avaliação de erro absoluto médio (EAM), e raiz do erro quadrado médio (REQM). 
+            Além destas análises, para o tema deste trabalho, considerou-se os valores de refeições descartadas e em falta (quando o valor previsto é menor que o consumo real), bem como documentou-se outras métricas obtidas pela plataforma experimental (TensorFlow e bibliotecas seaborn, scipy, scikit-learning) para a realização de análises e trabalhos futuros.
         
         \section{Conclusões}
             Por fim, conclui-se que a predição via modelos de redes neurais possibilita um tratamento de produção e predição de consumo mais eficiente do que uma produção baseada na simples análise do consumo da semana anterior. 
@@ -493,29 +491,29 @@
   % CAPÍTULO 2 - Fundamentação Teórica
   % ----------------------------------------------------------
   \chapter{Fundamentação Teórica}
+  %TODO:Q
+  %Este capítulo apresenta toda a fundamentação teórica necessária para o desenvolvimento desta pesquisa. Especificamente, os seguintes tópicos são abordados. Análise de Dados, Modelos de Previsão, ....
   
-  Este capítulo apresenta toda a fundamentação teórica necessária para o desenvolvimento desta pesquisa. Especificamente, os seguintes tópicos são abordados. Análise de Dados, Modelos de Previsão, ....
-  
-      Na seção de Análises dos Dados, vemos que para realizarmos os experimentos com as redes neurais artificiais com o objetivo de solucionar o problema de predição de refeições no restaurante universitário do ICT Unifesp, serão necessárias algumas fundamentações teóricas para coletarmos e preparamos os dados de entrada nas redes, realizarmos análises exploratórias nestes dados, estipularmos os métodos de previsão, e considerarmos o tratamento dos dados como uma série temporal.
+      Na seção de Análises dos Dados, vemos que para realizar os experimentos com as redes neurais artificiais com o objetivo de solucionar o problema de predição de refeições no restaurante universitário do ICT Unifesp, foram necessárias algumas fundamentações teóricas para coletar e preparar os dados de entrada nas redes, realizar análises exploratórias nestes dados, estipular os métodos de previsão, e considerar o tratamento dos dados como uma série temporal.
       
-      Em seguida fundamentamos a teoria para a construção das redes neurais artificiais, que neste trabalho serão construídas por meio de 2 modelos, as redes neurais MLP (Multilayer Perceptron) e as redes recorrentes GRU (Gated Recurrent Unit).
+      Em seguida fundamentou-se a teoria para a construção das redes neurais artificiais, que neste trabalho construiu-se por meio de 2 modelos, as redes neurais MLP (Multilayer Perceptron) e as redes recorrentes GRU (Gated Recurrent Unit).
 
       % ----------------------------------------------------------
       % TEORIAS PARA PRE PROCESSAMENTO DOS DADOS
       % ----------------------------------------------------------
       \section{Análises dos Dados}
         \subsection{Tipos de dados}
-            Para este trabalho consideramos 2 tipos de dados: Endógenos e Exógenos.
+            Para este trabalho considerou-se 2 tipos de dados: Endógenos e Exógenos.
             \paragraph{Endógenos}
-            Dados endógenos são os dados do domínio de predição, neste caso, são os valores de consumo de refeições represantado pela quantificação da passagem dos alunos no ponto de acesso, a catraca, do restaurante universitário do ICT Unifesp.
+            Dados endógenos são os dados do domínio de predição, neste caso, são os valores de consumo de refeições representado pela quantificação da passagem dos alunos no ponto de acesso, a catraca, do restaurante universitário do ICT Unifesp.
             São considerados endógenos também os dados de consumo de jantar, e os dados de vendas de tickets de refeições, todos discretizados e somados por dias letivos. Além disso, neste trabalho, os dados endógenos são transformados em entrada das redes neurais, em formato de série temporais, fundamentada nas seções adiante.
             
             \paragraph{Exógenos}
             Os dados exógenos são todos os outros dados fora do domínio de predição, incluso parâmetros derivados das datas das observações como por exemplo o dado categórico que representa o dia da semana (segunda-feira à sexta feira), outros dados que derivam da data dos registros dos dados endógenos e por fim os dados climáticos.
             
         \subsection{Análise Exploratória dos Dados}
-          \cite{Junior2007} Cita que dados coletados em modelos de previsão possuem informações que quando são projetadas graficamente evidenciam comportamentos que em alguns casos podem ser visualizados e generalizados de forma subjetiva pelos gestores dos dados.  
-          Em todos os casos, a análise exploratória é necessária para selecionar o melhor método de análise que se enquadra neste comportamento.
+          \cite{Junior2007} cita, em seu trabalho, que dados coletados em modelos de previsão possuem informações que quando são projetadas graficamente evidenciam comportamentos que em alguns casos podem ser visualizados e generalizados de forma subjetiva pelos gestores dos dados.  
+          Em todos os casos, a análise exploratória é necessária para selecionar o melhor método de análise que enquadrou-se neste comportamento.
 
           Somente a análise exploratória não é o suficiente e realizada nos intervalos ou critérios incorretos pode comprometer seriamente as conclusões do comportamento dos dados, e que por sua vez pode comprometer seriamente a decisão dos gestores responsáveis por estes dados, no cenário de uma previsão de demanda. 
           Isto ocorre atualmente no cenário de previsão da demanda de refeições do ICT-UNIFESP, onde a universidade e o estabelecimento que fornece as refeições não tem nenhum modelo de previsão de demanda. 
@@ -524,7 +522,7 @@
 
         \subsection{Métodos de Previsão} 
 
-          \cite{Junior2007} Realiza uma revisão bibliográfica extensa abordando principais métodos de previsão de consumo sazonais, no cenário de uma indústria cosmética. Tais métodos estatísticos de previsão se dividem em 2 ramificações, sendo quantitativos ou qualitativos. Métodos qualitativos fazem um julgamento dos dados expostos sem um sistema de processamento analítico para se produzir novos modelos ou dados, eles são úteis para sistemas de agrupamento, clusterização ou classificação de dados, sem fornecer novas informações numéricas ou modelos preditivos.
+          \cite{Junior2007} realiza, em seu trabalho, uma revisão bibliográfica extensa abordando principais métodos de previsão de consumo sazonais, no cenário de uma indústria cosmética. Tais métodos estatísticos de previsão se dividem em 2 ramificações, sendo quantitativos ou qualitativos. Métodos qualitativos fazem um julgamento dos dados expostos sem um sistema de processamento analítico para se produzir novos modelos ou dados, eles são úteis para sistemas de agrupamento, clusterização ou classificação de dados, sem fornecer novas informações numéricas ou modelos preditivos.
 
           Métodos quantitativos que é o foco deste trabalho, são analíticos e se baseiam em um modelo matemático para realizar previsões. 
 
@@ -550,9 +548,9 @@
           \end{figure}
 
         \subsection{Séries Temporais}
-          De acordo com  \cite{Morettin1987} uma série temporal é um conjunto de observações ordenadas em função do tempo, comumente iguais, apresentando uma dependência serial entre elas, sendo um dos objetivos do estudo de séries temporais, analisar e modelar essa dependência. Além disso, séries temporais são analisadas pelos seus principais movimentos, como tendência, sazonalidade e a componente aleatória, sendo a tendencia e sazonalidade as propriedades que mais ganham destaque em pesquisas de previsão de demanda de carga elétrica. Os meios mais comuns de se analisar a componente sazonal são o Método de Regressão (paramétrico), Método de Médias Móveis (não paramétrico), e Método de Diferença Sazonal (sazonalidade determinística).  Neste trabalho, a distribuição dos dados do Restaurante se dá de forma paramétrica, ou seja, as vendas do restaurante se distribuem em função do tempo e com influências de parâmetros como o dia da semana por exemplo. 
+          De acordo com  \cite{Morettin1987} em seus trabalhos, uma série temporal é um conjunto de observações ordenadas em função do tempo, comumente iguais, apresentando uma dependência serial entre elas, sendo um dos objetivos do estudo de séries temporais, analisar e modelar essa dependência. Além disso, séries temporais são analisadas pelos seus principais movimentos, como tendência, sazonalidade e a componente aleatória, sendo a tendencia e sazonalidade as propriedades que mais ganham destaque em pesquisas de previsão de demanda de carga elétrica. Os meios mais comuns de se analisar a componente sazonal são o Método de Regressão (paramétrico), Método de Médias Móveis (não paramétrico), e Método de Diferença Sazonal (sazonalidade determinística).  Neste trabalho, a distribuição dos dados do Restaurante se dá de forma paramétrica, ou seja, as vendas do restaurante se distribuem em função do tempo e com influências de parâmetros como o dia da semana por exemplo. 
 
-          \cite{Almeida2013} também cita que para realizar a previsão de uma determinada série temporal é possível utilizar diferentes métodos. Pode-se classificá-los basicamente entre métodos estatísticos e baseados em inteligência artificial.
+          \cite{Almeida2013} também cita  em sua análise que para realizar a previsão de uma determinada série temporal é possível utilizar diferentes métodos. Pode-se classificá-los basicamente entre métodos estatísticos e baseados em inteligência artificial.
           Dentre os métodos estatísticos não abordados neste trabalho, destacam-se:
           \begin{itemize}
               \item Regressão Linear Múltipla;
@@ -570,9 +568,9 @@
 
           É importante observar que os métodos de previsão em séries temporais buscam uma redução da série temporal à um modelo estacionário e a decomposição da série em componentes de tendência, ciclo, sazonalidade (próxima figura) e termo aleatório. A tendência entende-se pelo movimento persistente dos dados em uma direção, o ciclo indica o movimento oscilatório desta tendência, sazonalidade indica comportamento regular assumido de forma repetitiva e o termo aleatório se dá por movimentos irregulares presentes na série.
            
-          As técnicas de previsão para evidências sazonais, usam métodos de regressão, que podem ser observados nos trabalhos de previsão de consumo de energia elétrica realizados por \cite{Almeida2013}, \cite{RUAS2012}, \cite{Silva2010} e de previsão de demanda de produtos cosméticos em \cite{Junior2007}
+          As técnicas de previsão para evidências sazonais, usam métodos de regressão, que podem ser observados nos trabalhos de previsão de consumo de energia elétrica realizados pelas pesquisas de \cite{Almeida2013}, \cite{RUAS2012} e de \cite{Silva2010}, além , da previsão de demanda de produtos cosméticos pelo trabalho de \cite{Junior2007}
 
-          O cenário deste estudo analisa a sazonalidade da frequência de alunos do ICT - UNIFESP, inferida pelas grades semestrais de suas disciplinas, que consequentemente infere na sazonalidade de consumo de refeições dentro do restaurante universitário.\newline
+          O cenário deste estudo analisa a sazonalidade da frequência de alunos do ICT - UNIFESP, inferida pelas grades semestrais de suas disciplinas, que consequentemente inferem na sazonalidade de consumo de refeições dentro do restaurante universitário.\newline
           
           Na figura \ref{fig:seriesTemporais} temos um exemplo de sazonalidade diária de dados.
 
@@ -601,7 +599,7 @@
 
             Uma rede neural pode não produzir uma resposta esperada, resolvendo erroneamente um problema, assim como o cérebro humano tem limitações de aprendizado, que levam o homem a cometer falhas de decisões ou ações por um aprendizado mal treinado. Por isso as características fundamentais que tornam uma rede neural artificial em uma boa solução, é um bom planejamento de sua topologia, e método de treinamento, que serão explicados a seguir.
 
-            \cite{Muhammad2014} Demonstra em sua pesquisa que a propriedade fundamental do cérebro é a sua capacidade de mudar com uma grande variedade de experiências, inclusive lesões que provocam perdas de neurônios, abordando princípios de plasticidade cerebral, mostra também que a capacidade de aprendizado de mamíferos que sofreram uma redução de neurônios causada por lesões, pode ser restaurada não somente pela recuperação desses neurônios perdidos, mas sim por novas conexões e sinapses entre outros neurônios. Ou seja, a rede sofre uma mudança de topologia.
+            \cite{Muhammad2014} demonstra em sua pesquisa que a propriedade fundamental do cérebro é a sua capacidade de mudar com uma grande variedade de experiências, inclusive lesões que provocam perdas de neurônios, abordando princípios de plasticidade cerebral, mostra também que a capacidade de aprendizado de mamíferos que sofreram uma redução de neurônios causada por lesões, pode ser restaurada não somente pela recuperação desses neurônios perdidos, mas sim por novas conexões e sinapses entre outros neurônios. Ou seja, a rede sofre uma mudança de topologia.
 
             \cite{Fapesp192} Mostra em um experimento recente que o cérebro humano possui atualmente 86 bilhões de neurônios interconectados, e que sua capacidade de aprendizado e habilidades evolutivas também vêm aumentando em conjunto com seu número de neurônios e topologia de rede neural, que há 30 milhões de anos atrás tinha apenas 2,5 bilhões de neurônios e era apenas um animal arborícola quadrúpede.
             %TODO-T: FIGURA 4 ESTORANDO MARGEM DO TÍTULO
@@ -632,7 +630,7 @@
             Todo o funcionamento deste modelo então é reduzido a responder se a soma recebida é maior que um valor numérico esperado. Contudo, associado a este neurônio não foi proposto uma forma automática para ajuste dos pesos, ou seja, não há um algoritmo de aprendizagem \cite{Haykin1994}.
           
         \subsection{O Neurônio Artificial Perceptron}
-          \textcolor{red}{Em 1958, Rosemblat e outros \cite{Haykin1994}, propos um algoritmo de aprendizagem para o neurônio MCP. O modelo concebido foi denominado Perceptron.}
+          \textcolor{red}{Em 1958, Rosemblat e outros \cite{Haykin1994}, propôs um algoritmo de aprendizagem para o neurônio MCP. O modelo concebido foi denominado Perceptron.}
           
           É possível reparar que o processo de aprendizagem do neurônio artificial, denominado de perceptron, se forma por uma combinação linear que é o valor $w_{ji}$ dos pesos e entradas $x_i$. Essa combinação pode ser aprovada ou reprovadas no processo repetitivo de treino controlado pela função $\delta$, e pela aprovação do erro medido entre o valor da combinação linear e o valor esperado.
           
@@ -664,7 +662,7 @@
             Em 1958, o cientista da computação Frank Rosemblatt desenvolveu o modelo de neurônio artificial Perceptron para solucionar este problema de ajuste de pesos.
             Basicamente neste novo modelo, os pesos das conexões são ajustados de forma autônoma com a introdução de pessoas associados e uma valor bias, a fim de buscar um reconhecimento autônomo de padrões. Tarefas de reconhecimento de padrões simples com separações lineares os seres humanos conseguem realizar de forma trivial mas ainda era um desafio para tal problema se resolvido por uma máquina.
 
-            O perceptron \cite{Flavia2014} possui apenas uma camada de entrada e saída, a saída utiliza como função de ativação a função degrau $u$ que define quando o neurônio emitirá o sinal lógico 1 ou quando emitirá o sinal lógico 0.
+            O perceptron , conforme demonstrado no trabalho de\cite{Flavia2014}, possui apenas uma camada de entrada e saída, a saída utiliza como função de ativação a função degrau $u$ que define quando o neurônio emitirá o sinal lógico 1 ou quando emitirá o sinal lógico 0.
 
             O sinal de saída do perceptron entende-se então por:
             $y_j= \delta(\sum_{i=1}^{n}x_i W_{ji}+b_j)$
@@ -700,7 +698,7 @@
 				    As funções de ativação dá a capacidade do perceptron quando conectado em rede (explicado no próximo capítulo) de resolver problemas lineares e não lineares, agregando adaptação e improviso ao resolver programas que não estão contidos em seus dados de alimentação.
 			
 		      \paragraph*{Perceptron - Treino Supervisionado}
-            \cite{Almeida2013} cita que o processo de aprendizado do perceptron pode ocorrer de forma supervisionada quando o neurônio deve aprender a relacionar um conjunto observado de variáveis à um valor observado de saída deste mesmo conjunto. O neurônio recebe os sinais de entrada $Xi$ e produz uma saída $Yi$ através do combinador linear e função $\delta$ de ativação; compara essa saída $Yi$ com a observação $i$ obtida do conjunto de dados (ponto chave do processo de treino supervisionado) e por fim essa comparação irá gerar um erro $e$.
+            \cite{Almeida2013} cita em sua análise que o processo de aprendizado do perceptron pode ocorrer de forma supervisionada quando o neurônio deve aprender a relacionar um conjunto observado de variáveis à um valor observado de saída deste mesmo conjunto. O neurônio recebe os sinais de entrada $Xi$ e produz uma saída $Yi$ através do combinador linear e função $\delta$ de ativação; compara essa saída $Yi$ com a observação $i$ obtida do conjunto de dados (ponto chave do processo de treino supervisionado) e por fim essa comparação irá gerar um erro $e$.
             
             \subparagraph*{Critério de parada}
             	De acordo com algum critério adotado em cada contexto de aplicação do perceptron, este erro pode ser aceitado e o neurônio mantém o valor de seus pesos $Wi$ que impactam na saída $Yi$ desejada. A aprendizagem do neurônio também pode atingir um critério de parada após N épocas de treinamento, diversos critérios de paradas  podem ser combinados.  
@@ -777,7 +775,7 @@
   	       \end{figure}
   	       
   	       \paragraph*{MLP Backpropagation em R.U em trabalhos relacionados}
-  	       Em \cite{Lopes2008} A rede neural perceptron de múltiplas camadas é utilizada para tratar a previsão de demanda do R.U da UFV, utilizando apenas como variáveis quantitativas as 5 ultimas observações anteriores ao dia a se analisar, e como variáveis qualitativas o dia da semana variando de segunda a sexta, em valores binários.
+  	       De acordo com  o trabalho de \cite{Lopes2008}, a rede neural perceptron de múltiplas camadas é utilizada para tratar a previsão de demanda do R.U da UFV, utilizando apenas como variáveis quantitativas as 5 ultimas observações anteriores ao dia a se analisar, e como variáveis qualitativas o dia da semana variando de segunda a sexta, em valores binários.
   	       
            \begin{figure}[H]
           	\center{
@@ -787,7 +785,7 @@
           	\caption{Rede Neural Perceptron de Múltiplas Camadas.} \subcaption*{ Fonte:  \cite{Lopes2008}.}\label{fig:mlp-lopes}}
            \end{figure}
             
-           Em \cite{Rocha2011} o trabalho realizado com neurônios artificiais para prever a demanda do R.U da UNESP, envolve apenas uma única camada de entrada e uma segunda camada para saída, porém com uma diversidade maior de variáveis de entrada correlacionadas com o consumo do restaurante. 
+           Conforme  o trabalho realizado por  \cite{Rocha2011} com neurônios artificiais para prever a demanda do R.U da UNESP, envolve apenas uma única camada de entrada e uma segunda camada para saída, porém com uma diversidade maior de variáveis de entrada correlacionadas com o consumo do restaurante. 
            \begin{figure}[H]
           	\center{
           		\includegraphics[width=0.65\textwidth]
@@ -796,9 +794,9 @@
           	\caption{Rede Neural Perceptron de Múltiplas Camadas.} \subcaption*{Fonte:   \cite{Rocha2011}} \label{fig:rnaRocha}}
            \end{figure}
          
-            Ambos os modelos possuem topologia de uma camada oculta para entrada dos dados, e uma camada de saída. que de acordo com \cite{Braga2000} cita que através de uma análise de Cybenko, uma camada intermediária é o suficiente para aproximar qualquer função contínua e 2 camadas intermediárias são suficientes para aproximar qualquer função matemática, e devendo ser observado o fato de que em alguns casos, a utilização de 2 ou mais camadas pode facilitar o treinamento da rede, porém a utilização de um grande número de camadas intermediárias ou ocultas, é inviável, pois em cada uma delas a estimativa do erro se trata de uma estimativa da estimativa do erro da camada anterior, e este cascateamento de estimativas pode se tornar menos preciso à medida que cresce.
+            Ambos os modelos possuem topologia de uma camada oculta para entrada dos dados, e uma camada de saída. que de acordo com  a análise de\cite{Braga2000}  é citado que através de uma análise de Cybenko, uma camada intermediária é o suficiente para aproximar qualquer função contínua e 2 camadas intermediárias são suficientes para aproximar qualquer função matemática, e devendo ser observado o fato de que em alguns casos, a utilização de 2 ou mais camadas pode facilitar o treinamento da rede, porém a utilização de um grande número de camadas intermediárias ou ocultas, é inviável, pois em cada uma delas a estimativa do erro se trata de uma estimativa da estimativa do erro da camada anterior, e este cascateamento de estimativas pode se tornar menos preciso à medida que cresce.
             
-            \cite{Flavia2014} cita que o número de neurônios na primeira camada oculta é proporcional à dimensão do espaço de observação. Logo em modelos preditivos de demanda, supracitados, observa-se que no mínimo, na primeira camada oculta, é utilizado um número de neurônios igual ao número de variáveis que influenciam no dado preditivo.
+          Em conformidade com o trabalho de  \cite{Flavia2014}, o número de neurônios na primeira camada oculta é proporcional à dimensão do espaço de observação. Logo em modelos preditivos de demanda, supracitados, observa-se que no mínimo, na primeira camada oculta, é utilizado um número de neurônios igual ao número de variáveis que influenciam no dado preditivo.
             
             \paragraph*{Parâmetros de treino da MLP Backpropagation}
             A definição da função $\delta$ de ativação interfere na linearidade  do modelo a ser analisado, sendo a função sigmoide a mais popular na literatura. 
@@ -904,7 +902,7 @@
                 Quando a curva do $m.s.e$ estiver sendo realizada, não se saberá o ponto ótimo de parada, até que ele comece a ser superado, logo é importante arbitrar um número $l$ para salvar os parâmetros das $l$ épocas anteriores, em busca do ponto ótimo de parada, conforme figura \ref{fig:validacaoCruzada}
         
         \subsection{Redes Recorrentes GRU}
-         	De acordo com \cite{DLB} no capítulo de arquitetura de redes neurais gated recurrent unit gru, as redes recorrentes GRU são uma melhoria das redes perceptron recorrentes clássicas encontradas na literatura, pois utilizam elementos que decidem o valores de saída das unidades, e que podem memorizar informações de entrada dadas por um grande intervalo de tempo, sem sofrer dissipação destes valores, com o aproveitamento de recursos de memória computacionais. Portanto serão indicadas na aplicação deste trabalho para a memorização da sazonalidade semestral e anual dos dados do restaurante universitário.
+         	De acordo com  o livro Deep Learning Book desenvolvido pela  \cite{DLB}, no capítulo de arquitetura de redes neurais gated recurrent unit gru, as redes recorrentes GRU são uma melhoria das redes perceptron recorrentes clássicas encontradas na literatura, pois utilizam elementos que decidem o valores de saída das unidades, e que podem memorizar informações de entrada dadas por um grande intervalo de tempo, sem sofrer dissipação destes valores, com o aproveitamento de recursos de memória computacionais. Portanto serão indicadas na aplicação deste trabalho para a memorização da sazonalidade semestral e anual dos dados do restaurante universitário.
          	%TODO-T: figura 23 estorando a  margem no titulo
             \begin{figure}[H]
             	\center{
@@ -930,7 +928,7 @@
          \cite{Rocha2011} também realiza o estudo de demanda no restaurante universitário da Universidade Estadual Paulista Júlio de Mesquita Filho (UNESP), novamente com os métodos de redes neurais artificiais com backpropagation, e utilizando apenas como fonte de dados o histórico numérico das vendas realizadas, e outras variáveis intermediárias obtidas a partir deste como médias de subconjunto de observações (médias de segundas-feiras), e a única variável de ambiente coletada foi o número de feriados próximos à observação de venda. No estudo do total de dias analisados, verifica-se que em 73\% (187 dias), o método de média simples propiciou um maior erro em relação à RNA, que por sua vez ocasionou um erro maior nos 23\% (69 dias) restantes.Em se tratando de menor desperdício, observa-se que a RNA apresenta erros maiores que 50 refeições em 13 dias, enquanto o método da média simples apresenta erros maiores que 50 refeições em 58 dias, concluindo-se então que o método de RNA foi bem mais eficiente do que o cálculo de média simples utilizado pela administração do restaurante universitário.
       
       \section{Previsão de demanda em outros ambientes} 
-         \cite{RUAS2012} fazem uma análise de previsão de demanda de energia elétrica no estado do paraná, entre os anos de 2004 e 2006, utilizando redes neurais artificiais e máquinas de vetores de suporte. Apesar de não ser o mesmo exemplo do cenário do restaurante universitário do ICT UNIFESP, temos a distribuição dos dados de consumo coletados como uma série temporal. Nesta pesquisa de previsão de demanda de energia elétrica foi utilizada uma rede parcialmente recorrente de Elman, que permite a previsão de um passo de tempo à frente. Para que seja possível realizar a previsão para vários pontos à frente, é necessário utilizar os valores já previstos, ou seja, a saída da rede, como entradas da mesma.
+         \cite{RUAS2012} faz uma análise de previsão de demanda de energia elétrica no estado do Paraná, entre os anos de 2004 e 2006, utilizando redes neurais artificiais e máquinas de vetores de suporte. Apesar de não ser o mesmo exemplo do cenário do restaurante universitário do ICT UNIFESP, temos a distribuição dos dados de consumo coletados como uma série temporal. Nesta pesquisa de previsão de demanda de energia elétrica foi utilizada uma rede parcialmente recorrente de Elman, que permite a previsão de um passo de tempo à frente. Para que seja possível realizar a previsão para vários pontos à frente, é necessário utilizar os valores já previstos, ou seja, a saída da rede, como entradas da mesma.
         
          \cite{Almeida2013} analisa um cenário semelhante de demanda de energia elétrica, porém utilizando-se técnicas de previsão de demanda com Rede Neural Artificial do tipo Multilayer Perceptron combinado com lógica fuzzy que permite colocar variáveis de temperatura (entre outras) em um conjunto de regras que impactam no problema.
         
@@ -1003,10 +1001,10 @@
             
            
         \subsection{Dados exógenos}
-            Os dados exógenos a serem correlacionados com o consumo se dividem em 2 tipos principais, os dados climáticos coletados de estações meteorológicas próximas ao ICT Unifesp, e dados derivados das datas dos registros de consumo.
+            Os dados exógenos correlacionados com o consumo se dividem em 2 tipos principais, os dados climáticos coletados de estações meteorológicas próximas ao ICT Unifesp, e dados derivados das datas dos registros de consumo.
             
             \paragraph{Dados Climáticos}
-            	Também serão analisadas variáveis climáticas como dados exógenos, de forma a analisar a influência de fatores externos como temperatura média ambiente, pressão atmosférica, umidade e velocidade do vento. Tais dados podem ser obtidos de forma gratuita pelo BDMEP - Banco de Dados Meteorológicos para Ensino e Pesquisa, pertencente à instituição pública INMET - Instituto Nacional de Meteorologia, pertencente ao MINISTÉRIO DA AGRICULTURA, PECUÁRIA E ABASTECIMENTO do Governo Brasileiro. 
+            	Também obteve-se variáveis climáticas como dados exógenos, para a influência de fatores externos (temperatura média ambiente, pressão atmosférica, umidade e velocidade do vento). Tais dados podem ser obtidos de forma gratuita pelo BDMEP - Banco de Dados Meteorológicos para Ensino e Pesquisa, pertencente à instituição pública INMET - Instituto Nacional de Meteorologia, pertencente ao MINISTÉRIO DA AGRICULTURA, PECUÁRIA E ABASTECIMENTO do Governo Brasileiro. 
             	
             	É necessário um cadastro no site http://www.inmet.gov.br/portal/index.php?r=bdmep/bdmep para a obtenção dos dados. 
             	
@@ -1025,7 +1023,7 @@
             	    \item Avanço do mês em escala percentual.
             	\end{itemize}
             	
-            	O dia da semana seguirá o modelo binário de acordo com os trabalho de previsão de demanda em R.U realizados por \cite{Lopes2008} e \cite{Rocha2011}.
+            	O dia da semana seguiu o modelo binário de acordo com os trabalho de previsão de demanda em R.U realizados por \cite{Lopes2008} e \cite{Rocha2011}.
         
                 \begin{figure}[H]
                 	\center{
@@ -1118,18 +1116,18 @@
             \paragraph*{Sobre a necessidade de se implementar modelos mistos}
                 No conjunto de dados deste trabalho, os dados obtidos se dividem em dados temporais (onde cada registro de consumo e venda trás a informação de seu domínio em um intervalo de 5 dias anteriores) e dados discretos onde temos variáveis categóricas de data para cada registro, e variáveis climáticas, porém sem a aplicação de um intervalo temporal, ou seja, os dados exógenos são discretos, e os endógenos são temporais.
                 Portanto é necessária a implementação de modelos específicos para entradas temporais e modelos específicos para as entradas discretas.
-                Para a saída final pode ser implementado um comitê de redes neurais endógenas e exógenas, com um perceptron na saída, recebendo os 2 valores dos modelos endógenos e exógenos e regredindo as saídas das 2 redes ao valor de saída que será a predição do consumo.
+                Para a saída final foi implementado um comitê de redes neurais endógenas e exógenas, com um perceptron na saída, recebendo os 2 valores dos modelos endógenos e exógenos para a regressão das saídas das 2 redes ao valor que será a predição do consumo.
          	\subsubsection{Modelos endógenos}
          	\begin{itemize}
-                \item	Desenvolver as redes perceptron de baixa profundidade para avaliar o aprendizado da rede
-                \item	Aumentar a profundidade da rede e avaliar as mudanças da função de perda rmse
-                \item	Implementar e avaliar modelos com redes recorrentes GRU, conforme a figura \ref{fig:gru-arch} que são especialmente desenvolvidos para o aprendizado com memorização de dados, e no caso deste trabalho, poderão memorizar as sazonalidades semanais de consumo (de até 5 dias, dado a temporização do conjunto em 5 dias).
+                \item	Desenvolvimento das redes perceptron de baixa profundidade para avaliar o aprendizado da rede
+                \item	Aumento da profundidade da rede e avaliar as mudanças da função de perda RMSE. 
+                \item	Implementação e avaliação dos modelos com redes recorrentes GRU, conforme a figura \ref{fig:gru-arch} que são especialmente desenvolvidos para o aprendizado com memorização de dados, e no caso deste trabalho, podem memorizar as sazonalidades semanais de consumo (em um intervalo de 5 dias).
             \end{itemize}
             \subsubsection{Modelos Mistos : Endógenos e Exógenos}
                 \begin{itemize}
-                    \item Para os dados temporais (consumo e venda) utilizar os melhores modelos endógenos dos experimentos anteriores para as entradas endógenas. 
-                    \item Para os dados discretos e categóricos adaptar a entrada destes dados para rede perceptron
-                    \item  Concatenar a saída das 2 redes neurais em um percetron criando um comitê de redes neurais para obter a saída final prevista.
+                    \item Para os dados temporais (consumo e venda) utilizou-se os melhores modelos endógenos dos experimentos anteriores para as entradas endógenas. 
+                    \item Para os dados discretos e categóricos adaptou-se a entrada destes dados para rede perceptron
+                    \item  Concatenou-se a saída das 2 redes neurais em um percetron criando um comitê de redes neurais para obter a saída final prevista.
                 \end{itemize}
                 %TODO-T: FIGURA 24 ESTORANDO MARGEM DO TITULO
 	\subsection{Função de ativação}
@@ -1152,25 +1150,25 @@
         	
         	\caption{Comparison of Adam to Other Optimization Algorithms Training a Multilayer Perceptron} \subcaption*{Fonte : \cite{MLM} https://machinelearningmastery.com/adam-optimization-algorithm-for-deep-learning/}} \label{fig:otimizadores}
         \end{figure}
-        Para este trabalho é escolhido o otimizador ADAM no treino de backpropagation.
+        Para este trabalho foi escolhido o otimizador ADAM no treino de backpropagation.
         A vantagem deste otimizador é a fusão das melhores características de 2 otimizadores :\newline 
          Momenum e RMSProp. \newline
         O Momentum acelera o reajuste dos pesos em busca dos erros globais mínimos.\newline
          O RMSProp impede a busca na direção das oscilações.\newline
          Adam ou Adaptive Moment otimization combina estas 2 heurísticas.
-        O coeficiente de aprendizado escolhido para o otimizador, ou conhecido como "learning rate", será definido para a constante alpha, com valor 0.001.
-        Esta constante tem produzido resultados positivos em problemas de forecast (predições) de acordo com \cite{MLM}
+        O coeficiente de aprendizado escolhido para o otimizador, ou conhecido como "learning rate", foi definido para a constante alpha, com valor 0.001.
+        Esta constante tem produzido resultados positivos em problemas de forecast (predições) de acordo com o artigo fundamentado em \cite{MLM}.
 
     \section{Teste e Métricas}
-       As principal métrica de avaliação dos modelos, é a Raiz do Erro Quadrático Médio, obtido pela chamada de função "mean\_squared\_error"\ do framework Tensorflow.Keras utilizado para a modelagem,treino e predição dos modelos de redes neurais. Citado como "Loss Function" nos diversos frameworks de machine learning como TensorFlow, Matlab, Weeka entre outros) do treino dos modelos.\newline
+       A principal métrica de avaliação dos modelos, é a Raiz do Erro Quadrático Médio, obtido pela chamada de função "mean\_squared\_error"\ do framework Tensorflow.Keras utilizado para a modelagem,treino e predição dos modelos de redes neurais.
        
-        O coeficiente de correlação de Pearson, obtido pela biblioteca scipy na chamada de função \"scipy.stats.pearsonr(true,pred)"\ e o coeficiente "chi-quadrado" definido como $R^2$ obtido na chamada de função \"scipy.stats.linregress"\ será utilizado nas etapas de teste para avaliar a proximidade das predições do modelo com o comportamento real de consumo (Se acompanha as quedas e subidas de consumo ao longo do tempo).\newline
+        O coeficiente de correlação de Pearson, obtido pela biblioteca scipy na chamada de função \"scipy.stats.pearsonr(true,pred)"\ e o coeficiente "chi-quadrado" definido como $R^2$ obtido na chamada de função \"scipy.stats.linregress"\ foi utilizado nas etapas de teste para avaliar a proximidade das predições do modelo com o comportamento real de consumo (Se acompanha as quedas e subidas de consumo ao longo do tempo).\newline
        
-        Serão documentados, para trabalhos futuros, outras métricas estatísticas obtidas por esta chamada de função como os valores de slope, intercept, p\_value, std\_err.\newline
+        Documentou-se, para trabalhos futuros, outras métricas estatísticas obtidas por esta chamada de função como os valores de slope, intercept, p\_value e std\_err.\newline
        
-        A chamada de função sns.regplot(x=arr\_true,y=arr\_pred,data=df) da biblioteca seaborn irá retornar um gráfico scatter dos valores preditos e reais para a avaliação dos erros, médias e tendencia de previsão.\newline 
+        A chamada de função sns.regplot(x=arr\_true,y=arr\_pred,data=df) da biblioteca seaborn  retorna um gráfico scatter dos valores preditos e reais para a avaliação dos erros, médias e tendencia de previsão.\newline 
        
-       Serão avaliados também os erros positivos e negativos entre os valores previstos e reais, para representar quantas refeições seriam descartadas e quantas estariam em falta se a produção de refeições fosse de acordo com as predições do modelo.
+       Avaliou-se também os erros positivos e negativos entre os valores previstos e reais, para representar quantas refeições seriam descartadas e quantas estariam em falta se a produção de refeições fosse de acordo com as predições do modelo.
        
   % ----------------------------------------------------------
   % \chapter{METODOLOGIA}
@@ -1180,25 +1178,24 @@
     
     A primeira fase experimental na etapa de pré-processamento realiza antes do desenvolvimento dos modelos, o procedimento de análise exploratória dos dados fundamentado no trabalho de \cite{Junior2007}.
     
-    O parâmetro ``ENTR\_ALMOCO'' da tabela \ref{table:dataset_final} é o atributo alvo da predição, pois se trata do número de entradas no ponto de acesso do restaurante, portanto este parâmetro é frequentemente utilizado nos gráficos comparativos em formato de linha, sendo geralmente comparado com algum outro parâmetro de entrada nos modelos, denominados de ``Features'' neste trabalho, nomenclatura utilizada por reconhecidas referências na área de Data Science, conforme o artigo de \cite{TWDSFeatures}.
+    O parâmetro ``ENTR\_ALMOCO'' da tabela \ref{table:dataset_final} é o atributo alvo da predição, pois se trata do número de entradas no ponto de acesso do restaurante, portanto esse parâmetro é frequentemente utilizado nos gráficos comparativos em formato de linha, sendo geralmente comparado com algum outro parâmetro de entrada nos modelos, denominado de ``Feature'' neste trabalho, nomenclatura utilizada por reconhecidas referências na área de Data Science, conforme o artigo de \cite{TWDSFeatures}.
     
-    Nesta primeira fase também são desenvolvidos 2 modelos de redes MLP para suporte na análise exploratória do problema da predição do restaurante e é verificado se estes modelos tem capacidade de aprendizado sobre o problema.
+    Nesta primeira fase também são desenvolvidos 2 modelos de redes MLP para suporte na análise exploratória do problema da predição do restaurante e é verificado se esses modelos tem capacidade de aprendizado sobre o problema.
     
-    Depois de verificada a capacidade de aprendizado do problema são desenvolvidos 3 modelos endógenos, sendo uma rede MLP e duas redes GRU. Os resultados de predição são comparados visando a selecionar o melhor modelo endógeno.
+    Depois de verificada a capacidade de aprendizado do problema foram desenvolvidos 3 modelos endógenos, sendo uma rede MLP e duas redes GRU. Os resultados de predição foram comparados visando a seleção do melhor modelo endógeno.
     
-    Após a seleção do melhor modelo, são desenvolvidos três modelos mistos. Ao contrario dos modeos anteriores, estes modelos recebem como entrada tanto features endógenas quanto exógenas. Da mesma forma, o melhor modelo com ambas as features também é selecionado.
+    Após a seleção do melhor modelo, foram desenvolvidos três modelos mistos. Ao contrário dos anteriores, estes modelos recebem como entrada tanto features endógenas quanto exógenas. Da mesma forma, o melhor modelo com ambas as features também é selecionado.
     
     %Ao fim da fase é comparado o melhor modelo entre o melhor endógeno e o melhor modelo misto.
     
     Na segunda fase, é alterado o domínio temporal experimental para a divisão dos conjuntos e repetidos os passos da primeira fase a partir do desenvolvimento dos modelos endógenos.
     
-    Após selecionado o melhor modelo da segunda fase, são comparados os melhores modelos das duas fase. Para uma comparação justa, visto que o melhor modelo da 1a fase tem domínio de teste restrito ao primeiro semestre de 2019, o modelo obtido na segunda fase é novamente testado apenas no domínio do primeiro semestre obtendo novas métricas de teste.
+    Após selecionado o melhor modelo da segunda fase, foram comparados os melhores modelos das duas fase. Para uma comparação justa, visto que o melhor modelo da 1a fase tem domínio de teste restrito ao primeiro semestre de 2019, o modelo obtido na segunda fase é novamente testado apenas no domínio do primeiro semestre obtendo-se novas métricas de teste.
     
     
     Ao final das duas fases experimentais, o modelo com melhor predição dos dados é apresentado como um possível preditor para a demanda do RU.
     %Por fim é selecionado o melhor modelo de todas as fases experimentais para a conclusão do trabalho.
-    %TODO : CITAR O ARTIGO, NÃO A AUTORA QUE NINGUEM CONHECE...
-    
+     
 	\section{Fase Experimental I}
 	     \begin{figure}[htb]
         	\center{
@@ -1382,10 +1379,10 @@
                     \end{table}
                     
         	        A análise da técnica de estimação de consumo, do restaurante, foi feita com o cálculo de 30\% de produção acima do consumo do 5o dia anterior.
-        	        É possível notar que o modelo do R.U é feito para tolerar descartes devido à multa contratual para falta de refeições e o que a produção de 30\% de refeições acima do consumo da semana anterior, conforme a figura  \ref{fig:case1_ru_pred} produz um comportamento linear distante do comportamento real de consumo, apesar de seguir as tendencias de quedas e aumento de consumo, na figura \ref{fig:case1_ru_pred_scatter} do gráfico scatter gerada pela biblioteca seaborn também demonstra que a regressão linear (representada pela linha vermelha no gráfico) tem o eixo totalmente descentralizado com a função identidade entre o consumo e a predição ideal (representada pela diagonal formada entre a origem do gráfico e o vértice superior direito), gerando também um erro muito maior do que 30\% no somatório total de refeições descartadas no semestre, devido ao comportamento oscilatório do consumo, conforme a tabela \ref{table:case1_rupred}.
+        	        É possível notar que o modelo do R.U é feito para tolerar descartes devido à multa contratual para falta de refeições e o que a produção de 30\% de refeições acima do consumo da semana anterior, conforme a figura  \ref{fig:case1_ru_pred} produz um comportamento linear distante do comportamento real de consumo, apesar de seguir as tendễncias de quedas e aumento de consumo, na figura \ref{fig:case1_ru_pred_scatter} do gráfico scatter gerada pela biblioteca seaborn também demonstra que a regressão linear (representada pela linha vermelha no gráfico) tem o eixo totalmente descentralizado com a função identidade entre o consumo e a predição ideal (representada pela diagonal formada entre a origem do gráfico e o vértice superior direito), gerando também um erro muito maior do que 30\% no somatório total de refeições descartadas no semestre, devido ao comportamento oscilatório do consumo, conforme a tabela \ref{table:case1_rupred}.
                 \paragraph{Consumo atual em relação ao consumo do jantar de 1 dia anterior.}
                 
-                    Apesar de que os alunos que consomem refeições no almoço geralmente são de período e grade horária diferente dos alunos que consomem o jantar no período da noite, nota-se uma relação evidente entre os 2 consumos, evidenciada pelo comportamento linear na figura \ref{fig:case1_consumo_jantar} com correlação (r) = 0.7655, e pela regressão linear entre esses 2 consumos na figura  \ref{fig:case1_consumo_jantar_scatter}.\newline
+                    Apesar de que os alunos que consomem refeições no almoço geralmente são de período e  de grade horária diferente dos alunos que consomem o jantar no período da noite, nota-se uma relação evidente entre os 2 consumos, evidenciada pelo comportamento linear na figura \ref{fig:case1_consumo_jantar} com correlação (r) = 0.7655, e pela regressão linear entre esses 2 consumos na figura  \ref{fig:case1_consumo_jantar_scatter}.\newline
                     
                     {\begin{center} 
                     \begin{minipage}[c]{1.0\textwidth}
@@ -1494,7 +1491,7 @@
                     \end{minipage}
                 \end{center}
                 }
-                Já o consumo em relação ao avanço do mês é inconclusivo. É possível notar o gráfico em forma de serra do avanço do mês em relação ao semestre na figura \ref{fig:case1_perc_mes}, onde este comportamento oscilatório e característico das alternâncias do mês em relação ao ano pode ter gerado ruído para esta análise. O indicado para análises futuras é que o domínio de obtenção destas métricas seja reduzido à duração do mês. Mesmo sendo reduzido é possível observar que não há um padrão gráfico de consumo para todos os fragmentos de serra. Esta hipótese validaria que os alunos tivessem preferência de realizar refeições fora do restaurante em períodos típicos de dias de pagamentos geralmente no 5º dia útil, ou todo dia 20. a figura \ref{fig:case1_perc_mes_scatter} conclui também que a regressão linear entre os 2 conjuntos é insignificante. Como o restaurante do ICT Unifesp não enfrenta concorrência dado o isolamento geográfico de seu público, a sazonalidade do consumo se mantém correlata com as atividades da universidade e não da concorrência com outros restaurantes.
+                Já o consumo em relação ao avanço do mês é inconclusivo. É possível notar o gráfico em forma de serra do avanço do mês em relação ao semestre na figura \ref{fig:case1_perc_mes}, onde este comportamento oscilatório e característico das alternâncias do mês em relação ao ano pode ter gerado ruído para esta análise. O indicado para análises futuras é que o domínio de obtenção destas métricas seja reduzido à duração do mês. Mesmo sendo reduzido é possível observar que não há um padrão gráfico de consumo para todos os fragmentos de serra. Esta hipótese validaria que os alunos tivessem preferência de realizar refeições fora do restaurante em períodos típicos de recebimento de salário. A figura \ref{fig:case1_perc_mes_scatter} conclui também que a regressão linear entre os 2 conjuntos é insignificante. Como o restaurante do ICT Unifesp não enfrenta concorrência dado o isolamento geográfico de seu público, a sazonalidade do consumo se mantém correlata com as atividades da universidade e não da concorrência com outros restaurantes.
                 
               \paragraph{Variáveis climáticas}
                 As correlações do consumo de refeições com as variáveis climáticas não obtiveram correlações evidentes com o consumo de refeições, sendo observadas nas figuras \ref{fig:case1_temperatura} à \ref{fig:case1_pressao_scatter}, todos os gráficos lineares não apresentaram padrões correlatos e evidentes, bem como os gráficos de scatter não apresentaram regressões lineares significantes.
@@ -1562,7 +1559,7 @@
                 
                 
     	\subsection{Definição e treino dos modelos}
-    	    Nesta seção os modelos de redes neurais foram desenvolvidos, treinados, avaliados sobre o conjunto de validação para obtermos métricas préliminares, e por fim foram testados.
+    	    Nesta seção os modelos de redes neurais foram desenvolvidos, treinados, avaliados sobre o conjunto de validação para obtermos métricas preliminares, e por fim foram testados.
     	    Na próxima subseção, 1 modelo inicial MLP é desenvolvido para avaliação da aprendizagem do problema.
     	    Como a avaliação de aprendizagem é um método comparativo com a profundidade em camadas do modelo, o mesmo modelo é redefinido com mais camadas de neurônios e novamente testado.
     	    Após os testes bem sucedidos sobre a avaliação de aprendizagem do problema nos modelos MLP, outros modelos com maior profundidade do tipo endógenos e exógenos foram desenvolvidos.
@@ -1570,8 +1567,8 @@
     	    \subsubsection{Ajuste empírico de topologia com os modelos perceptron}
     	        %%%%%%%%%%%%%%%%%%%%% MLP 1 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
               \paragraph{MLP1}
-    	        O primeiro modelo perceptron multilayer foi definido com uma camada de 15 unidades (mesmo número de features endógenas sendo 5 para consumo almoço (de 1 a 5 dias anteriores para cada entrada), 5 para vendas de tickets e 5 para consumo de jantar.
-    	        O modelo será denominado MLP1 para futuras referências. A figura abaixo foi obtida com o comando \textbf{keras.utils.plot\_model(MLP1, show\_shapes=True)} Cada camada da rede corresponde à um bloco na figura, nos blocos são demonstrados o formato matricial dos parâmetros de  entrada. Nota-se que no primeiro bloco "InputLayer" são denotados o tamanho do intervalo temporal de cada parâmetro correspondente à 5 dias (de 1 dia anterior à 5 dias anteriores), e o número total de parâmetros que são 3 (ENTR\_ALMOCO, ENTR\_JANTAR e VENDAS\_ALMOCO).
+    	        O primeiro modelo perceptron multilayer foi definido com uma camada de 15 unidades (mesmo número de features endógenas sendo 5 para consumo almoço , 5 para vendas de tickets e 5 para consumo de jantar, com intervalo de 5 dias).
+    	        O modelo será denominado MLP1 para futuras referências. A figura abaixo foi obtida com o comando \textbf{keras.utils.plot\_model(MLP1, show\_shapes=True)}. Cada camada da rede corresponde à um bloco na figura, nos blocos são demonstrados o formato matricial dos parâmetros de  entrada. Nota-se que no primeiro bloco "InputLayer" são denotados o tamanho do intervalo temporal de cada parâmetro correspondente à 5 dias (de 1 dia anterior à 5 dias anteriores), e o número total de parâmetros que são 3 (ENTR\_ALMOCO, ENTR\_JANTAR e VENDAS\_ALMOCO).
     	        \begin{figure}[H]
                 \center{
                 \includegraphics[width=0.5\textwidth]{./Figuras/resultados/case1_mlp1.png}
@@ -1605,7 +1602,7 @@
                 	\subcaption{RMSE = 107.97413966672336}
                 	\label{fig:case1_mlp2_train} }
                 \end{figure}
-    	        É possível notar a diminuição do RMSE (Raiz do erro quadrático médio) ao aumentar a profundidade da rede perceptron para treino e avaliação sob o conjunto de validação. Validando a hipótese de que as predições do consumo no restaurante, pode ser aprendido pelos modelos mais simples de redes neurais e que é possível avançar nas pesquisas com modelos que tragam melhores resultados para as predições. 
+    	        É possível notar a diminuição do RMSE (Raiz do erro quadrático médio) ao aumentar a profundidade da rede perceptron para treino e avaliação sob o conjunto de validação. Validando a hipótese de que a predição do consumo no restaurante, pode ser aprendida por modelos simples de redes neurais, sendo possível avançar nas pesquisas com modelos que tragam melhores resultados.
     	    %%%%%%%%%%%%%%%%%%%%% MODELOS ENDÓGENOS ... VAMO LÁ ... TÁ ACABANDO ... %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
           \subsubsection{Modelos Endógenos}
     	        Como o ajuste empírico obteve avanço nos resultados, foi definido outro modelo perceptron MLP\_ENDO\_1 com maior profundidade, e depois um modelo recorrente GRU com 2 reajustes (RNN\_ENDO\_1 e RNN\_ENDO\_2).
@@ -1711,7 +1708,7 @@
 
             %%%%%%%%%%%%%%%%% RNN ENDO 2
              \paragraph{RNN\_ENDO\_2}
-                Definido segundo modelo GRU, RNN\_ENDO\_2, com o aumento da profundidade de unidades do modelo anterior RNN\_ENDO\_1 e com a inclusão do recurso Dropout para eliminar unidades com pesos negativos no grafo denso da rede (Dropout realiza a poda de unidades não relevantes no grafo das unidades).
+                Definido segundo modelo GRU, RNN\_ENDO\_2, com o aumento da profundidade de unidades do modelo anterior RNN\_ENDO\_1 e com a inclusão do recurso Dropout para eliminar unidades com pesos negativos no grafo denso da rede, realizando a poda de unidades não relevantes.
                 \begin{figure}[H]
                   \center{
                     \includegraphics[width=0.4\textwidth]{./Figuras/resultados/case1_rnn_endo2.png}
@@ -1918,8 +1915,8 @@
         % \newpage
         
     	\subsection{Teste e métricas}
-    	    Nesta subseção todos os modelos são testados no conjunto de teste, 1o semestre de 2019. Em práticas com maior volume de modelos, pode-se selecionar apenas os modelos com os melhores resultados na etapa de avaliação, porém para um número de 6 modelos que exige pouco recurso computacional para teste foi considerado o teste para todos os modelos para fins de documentação dos resultados em proveito à trabalhos futuros. 
-    	    Entre todos os 6 modelos, é selecionado o melhor modelo endógeno, o melhor exógeno, e ambos serão selecionados para comparações com a fase 2.
+    	    Nesta subseção todos os modelos foram testados no conjunto de teste, 1o semestre de 2019. Em práticas com maior volume de modelos, pode-se selecionar apenas os modelos com os melhores resultados na etapa de validação. Porém, para um número de 6 modelos foi considerado o teste em todos os modelos a fim de documentação dos resultados em proveito à trabalhos futuros. 
+    	    Entre todos os 6 modelos, é selecionado o melhor modelo endógeno, o melhor exógeno, e ambos foram selecionados para comparações com a fase 2.
     	    
     	    \subsubsection{Endógenos : GRU x MLP}
     	    
@@ -1954,7 +1951,7 @@
             Podemos notar na figura \ref{fig:case1_mlp_endo1_test} e \ref{fig:case1_rnn_endo2_test} que apesar dos coeficientes de correlação serem próximos no teste entre os modelos RNN\_ENDO\_2 e MLP\_ENDO\_1, as métricas da tabela \ref{table:case1_GRUvsMLP} para o valor p-value e RMSE (métrica utilizada no treino dos modelos) é discrepante e seleciona o modelo GRU como o melhor modelo nesta comparação.\newline
 
     	    \subsubsection{Melhor modelo Endógeno}
-            De acordo com as métricas de teste, o melhor modelo endógeno foi o RNN\_ENDO\_2, e suas anomalias de previsão são devidamente justificadas por datas especiais no calendário do primeiro semestre:
+            De acordo com as métricas de teste, o melhor modelo endógeno foi o RNN\_ENDO\_2, e suas anomalias de previsão foram devidamente justificadas por datas especiais no calendário do primeiro semestre:
             
             \begin{figure}[H]
               \center{
@@ -2135,8 +2132,8 @@
             
             % \newpage
     	    \subsection{Melhor modelo da 1a fase}
-                Entre todos os modelos, o melhor modelo, produzindo o menor RMSE, e com vantagem em todas as outras métricas foi o modelo endógeno, RNN\_ENDO\_2, ressaltando que o gráfico, e métricas de predições deste modelo se encontram na figura \ref{fig:case1_rnn_endo2_test}.
-                Na ultima seção deste capítulo serão apresentadas todas as métricas de todos os modelos de todas as fases experimentais.
+                Entre todos os modelos, o melhor modelo produzindo o menor RMSE e com vantagem em todas as outras métricas foi o modelo endógeno, RNN\_ENDO\_2, ressaltando que o gráfico e as métricas de predições deste modelo se encontram na figura \ref{fig:case1_rnn_endo2_test}.
+                Na ultima seção deste capítulo são apresentadas todas as métricas de todos os modelos de todas as fases experimentais.
 
     \section{2a Fase Experimental}
         
@@ -2146,11 +2143,11 @@
         	
         	\caption{Domínio temporal da 2a fase} \label{fig:case2_timeline} }
         \end{figure}
-	    Nesta segunda fase, todos os modelos da fase anterior são importados, treinados e testados sobre um novo domínio temporal de acordo com a figura \ref{fig:case2_timeline}.
+	    Nesta segunda fase, todos os modelos da fase anterior foram importados, treinados e testados sobre um novo domínio temporal de acordo com a figura \ref{fig:case2_timeline}.
         
         % \newpage
 	    \subsection{Pré-Processamento}
-	        Nesta subseção para a etapa de pré-processamento são avaliados apenas os resultados obtidos da divisão dos conjuntos e da técnica aplicada do restaurante.
+	        Nesta subseção para a etapa de pré-processamento foram avaliados apenas os resultados obtidos da divisão dos conjuntos e da técnica aplicada do restaurante.
 	        
     	    \paragraph{Divisão dos conjuntos}
     	    {\begin{center} \begin{minipage}[b]{0.45\textwidth}
@@ -2192,10 +2189,10 @@
                   \caption{Gráfico scatter da tecnica do restaurante para a 2a fase} \label{fig:ru_pred_scatter} }
                 \end{figure} \end{minipage} \end{center} }
                 
-                Para a produção de refeições com margem de 30\% acima do consumo do 5o dia anterior, conforme figura \ref{fig:ru_pred} e \ref{fig:ru_pred_scatter} obtemos as seguintes métricas de acordo com a tabela \ref{table:case2_rupred}. É possível notar que o descarte e anomalias de predição tomam grandes proporções a partir do segundo semestre até o fim do ano.
+                Para a produção de refeições com margem de 30\% acima do consumo do 5o dia anterior, conforme figura \ref{fig:ru_pred} e \ref{fig:ru_pred_scatter} obteve-se as seguintes métricas de acordo com a tabela \ref{table:case2_rupred}. É possível notar que o descarte e anomalias de predição tomam grandes proporções a partir do segundo semestre até o fim do ano.
                 \begin{table}[!ht]
                 \centering
-                \caption{Métricas da tecnica do restaurante para a 2a fase.}
+                \caption{Métricas da técnica do restaurante para a 2a fase.}
                 \label{table:case2_rupred}
                 \rowcolors{2}{gray!25}{white}
                     \begin{tabular}{|c|c|}
@@ -2320,7 +2317,7 @@
     	    
 	    \subsection{Teste}
 	        A seguir os modelos da segunda fase são testados para a seleção do melhor modelo.
-	        As figuras abaixo são para fins de registro dos resultados, a seguir é selecionado o melhor modelo com menor RMSE e para critério de desempate são selecionadas outras métricas como quantia de refeições descartadas e em falta, ou valor $R^2$ para mensuração do comportamento de consumo (tendencias de altas e baixas) com o comportamento previsto. O restaurante também pode selecionar o melhor modelo para fins particulares da gestão como por exemplo o modelo que tem menor erro de descarte ou menor erro de falta de refeições. As conclusões e detalhes sobre as diferenças dos resultados são detalhadas no capítulo de Conclusões.
+	        As figuras abaixo são para fins de registro dos resultados, a seguir é selecionado o melhor modelo com menor RMSE e para critério de desempate são selecionadas outras métricas como quantia de refeições descartadas e em falta, ou valor $R^2$ para mensuração do comportamento de consumo (tendencias de altas e baixas) com o comportamento previsto. O restaurante também pode selecionar o melhor modelo para fins particulares da gestão como por exemplo o modelo que tem menor erro de descarte ou menor erro de falta de refeições. 
     	    
     	    %%% MLP_ENDO_1
     	    \paragraph{MLP\_ENDO\_1}
@@ -2596,8 +2593,8 @@ RNN\_EXO\_1  (**)&	0,590376657	&1,41433E-09&	0,446847803	&203,2738308 \\ \hline
   % ----------------------------------------------------------
   \chapter{Conclusão}
     \section{A importância da metodologia de divisão do conjunto de dados em séries temporais}
-        Como estamos trabalhando com um conjunto de dados com todas as features e targets de sazonalidade temporal, é notório que a ordenação dos dados na separação do conjunto em treino, teste e validação deve seguir uma ordem cronológica para os modelos aprenderem com o passado e realizarem predições para o futuro. 
-        O erro na divisão identificado no capitulo de divisão do conjunto de dados, demonstrado com erros na figura \ref{fig:pandas_wrong_indexing} e depois corrigido conforme a figura \ref{fig:pandas_correct_indexing} demonstra esta conclusão.
+       No trabalho com um conjunto de dados de sazonalidade temporal, é notório que a ordenação dos dados na separação do conjunto em treino, teste e validação devem seguir uma ordem cronológica para os modelos aprenderem com o passado e realizarem predições para o futuro. 
+        O comportamento anômalo da predição identificada no capitulo de divisão do conjunto de dados da fase 1, demonstrado na figura \ref{fig:pandas_wrong_indexing}, e depois corrigido conforme a figura \ref{fig:pandas_correct_indexing} valida esta afirmação.
 
     \section{Sobre o método de produção de refeições com margem de erro e análise da semana anterior}
         Mesmo com a produção de 30\% acima do consumo na semana anterior, no fim de cada semestre, o restaurante do ICT Unifesp descarta mais do que 30\%, pois o comportamento oscilatório do consumo e o acréscimo de outliers, acaba ampliando o erro. No ano de 2019, seguindo este método, 23 mil refeições foram descartas.
@@ -2608,19 +2605,19 @@ RNN\_EXO\_1  (**)&	0,590376657	&1,41433E-09&	0,446847803	&203,2738308 \\ \hline
         Em todo o conjunto de dados, nos dias da semana, a sexta feira é o dia de menor consumo independente do período do ano. Já as datas de terça e quinta concentram a maior movimentação de consumo.
     
     \section{Sobre o ajuste empírico da topologia dos modelos}
-        Na etapa de validação dos primeiros modelos desenvolvidos, demonstrado na subseção Ajuste empírico de topologia da 1a fase, conforme figuras \ref{fig:case1_mlp1_train} e \ref{fig:case1_mlp2_train} capítulo de resultados da 1a fase, foi possível notar a diminuição do RMSE (Raiz do erro quadrático médio) ao aumentar a profundidade da rede Perceptron para treino e avaliação sob o conjunto de validação. Validando a hipótese de que os modelos tem capacidade de aprendizado do problema em relação ao ajuste da topologia dos mesmos.
+        Na etapa de validação dos primeiros modelos desenvolvidos, demonstrado na subseção "Ajuste empírico de topologia da 1a fase", conforme figuras \ref{fig:case1_mlp1_train} e \ref{fig:case1_mlp2_train} do capítulo de resultados da 1a fase, foi possível notar a diminuição do RMSE (Raiz do erro quadrático médio) ao aumentar a profundidade da rede Perceptron para treino e avaliação sob o conjunto de validação. Validando a hipótese de que os modelos tem capacidade de aprendizado do problema em relação ao ajuste da topologia dos mesmos.
         
     \section{Sobre os resultados preliminares da etapa de validação}
         Apesar de valores de correlação muito próximos, Foi possível notar na 1a fase algumas diferenças gráficas entre o modelo RNN\_ENDO\_2 e o modelo `MLP\_ENDO\_1 na etapa de validação dos modelos.  Porém na etapa de testes, o modelo  RNN\_ENDO\_2 obteve RMSE 108 e correlação de 0,59 enquanto o MLP obteve RMSE de 128 e correlação de 0,52. Evidenciando que métricas muito próximas, entre modelos, na etapa de teste sobre o conjunto de validação pode evidenciar que não devemos realizar uma seleção previa destes modelos para a etapa de testes, sendo necessário o teste dos 2 modelos para comparações finais. Já os modelos que apresentaram diferenças de RMSE discrepantes na etapa de validação, mantiveram essas diferenças (para o pior e o melhor) na etapa de testes.
 
     \section{Sobre os erros anômalos de predição}
-        Apesar do conjunto de dados conter 2 features que informam a distancia em dias para o próximo registro e o registro anterior para os modelos identificarem feriados e recessos prolongados, alguns eventos no calendário como paralisações, não são muito bem representados por tais features, indicando a necessidade de mais pesquisa de features que possam representar melhor este comportamento.
+        Apesar do conjunto de dados conter 2 features que informam a distância em dias para o próximo registro e o registro anterior para os modelos identificarem feriados e recessos prolongados, alguns eventos no calendário, como paralisações, não são muito bem representados por tais features, indicando a necessidade de mais pesquisa de features que possam representar melhor este comportamento.
 
     \section{Sobre o modelo com melhor resultado}
-        No primeiro split, com validação restrita ao primeiro semestre de 2018, os modelos endógenos se saíram melhor do que os modelos mistos. Isso pode significar que as features exógenas (onde a maioria tem sazonalidade anual como as climáticas limitadas às estações do ano) foram ruidosas no aprendizado.
-        Para o modelo RNN\_EXO\_1 da 2a fase, se saindo melhor que todos os modelos deste trabalho, algumas melhorias são indicadas para os trabalhos futuros.\newline
+        No primeira fase, com validação restrita ao primeiro semestre de 2018, os modelos endógenos se saíram melhor do que os modelos mistos. Isso pode significar que as features exógenas (onde a maioria tem sazonalidade anual como as climáticas limitadas às estações do ano) foram ruidosas no aprendizado.
+        Para o modelo RNN\_EXO\_1 da 2a fase, se saindo melhor que todos os modelos deste trabalho, algumas melhorias são indicadas para trabalhos futuros.\newline
         \begin{itemize}
-            \item Aumentar o conjunto de dados para o modelo se ajustar as sazonalidades semestrais e à troca de semestres. As features categóricas que indicam os semestres e dia da semana, bem com as features que quantificam recessos (distancia registro anterior e posterior) tem potencial de agregar aprendizado nessa questão, mas é necessário uma diversificação maior do conjunto de dados pois treinamos apenas com 1 período sazonal! (1 ano para treino, 1 para validação e 1 para teste)
+            \item Aumentar o conjunto de dados para o modelo se ajustar as sazonalidades semestrais e à troca de semestres. As features categóricas que indicam os semestres e dia da semana, bem com as features que quantificam recessos (distância registro anterior e posterior) tem potencial de agregar aprendizado nessa questão, mas é necessário uma diversificação maior do conjunto de dados, pois é treinado apenas com 1 período sazonal (1 ano para treino, 1 para validação e 1 para teste).
             \item Acrescentar features de eventos importantes para identificar paralisações e eventos do tipo.
             \item Uma feature de cardápio tem potencial de aumentar a qualidade da predição.
             \item Uma feature representando o número de alunos matriculados em cada período de cada dia da semana tem grande potencial de aumentar a predição.
@@ -2629,7 +2626,7 @@ RNN\_EXO\_1  (**)&	0,590376657	&1,41433E-09&	0,446847803	&203,2738308 \\ \hline
         
     \section{Conclusões gerais}
          As análises diversas de previsão de demanda para o tema abordado requerem extensos métodos de implementação e estruturação de dados.
-        Uma das etapas mais importantes do trabalho, é o método de coleta de dados. Muitos podem ser de acesso burocrático, ou de difícil busca. E são o requisito primordial para o inicio de qualquer análise.
+        Uma das etapas mais importantes do trabalho, é o método de coleta de dados. Muitos podem ser de acesso burocrático, ou de difícil busca, e são o requisito primordial para o inicio de qualquer análise.
         
          A diversidade de métodos de aprendizado de máquina é imensurável, e dentro de apenas uma análise, que é o treino com retropropagação, pode-se montar infinitas topologias diferentes com base na estrutura dos dados coletados. 
         As heurísticas sobre a definição de topologia apesar de diversas, não são determinísticas, e o processo requer análise exploratória, subjetiva e empírica sobre o tema e problema a ser abordado.

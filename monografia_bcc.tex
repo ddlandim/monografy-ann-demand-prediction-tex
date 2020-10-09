@@ -226,7 +226,7 @@
         \vspace*{\fill}
        \end{center}
         
-       Trabalho para apresentar em DEZEMBRO/2018:
+       Trabalho para apresentar em Outubro/2020:
 
        \assinatura{\textbf{\imprimirorientador} \\ Orientador} 
        \assinatura{\textbf{Professor} \\ Convidado 1}
@@ -304,10 +304,7 @@
 
   % resumo em português
     \begin{resumo}
-         O presente trabalho tem como objetivo o estudo de métodos para a previsão de vendas do restaurante universitário da Unifesp para evitar super-projeção de demanda com consequência de desperdício de alimentos, ou subprojeção com consequência de docentes ou discentes sem refeições.
-         Em uma investigação anterior, realizada como trabalho de disciplina, o autor deste trabalho empregou métodos estatísticos para a construção do modelo de previsão. Neste trabalho, será empregado um método de aprendizado de máquina, mais especificamente, uma rede neural artificial do tipo Perceptron de Múltiplas Camadas. Na investigação anterior, verificou-se que a temperatura da região onde se localiza o campus do restaurante foi analisada por recorrência via \textit{bootstrap} como um fator que exerce impacto sobre as vendas do restaurante em certos períodos do semestre. Assim,  neste trabalho de conclusão de curso serão obtidas novas variáveis e um intervalo maior de amostragem na análise da previsão de demanda.
- 
-    %O presente trabalho tem como objetivo a comparação com o método de análise da previsão de vendas do restaurante universitário da Unifesp, previamente feito pelo autor deste trabalho com aplicação de métodos estatísticos, e atualmente com métodos de aprendizado de máquina. Tal análise por aprendizado de máquina foi apontado como relevante solução no fim da análise estatística do trabalho anterior. A temperatura da região onde se localiza o campus do restaurante foi analisada por recorrência via bootstrap como um fator que exerce impacto sobre as vendas do restaurante em certos períodos do semestre, e neste trabalho de conclusão de curso serão obtidas novas variáveis e um intervalo maior de amostragem na análise da previsão de demanda de refeições do restaurante em um novo modelo com aprendizado de máquina a fim de que seja obtido um modelo de previsão viável para evitar super-projeção de demanda com consequência de desperdício de alimentos, ou subprojeção com consequência de docentes ou discentes sem refeições.
+         O presente trabalho tem como objetivo o estudo de métodos para a previsão de vendas do restaurante universitário da Unifesp para evitar super-projeção de demanda com consequência de desperdício de alimentos, ou subprojeção com consequência de docentes ou discentes sem refeições. Em uma investigação anterior, realizada como trabalho de disciplina, o autor empregou métodos estatísticos para a análise do comportamento de consumo de refeições. Neste trabalho, foram desenvolvidos modelos de aprendizado de máquina, mais especificamente, redes neurais perceptron de múltiplas camadas e redes gated recurrent units, com métodos de análises de dados coletados, preparação e pré-processamento das informações, seleção e avaliação dos melhores modelos e conclusões finais.
      
      \vspace{\onelineskip}
         
@@ -322,8 +319,7 @@
 
 % TRADUZIR NOVAMENTE DO RESUMO ALTERADO
 
-        This work has the objective of studying methods to forecast meals demand on Unifesp's university restaurant to avoid overprojection of demand as a result of food wastage, or underproduction with the consequence of teachers or students without meals.
-        In an earlier research, carried out as a discipline work, the author of this paper used statistical methods for the construction of the prediction model. In this work, a machine learning method will be employed, more specifically, an artificial neural network of the Perceptron type of Multiple Layers. In the previous investigation, it was verified that the temperature of the region where the restaurant's campus is located was analyzed by recurrence via bootstrap as a factor that has an impact on restaurant sales in certain periods of the semester. Thus, in this work of conclusion of course will be obtained new variables and a greater interval of sampling in the analysis of the forecast of demand.
+        This current work aims to study methods for forecasting meals of Unifesp university restaurant to avoid over-projection of demand resulting from food waste, or underprojection with the consequence of teachers or students without meals. In a previous investigation, carried out as discipline work, the author used statistical methods to analyze the behavior meals consumption. In this work, machine learning models were developed, more specifically, multilayer perceptron neural networks and gated recurrent units networks, with methods of analysis of collected data, preparation and pre-processing of information, selection and evaluation of the best models and final conclusions.
 
        \vspace{\onelineskip}
      
@@ -352,14 +348,16 @@
   % inserir lista de abreviaturas e siglas
   % ---
     \begin{siglas}
-    \item[ICT] Instituto Central de Tecnologia
+    \item[ICT] Instituto de Ciência e Tecnologia
     \item[R.U.] Restaurante Universitário
     \item[UNIFESP] Universidade Federal de São Paulo
     \item[UFV] Universidade Federal de Viçosa
     \item[UNESP] Universidade Estadual Paulista Júlio de Mesquita Filho
     \item[BDMEP] Banco de Dados Meteorológicos para Ensino e Pesquisa
     \item[RNA] Rede Neural Artificial
-    \item[PMC] Perceptron de Múltiplas Camadas
+    \item[MLP] Multi Layer Perceptron
+    \item[GRU] Gated Recurrent Unit
+    \item[RMSE] Root Mean Squared Error
 
     \end{siglas}
   % ---
@@ -429,11 +427,11 @@
         As atuais abordagens de previsão do restaurante universitário, que envolvem análise exploratória semanal e dedução subjetiva dos dados de consumo de refeições, chamados de dados endógenos, executadas pelos responsáveis pelo restaurante são falhas por não serem calculadas considerando-se uma visão ampla de todo um histórico de dados de grande amostragem. Além disso, não são consideradas outras informações, chamadas de dados exógenos, como dados climáticos, dados de calendário anual, feriados próximos, dentre outros. Essas falhas causam desperdício de alimentos por super-estimação de demanda e prejuízo de refeições descartadas, e falta de atendimento por sub-estimação de demanda de consumo.
 
       \section{Objetivos}
-        \subsection{Objetivo geral}
+        \paragraph{Objetivo geral}
           Construir e comparar modelos de Redes Neurais Artificiais para a previsão da demanda de
           refeições do restaurante universitário do ICT-UNIFESP.
         
-        \subsection{Objetivos específicos}
+        \paragraph{Objetivos específicos}
           \begin{itemize}
           \item Estruturar o conjunto de dados, e realizar análises exploratórias sobre os dados; 
           \item Construir, executar predições, e realizar análises comparativas da qualidade dos modelos de redes neurais construídos;
@@ -442,7 +440,7 @@
           \end{itemize}
            
       \section{Metodologia e Experimentos}
-        \subsection{Análises dos dados}
+        \paragraph{Análises dos dados}
 
           Por se tratar de um trabalho de previsão de demanda,  este trabalho realizou a coleta e tratamento dos dados de consumo do restaurante universitário da Unifesp, a coleta de dados climáticos que influenciam em tal demanda e o cálculo dos dados de calendário derivados das datas de coleta, por exemplo, o dia da semana, a estação do ano, o número do semestre (se par ou ímpar), horário, etc.
 
@@ -453,7 +451,7 @@
 
           Assim, a primeira investigação usa a análises estatísticas de regressão linear múltipla fundamentada pela pesquisa de \cite{Clarice2011} por meio de métricas aplicadas pelo framework scipy e plot de gráficos scatter por meio da biblioteca seaborn, que além de realizar nos uma construção dos gráficos relacionando os dados exógenos considerados e o comportamento de consumo, obtendo uma regressão linear simples entre estes 2 valores supervisionados, também são retornadas outras métricas como medidas de correlação, p-value, $R^2$ , e outras métricas que serão documentadas para trabalhos futuros.
 
-        \subsection{Aprendizado de máquina}
+        \paragraph{Aprendizado de máquina}
           As análises de inteligência artificial, fundamentadas por trabalhos de previsão de demanda em R.U. da Universidade Federal de Viçosa, de acordo \cite{Lopes2008} e na Universidade Estadual Paulista Júlio de Mesquita por \cite{Rocha2011}, concluem a segunda aplicação da técnica de redes neurais artificiais com o modelo de Multilayer Perceptron (MLP) fundamentado em \cite{Haykin1994}, incrementando-se na técnica a inclusão de variáveis climáticas utilizadas nos trabalhos de previsão de  \cite{Almeida2013, RUAS2012, Silva2010}, modificando a topologia como em \cite{Lopes2008} para receber tais dados.
           
           E também são considerados modelos modernos, como as redes recorrentes GRU (Gated Recurrent Unit), fundamentados por \cite{DLB}.
@@ -467,24 +465,24 @@
           
           Estes novos resultados foram comparados com a primeira fase experimental para decidir se o melhor modelo para cada semestre é treinado e validado com um semestre ou com o ano todo.
         
-        \section{Resultados} % alterar serao pra sao, sumario de resultados...  %juntar 1.6 com 1.7
+        \paragraph{Resultados} % alterar serao pra sao, sumario de resultados...  %juntar 1.6 com 1.7
         % quais foram os experimentos obtidos, e quais foram os resultados.
             %JUNTAR
             O capítulo de resultados demonstrou graficamente as análises de parâmetros de predição com a passagem de alunos no ponto de acesso do restaurante, bem como as predições dos modelos sobre a real passagem.
             Através destas análises gráficas e de valores estatísticos retornados, selecionou-se os melhores modelos para o objetivo final do trabalho que é determinar um modelo de aprendizado de máquina para realizar predições de consumo.
         
         %TODO : VERIFICAR OS INDICES
-        \section{Análise dos resultados}
+        \paragraph{Análise dos resultados}
         %JUNTAR
             De acordo com  o trabalho de \cite{Flavia2014}, a comparação e a discussão dos resultados de uma predição com redes neurais artificiais deve ser feita com base em medidas de avaliação de erro absoluto médio (EAM), e raiz do erro quadrado médio (REQM). 
             Além destas análises, para o tema deste trabalho, considerou-se os valores de refeições descartadas e em falta (quando o valor previsto é menor que o consumo real), bem como documentou-se outras métricas obtidas pela plataforma experimental (TensorFlow e bibliotecas seaborn, scipy, scikit-learning) para a realização de análises e trabalhos futuros.
         
-        \section{Conclusões}
+        \paragraph{Conclusões}
             Por fim, conclui-se que a predição via modelos de redes neurais possibilita um tratamento de produção e predição de consumo mais eficiente do que uma produção baseada na simples análise do consumo da semana anterior. 
             Também se concluiu os efeitos notórios dos parâmetros de predições considerados, bem como o alto contraste dos resultados entre os modelos da primeira e segunda fase experimental.
             E se concluiu entre todos os modelos experimentados, que o modelo misto treinado, validado e executado no domínio temporal da segunda fase experimental obteve melhores resultados e que pode ser utilizado e melhorado em trabalhos futuros, para a realização da predição do consumo no restaurante universitário do ICT Unifesp.
             
-        \section{Organização do texto}
+        %\section{Organização do texto}
             % FUNDAMENTAR        
   % ----------------------------------------------------------
   % CAPÍTULO 2 - Fundamentação Teórica
@@ -819,23 +817,6 @@
             
             Se a iteração $i$ da época $k$ for a primeira, todos os pesos $Wi_{n}j$ em todos os neurônios, são inicializados com valores aleatórios pequenos.\\ 
             
-            
-            \begin{figure}[H]
-          	\center{
-          		\includegraphics[width=0.65\textwidth]
-          		{18-mlp-bp-ff1.png}
-          	
-          	\caption{Apresentação da i-ésima observação do conjunto de treino à rede}}
-           \end{figure}
-           
-           \begin{figure}[H]
-          	\center{
-          		\includegraphics[width=0.65\textwidth]
-          		{18-mlp-bp-ff2.png}
-          	
-          	\caption{Cálculo do valor estimado de saída da rede.}}
-           \end{figure}
-            
             O valor de $Yi_{\mu}(j)$. dos neurônios da primeira camada oculta, são obtidos de forma que $Xi_{n}(j)$ são os sinais de entrada das variáveis de 1 à $n$.
             
             O valor de $Yi_{\mu}(j)$. dos neurônios das próximas camadas, inclusive a de saída, utiliza o sinal de saída $Yi_{\mu}$ dos neurônios da camada anterior conectados à $j$ como um sinal de entrada $Xi_{n}$.
@@ -848,22 +829,9 @@
             \subparagraph*{Regra $\delta$ para neurônio de saída}
             Exclusivamente para a camada de saída, $\delta$ é calculado por\\
             $\delta_s = (Yi - Yi_{\mu}(s) )*F'(\mu(s))$.
-            \begin{figure}[H]
-          	\center{
-          		\includegraphics[width=0.40\textwidth]
-          		{17-mlp-bp-saida.png}
-          
-          	\caption{Aprendizado de um neurônio na camada de saída}	}
-           \end{figure}
             
             O valor dos $n$ pesos $Wi_{n}(s)$ do neurônio de saída $s$ com $n$ entradas vindas das saídas de neurônios $j$ das camadas anteriores, é obtido por $\Delta Wi_{n}(s) = \eta*\delta_s*Yi_{\mu}(j)$\\.
-            \begin{figure}[H]
-          	\center{
-          		\includegraphics[width=0.65\textwidth]
-          		{20-mlp-bp-fb.png}
-          	
-          	\caption{Reajuste dos pesos de saída}}
-           \end{figure}
+
            %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
            \subparagraph*{Regra $\delta$ para neurônios de camadas ocultas}
             Nesta etapa, os neurônios $n$ da camada oculta obterão seu $\delta$ através da seguinte equação usando o $\delta$ dos $m$ neurônios da camada posterior que se conectam à ele:\\ 
@@ -879,14 +847,6 @@
             
             Após o reajuste chegar na primeira camada oculta, um novo vetor de observações $i$ é apresentado à rede repetindo, iniciando novamente a fase feed-forward e repetindo o ciclo até o fim das entradas.
             
-            \begin{figure}[H]
-          	\center{
-          		\includegraphics[width=0.65\textwidth]
-          		{21-mlp-bp-fbe.png}
-          	
-          	\caption{Reajuste dos pesos de camadas ocultas}}
-            \end{figure}
-           
             \subparagraph{Validação de treino}
                 Após se encerrar uma época, que percorreu todas as i-ésimas entradas do conjunto de treino, um conjunto de dados de validação, previamente separado, é apresentado à rede.
                 A validação ocorre só com a fase feedforward, obtendo-se os erros quadráticos da camada de saída com o dado de validação observado.

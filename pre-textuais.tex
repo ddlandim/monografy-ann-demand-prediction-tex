@@ -1,0 +1,177 @@
+
+  % ----------------------------------------------------------
+  % Capa
+
+    \begin{capa}
+      \begin{center}
+       \includegraphics[width=.25\textwidth]{logo-unifesp.pdf}
+        \vspace*{\fill}
+        
+        {\ABNTEXchapterfont\large\imprimirautor}
+        \vspace*{\fill}
+        
+        {\ABNTEXchapterfont\bfseries\Large\imprimirtitulo}
+        \vspace*{\fill}\vspace*{\fill}
+        
+       \imprimirlocal
+       \end{center}
+    \end{capa}
+
+
+  % Folha de rosto
+    \imprimirfolhaderosto*
+
+
+  % Inserir folha de aprovação
+    % \includepdf{folhadeaprovacao_final.pdf}
+  %
+    \begin{folhadeaprovacao}
+      \begin{center}
+        {\ABNTEXchapterfont\large\imprimirautor}
+
+        \vspace*{\fill}\vspace*{\fill}
+        {\ABNTEXchapterfont\bfseries\Large\imprimirtitulo}
+        \vspace*{\fill}
+        
+        \hspace{.45\textwidth}
+        \begin{minipage}{.5\textwidth}
+            \imprimirpreambulo
+        \end{minipage}%
+        \vspace*{\fill}
+       \end{center}
+        
+       Trabalho para apresentar em Outubro/2020:
+
+       \assinatura{\textbf{\imprimirorientador} \\ Orientador} 
+       \assinatura{\textbf{Professora} \\ Dra. Daniela Leal Musa}
+       \assinatura{\textbf{Professora} \\ Dra. Regina Célia Coelho}
+
+          
+       \begin{center}
+        \vspace*{0.5cm}
+        {\large\imprimirlocal}
+        \par
+        {\large\imprimirdata}
+        \vspace*{1cm}
+      \end{center}
+      
+    \end{folhadeaprovacao}
+
+
+
+  % ----------------------------------------------------------
+
+  % Dedicatória
+
+    \begin{dedicatoria}
+       \vspace*{\fill}
+       \centering
+       \noindent
+       \textit{ Este trabalho é dedicado aos meus pais que apoiaram e sacrificaram esforços para me manter ativo nessa jornada, a todos os professores que me somaram conhecimentos, oportunidades e esperanças indo além de suas rotinas e agendas em prol do ensino, e principalmente à todos que me motivaram me oferecendo desafios para que eu pudesse enfrentá-los superando meus próprios limites } \vspace*{\fill}
+    \end{dedicatoria}
+
+  % Agradecimentos
+
+    \begin{agradecimentos}
+        \paragraph{Minha Jornada}
+            Minha jornada pela graduação foi marcada por muita persistência, dificuldades e fracassos. Agradeço primeiramente a Deus por me dar fé e alimentar minha persistência e esperança. Apesar de todo o conteúdo técnico das mais de 40 disciplinas do meu curso, o que mais me agregou aprendizado foi o ambiente desafiador desta universidade; que somado à muitas dificuldades pessoais, acidentes, contra-tempos de saúde, profissão e família; constituiu o conjunto perfeito de desafios que me transformou em uma pessoa forte e destemida para enfrentar as cobranças do mercado, mais convicto e perseverante a cada nova tentativa de conquistar meus objetivos. Agradeço à minha família por sempre me apoiar dando tudo de si, aos meus professores que me orientaram e me motivaram, nas reuniões e chats online até nos finais de semana, aos meus amigos universitários, e a todos os colegas e colaboradores que conheci durante a graduação na Unifesp.
+            
+            \paragraph{Em especial, agradeço:}
+                
+            À professora Daniela Musa por ser minha primeira coordenadora de curso e orientadora quando ingressei na Unifesp.
+            
+            Aos professores das disciplinas que formaram minha base de conhecimento da ciência da computação e que me deram grande preparo para as minhas atividades acadêmicas, profissionais e nos diversos processos seletivos que participei no mercado. Aos professores Reginaldo Kuroshu, Bruno Kimura, Àlvaro Fazenda, Regina Coelho, Arlindo Flavio, Antonio Chaves, Ana Luiza e Otavio Lemos.
+            
+            À professora Camila Bertini  que na disciplina de simulação de sistemas me motivou nos primeiros estudos no tema deste trabalho, com uma realização de correlação com reamostragem de consumo x temperatura em 2016.
+            
+            À professora Flavia Martins de estatística, que me orientou algumas vezes em sua sala sobre a introdução teórica de predições com redes neurais, sua tese de doutorado foi bem complementar e enriquecedora na fundamentação teórica deste trabalho.
+            
+            Aos professores Vinícius Veloso e Fabio Faria, por me apresentarem a disciplina de inteligencia artificial. E ao Vinícius Veloso por me orientar na primeira parte deste trabalho e em todo o desenvolvimento de fundamentação teórica da primeira parte.
+            
+            Ao professor Marcos Quiles por me orientar nesta segunda parte do trabalho, me apresentando desde o início o trabalho com python, tensorflow, scikit learning, sobre as orientações mais específicas do aprendizado da rede neural. Em me orientar nas métricas de avaliação dos modelos e sobre a toda a metodologia experimental, além das revisões no texto final.
+            
+            À equipe de Data Science e Machine Learning Engineering da empresa 2RP-NET, especialista em análise de fraudes, dados, e trabalhos com aprendizado de máquina em Big-data, da qual recentemente fui integrado em setembro/2020 graças ao aprendizado adquirido neste trabalho acadêmico. E por ter disponibilizado um período extenso da reunião de equipe durante o nosso expediente para discutirmos os resultados e métricas deste trabalho, equipe da qual é composta por profissionais mestres e doutores em data science e machine learning.
+            
+            À todos os outros professores, colegas, alunos e colaboradores do instituto de ciência e tecnologia da UNIFESP.
+                
+            À minha família por ter me apoiado nesse longo período na UNIFESP.
+
+         \end{agradecimentos}
+ 
+ 
+ 
+  % Epígrafe
+  
+    \begin{epigrafe}
+        \vspace*{\fill}
+    	\begin{flushright}
+    		\textit{Mesmo desacreditado e ignorado por todos, não posso desistir, pois para mim, vencer é nunca desistir.\\
+    		(Albert Einstein)}
+    	\end{flushright}
+    \end{epigrafe}
+ 
+ 
+  % ----------------------------------------------------------
+  % RESUMOS
+ 
+  % resumo em português
+    \begin{resumo}
+         O presente trabalho tem como objetivo o estudo de métodos para a previsão de vendas do restaurante universitário da Unifesp para evitar super-projeção de demanda com consequência de desperdício de alimentos, ou subprojeção com consequência de docentes ou discentes sem refeições. Em uma investigação anterior, realizada como trabalho de disciplina, o autor empregou métodos estatísticos para a análise do comportamento de consumo de refeições. Neste trabalho, foram desenvolvidos modelos de aprendizado de máquina, mais especificamente, redes neurais perceptron de múltiplas camadas e redes \textit{gated recurrent units}, com métodos de análises de dados coletados, preparação e pré-processamento das informações, seleção e avaliação dos melhores modelos e conclusões finais.
+     
+     \vspace{\onelineskip}
+        
+     \noindent
+     \textbf{Palavras-chave}: Redes Neurais Artificiais, Previsão de demanda, Aprendizado de Máquina, Inteligência Artificial, Perceptron Múltiplas camadas. 
+     
+    \end{resumo}
+
+  % resumo em inglês
+    \begin{resumo}[Abstract]
+     \begin{otherlanguage*}{english}
+
+% TRADUZIR NOVAMENTE DO RESUMO ALTERADO
+
+        This current work aims to study methods for forecasting meals of Unifesp university restaurant to avoid over-projection of demand resulting from food waste, or under projection with the consequence of teachers or students without meals. In a previous investigation, carried out as discipline work, the author used statistical methods to analyze meal consumption behavior. Machine learning models were developed in this work, more specifically, multilayer perceptron neural networks and gated recurrent units networks, with data analysis methods, preparation and pre-processing of information, selection, and evaluation of the best models and final conclusions.
+
+       \vspace{\onelineskip}
+     
+       \noindent 
+       \textbf{Keywords}: Artificial Neural Networks, Demand Prediction, Machine Learning, Artificial intelligence, Perceptron Multiple layers.
+     \end{otherlanguage*}
+    \end{resumo}
+
+
+  % ----------------------------------------------------------
+  
+  % Lista de ilustrações
+    \pdfbookmark[0]{\listfigurename}{lof}
+    \listoffigures*
+    \cleardoublepage
+
+  % Lista de tabelas
+    \pdfbookmark[0]{\listtablename}{lot}
+    \listoftables*
+    \cleardoublepage
+
+
+  % ---  % Lsta de abreviaturas e siglas
+  % ---
+    \begin{siglas}
+    \item[ICT] Instituto de Ciência e Tecnologia
+    \item[R.U.] Restaurante Universitário
+    \item[UNIFESP] Universidade Federal de São Paulo
+    \item[UFV] Universidade Federal de Viçosa
+    \item[UNESP] Universidade Estadual Paulista Júlio de Mesquita Filho
+    \item[BDMEP] Banco de Dados Meteorológicos para Ensino e Pesquisa
+    \item[RNA] Rede Neural Artificial
+    \item[MLP] Multi Layer Perceptron
+    \item[GRU] Gated Recurrent Unit
+    \item[RMSE] Root Mean Squared Error
+
+    \end{siglas}
+ 
+  % ---
+    \pdfbookmark[0]{\contentsname}{toc}
+    \tableofcontents*
+    \cleardoublepage
+  % ---

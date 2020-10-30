@@ -1,0 +1,55 @@
+\chapter{Introdução}
+
+% \section{Contextualização e Motivação}
+
+\noindent
+\TODO{QUILES - POSSO CITAR LINKS DE NOTICIAIS DESTA MANEIRA ABAIXO ?}
+
+\TODOR{Não é o cenário ideal, mas pode. De qualquer forma cite como nota de rodapé, veja minha correção abaixo (adição do footnote), use isso para os demais links}
+
+No dia 22 de julho de 2020, a Associação Brasileira da Indústria e Consumo de alimentos, realizou uma conferência sobre os impactos da pandemia do Covid19 na cadeia produtiva de alimentos\footnote{\url{https://www.abia.org.br/noticias/abia-participa-de-live-para-discutir-os-impactos-da-pandemia-na-cadeia-produtiva-de-alimentos}}. Nesta conferência são reunidos especialistas e executivos do setor agroindustrial para analisar mudanças de comportamento de consumo nos setores terciários que lidam diretamente com o fornecimento de alimentos ao consumidor final, e a partir desta análise da nova rotina do consumidor, são buscados novos métodos de se prever o novo formato de consumo e a nova demanda para estes setores, e por fim são buscados métodos de produção e abastecimento do agronegócio para o setor terciário.
+
+Nota-se então a extrema importância de se prever a demanda principalmente em indústrias ou estabelecimentos que lidam com alimentos perecíveis, dado que qualquer alimento tem prazo de validade, é necessária a produção assertiva à demanda do consumidor para evitar armazenamentos que geram custos e descartes de alimentos atingem o prazo de validade para consumo.
+
+%\TODO{QUILES - POSSO CITAR LINKS DE NOTICIAIS DESTA MANEIRA ABAIXO ?}
+
+\TODOR{Pode, mas use o footnote também. Não esqueça de colocar palavras em inglês usado itálico \textit{English}.}
+
+O desperdício de alimentos é um assunto importante e que tange assertivamente o combate a fome, dado que a organização das nações unidas tem uma página e uma palavra chave de busca na internet (\textit{hashtag}, \#StopTheWaste) dedicada a este tema, o programa \textit{Stop the Waste}\footnote{\url{https://cdn.wfp.org/2020/stop-the-waste}}
+
+\TODO{QUILES - EU QUERO DIZER QUE CONVERSEI VERBALMENTE COM O GERENTE DO R.U E TBM VIA EMAIL, NÃO EXISTE UMA "FONTE" FORMAL, POSSO FALAR SOBRE ISSO DESTA MANEIRA ABAIXO ?}
+
+\TODOR{Você não pode citar dados pessoais, como o e-mail do cidadão, no seu texto. Além disso, a introdução deve seguir uma estrutura adequada. Contexto, literatura e depois especificar o que você fará. Observe que você começa fazendo um contetxo, depois já fala do RU do ICT (seu foco de estudo) e depois retorna para o problema de forma geral, e depois volta novamente para o seu trabalho. Isso não pode acontecer.  Veja o texto modificado abaixo.}
+
+%No início da coleta dos dados deste trabalho de conclusão de curso, contemplando o período de 2016 à 2018, e evidenciado naquele período por comunicações com o gerente do restaurante universitário e pela administração do restaurante universitário da Unifesp, a Nutrimenta (nutrimentarestaurante@gmail.com), foi constatado que não haviam métodos assertivos de predição do consumo de refeições no ICT Unifesp que auxiliassem a gestão do restaurante à evitar desperdícios. O gerente na época alegou descarte elevado de alimentos por não poder realizar predições sobre a movimentação de estudantes no refeitório.
+
+%Portanto as abordagens de previsão da demanda de consumo do restaurante universitário do ICT Unifesp, se resumiam à análise exploratória do consumo da semana anterior à semana vigente, executadas pelos responsáveis pelo restaurante, e demonstraram elevado descarte, evidenciado nos experimentos deste trabalho.
+
+\TEXTO{Uma forma de se reduzir esse desperdício está na desenvolvimento de métodos de predição de consumo [CITAR ALGO AQUI]. Normalmente, as abordagens para previsão da demanda de consumo de um restaurante universitário se resumem a análise exploratória de dados coletados, como por exemplo, as vendas computadas na semana ou mês anterior.} Além disso, informações externa, denominadas dados exôgenos, também podem ser considerados no processo de predição, como por exemplo dados climáticos, dados do calendário anual, feriádos, dentre outras informações que podem ser relevantes para a estimativa de consumo.
+
+\TODO{QUILES - ENCONTREI UM DOCUMENTO DA POLITICA DE ALIMENTAÇÃO DA UNIFESP, ESSA CITAÇÃO ABAIXO SOBRE ELE ESTÁ CORRETA?}
+
+\TODOR{O texto abaixo não agrega ao trabalho, deixei comentado}
+
+%De acordo com o documento de Política de Alimentação, publicado na página da Pró-Reitoria de Assuntos Estudantis da Unifesp \cite{unifesp_Alimentacao} a única ferramenta preditiva fornecida pela universidade ao restaurante é a notificação de eventos ou interrupção de atividades acadêmicas.
+
+%Tal documento que evidencia o contrato presente entre o R.U e a universidade, relata que o mesmo deve atender totalmente à demanda do público, sendo multado se caso algum consumidor fique sem alimentação. Porém, este mesmo contrato não trata refeições que não são consumidas; logo, o R.U. deve lidar integralmente o prejuízo de refeições produzidas acima da demanda de consumo, justificando sua técnica de produção com margem de erro acima do consumo da semana anterior.
+
+%Também é relatado no documento que tais refeições fornecidas aos alunos são pagas parcialmente no valor de R\$2,50 pelos alunos, e o restante subsidiado pela PRAE. Logo, esta previsão de demanda corresponde também aos interesses da administração do campus local, que periodicamente deve realizar uma alocação de recursos financeiros para subsidiar todas estas refeições consumidas. 
+
+A predição de consumo de redes restaurantes universitários já foi abordada em outros trabalhos. Por exemplo, no trabalho de  \cite{Lopes2008} realizado na UFV, é utilizado um modelo de rede neural perceptron de 1 camada oculta e 1 neurônio de saída, utilizando os 5 dias anteriores como parâmetros de predição com erro de 3\% sobre o total consumido, e no trabalho de \cite{Rocha2011} realizado na UNESP é utilizado também um modelo de rede neural com 1 camada oculta e 1 neurônio de saída, utilizando apenas 1 parâmetro que informa o número de refeições do dia anterior, e outros parâmetros informando médias de dias anteriores e informações relativas à data de consumo, este modelo obteve erro de 9,5\% calculado sobre o total consumido.
+
+Neste contexto, este trabalho possui como objetivo geral construir e comparar modelos de Redes Neurais Artificiais para a previsão da demanda de refeições do restaurante universitário do ICT-UNIFESP. Especificamente, tem-se como objetivos:  
+\begin{enumerate}[label=\alph*)]
+\item Preprocessar os dados brutos visando seu uso como entrada de modelos de aprendizado de máquina;
+\item Realizar análises exploratória (descritiva) dos dados;
+\item Incorporar dados exógenos no processo de predição;
+\item Construir e avaliar modelos preditivos de redes neurais.
+\end{enumerate}
+
+Para isso, utilizar-se-á um conjunto de dados históricos disponíveis no sistema da Unifesp e outras informações externas (exógenas) que podem impactar o comportamento de consumo e seu processo de predição.
+
+
+
+O restante deste documento está organizado da seguinte forma. O  capítulo \ref{cap:teoria} introduz a fundamentação necessária a compreensão deste trabalho; A literatura relacionada ao tema é descrita no capítulo \ref{cap:literatura}; O capítulo \ref{cap:metodos} apresenta a metodologia empregada nesse estudo; Os resultados são sumarizados no capítulo \ref{cap:resultados}; As principais conclusões desse trabalho bem como as indicações de investigações futuras são apresentadas no capítulo. \ref{cap:conclusoes}; Por fim, o capítulo \ref{cap:anexo1} apresenta alguns resultados adicionais gerados durante os experimentos e os códigos implementados.
+

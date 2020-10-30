@@ -1,0 +1,105 @@
+
+\usepackage{cmap}				
+\usepackage{times}
+\usepackage[T1]{fontenc}			
+\usepackage[utf8]{inputenc}		 
+\usepackage{lastpage}			
+\usepackage{indentfirst}			 
+\usepackage{color}				
+\usepackage[table]{xcolor}
+\usepackage{graphicx}			
+\usepackage[portuguese, ruled, linesnumbered]{algorithm2e} 
+\usepackage{amssymb} 
+\usepackage{glossaries}
+\usepackage{float}
+\usepackage{multicol,multirow}
+\usepackage{adjustbox}
+\usepackage[brazilian,hyperpageref]{backref}	 
+\usepackage[alf]{abntex2cite}	
+\usepackage{datatool} 
+\usepackage[justification=centering]{caption}
+
+\usepackage{lscape,pdflscape}
+\usepackage{booktabs}
+\usepackage{siunitx} 
+%\usepackage{pgfplotstable} 
+\usepackage{hyperref}
+\hypersetup{colorlinks=False,  linkcolor=black,   filecolor=magenta, urlcolor=cyan }
+\urlstyle{same}
+\usepackage{listings}
+\usepackage{booktabs}
+\usepackage{stackengine}%
+\usepackage{url}
+\makeatletter
+\g@addto@macro{\UrlBreaks}{\UrlOrds}
+\makeatother
+
+\usepackage{color}
+\newcommand{\TODO}[1]{{\textcolor{red}{\textsf{TODO: #1}}}}
+\newcommand{\TODOR}[1]{{\textcolor{blue}{\textsf{RESP: #1}}}}
+\newcommand{\TEXTO}[1]{{\textcolor{magenta}{#1}}}
+
+
+\definecolor{dkgreen}{rgb}{0,0.6,0}
+\definecolor{gray}{rgb}{0.5,0.5,0.5}
+\definecolor{mauve}{rgb}{0.58,0,0.82}
+\lstset{
+  language=Python,                
+  basicstyle=\footnotesize,           
+  numbers=left,                   
+  numberstyle=\tiny\color{gray},  
+  stepnumber=2,                             
+  numbersep=5pt,                  
+  backgroundcolor=\color{white},    
+  showspaces=false,               
+  showstringspaces=false,         
+  showtabs=false,                 
+  frame=single,                   
+  rulecolor=\color{black},        
+  tabsize=2,                      
+  captionpos=b,                   
+  breaklines=true,                
+  breakatwhitespace=false,        
+  title=\lstname,                               
+  keywordstyle=\color{blue},          
+  commentstyle=\color{dkgreen},       
+  stringstyle=\color{mauve},     
+}
+% --- 
+% CONFIGURAÇÕES DE PACOTES
+
+\sisetup{  round-mode = places,  round-precision  = 2}
+
+% ---
+% Configurações do pacote backref
+% Usado sem a opção hyperpageref de backref
+  \renewcommand{\backrefpagesname}{Citado na(s) página(s):~}
+%   Texto padrão antes do número das páginas
+  \renewcommand{\backref}{}
+%   Define os textos da citação
+  \renewcommand*{\backrefalt}[4]{
+  	\ifcase #1 	Nenhuma citação no texto.  	\or	Citado na página #2.%
+  	\else Citado #1 vezes nas páginas #2.  	\fi}%
+  % ---
+
+  % numeração de figuras e elas 
+  \counterwithout{figure}{section}
+  \counterwithout{table}{section}
+
+ \setlength{\parindent}{1.3cm}
+ \setlength{\parskip}{\onelineskip}
+ 
+   \makeatletter
+  \hypersetup{
+       	%pagebackref=true,
+  		pdftitle={\@title}, 
+  		pdfauthor={\@author},
+      	pdfsubject={\imprimirpreambulo},
+  	    pdfcreator={LaTeX with abnTeX2},
+  		pdfkeywords={abnt}{latex}{abntex}{abntex2}{trabalho acadêmico},  colorlinks=false, linkcolor=blue, citecolor=blue,filecolor=magenta,  urlcolor=blue,
+  		bookmarksdepth=4}
+
+  \makeatother
+
+
+  \makeindex

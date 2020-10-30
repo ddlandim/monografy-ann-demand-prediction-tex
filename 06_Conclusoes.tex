@@ -1,0 +1,48 @@
+\chapter{Conclusão} \label{cap:conclusoes}
+
+    \section{A importância da metodologia de divisão do conjunto de dados em séries temporais}
+       No trabalho, com um conjunto de dados de sazonalidade temporal, é notório que a ordenação dos dados na separação do conjunto em treino, teste e validação devem seguir uma ordem cronológica para os modelos aprenderem com o passado e realizarem predições para o futuro. 
+        O comportamento anômalo da predição identificada no capitulo de divisão do conjunto de dados da fase 1, demonstrado na figura \ref{fig:pandas_wrong_indexing}, e depois corrigido conforme a figura \ref{fig:pandas_correct_indexing} valida esta afirmação.
+
+    \section{Sobre o método de produção de refeições com margem de erro e análise da semana anterior}
+        Mesmo com a produção de 30\% acima do consumo na semana anterior, no fim de cada semestre, o restaurante do ICT Unifesp descarta mais do que 30\%, pois o comportamento oscilatório do consumo e o acréscimo de outliers, acaba ampliando o erro. No ano de 2019, seguindo este método, 23 mil refeições foram descartas.
+        O Modelo RNN\_EXO\_3 que trouxe o maior descarte entre todos os 12 modelos testados, realizou 8914 descartes.
+        Isso evidencia a necessidade de se implementar métodos eficientes para a produção e planejamento de refeições no restaurante universitário da Unifesp.
+    
+    \section{Sobre a sazonalidade semanal}
+        Em todo o conjunto de dados, nos dias da semana, a sexta feira é o dia de menor consumo independente do período do ano. Já as datas de terça e quinta concentram a maior movimentação de consumo.
+    
+    \section{Sobre o ajuste empírico da topologia dos modelos}
+        Na etapa de validação dos primeiros modelos desenvolvidos, demonstrado na subseção "Ajuste empírico de topologia da 1a fase", conforme figuras \ref{fig:case1_mlp1_train} e \ref{fig:case1_mlp2_train} do capítulo de resultados da 1a fase, foi possível notar a diminuição do RMSE (Raiz do erro quadrático médio) ao aumentar a profundidade da rede Perceptron para treino e avaliação sob o conjunto de validação, validando a hipótese de que os modelos tem capacidade de aprendizado do problema em relação ao ajuste da topologia dos mesmos.
+
+    \section{Sobre os erros anômalos de predição}
+        Apesar do conjunto de dados conter 2 features que informam a distância em dias para o próximo registro e o registro anterior para os modelos identificarem feriados e recessos prolongados, alguns eventos no calendário, como paralisações, não são muito bem representados por tais features, indicando a necessidade de mais pesquisa de features que possam representar melhor este comportamento.
+
+    \section{Sobre o modelo com melhor resultado}
+        No primeira fase, com validação restrita ao primeiro semestre de 2018, os modelos endógenos se saíram melhor do que os modelos mistos. Isso pode significar que as features exógenas (sendo a maioria composta de sazonalidade anual tais como as climáticas limitadas às estações do ano) foram ruidosas no aprendizado.
+        Para o modelo RNN\_EXO\_1 da 2a fase, se saindo melhor que todos os modelos deste trabalho, algumas melhorias são indicadas:
+        \begin{itemize}
+            \item Aumentar o conjunto de dados para o modelo se ajustar às sazonalidades semestrais e à troca de semestres. As features categóricas que indicam os semestres e dia da semana, bem como as features que quantificam recessos (distância registro anterior e posterior) têm potencial de agregar aprendizado nessa questão, sendo necessário uma diversificação maior do conjunto de dados, dado que este modelo foi treinado apenas com 1 período de sazonalidade anual (1 ano para treino, 1 para validação e 1 para teste).
+            \item Acrescentar features de eventos importantes para identificar paralisações e eventos do tipo.
+            \item Uma feature de cardápio tem potencial de aumentar a qualidade da predição.
+            \item Uma feature representando o número de alunos matriculados em cada período de cada dia da semana tem grande potencial de aumentar a predição.
+            \item Pesquisas podem ser feitas para uma melhor transformação dos dados de entrada no modelo perceptron, pois são dados discretos, enquanto os dados que entram na camada GRU são temporais (com intervalo de 5 dias).
+        \end{itemize}
+        
+    \section{Conclusões gerais}
+        \TODO{QUILES - Confira este primeiro parágrafo abaixo, se há alguma citação que eu poderia fazer sobre a organização dos conjuntos, ou se assim está bom}
+        
+        \TODOR{A ideia está ok, mas o texto não está bom também}
+        
+        O fenômeno mais evidente neste trabalho foi o alcance de melhoria significativa em todo os modelos de redes neurais artificiais desenvolvidos alterando-se apenas a organização do conjunto de dados entre a primeira e segunda fase, sem interferência em qualquer parâmetro ou hiper-parâmetro destes modelos. Na primeira obteve-se aproximadamente 70\% do conjunto para treino e o restante para validação sendo o método de organização mais comum encontrado em literaturas com foco experimental como por exemplo \cite{DLB} e \cite{MLM}, e na segunda fase que trouxe os melhores experimentos, obteve-se 50\% da organização do conjunto para treino e o mesmo para validação, denotando a necessidade de mais pesquisas e experimentos relacionados com organização de conjunto de dados para predições de séries temporais de consumo.
+        
+        As análises diversas de previsão de demanda para o tema abordado requerem extensos métodos de implementação e estruturação de dados.
+        
+        Uma das etapas mais importantes do trabalho, é o método de coleta de dados. Muitos podem ser de acesso burocrático, ou de difícil busca, e são o requisito primordial para o inicio de qualquer análise.
+        
+        A diversidade de métodos de aprendizado de máquina é imensurável, e dentro de apenas uma análise, que é o treino com retropropagação, pode-se montar infinitas topologias diferentes com base na estrutura dos dados coletados. 
+        
+        As heurísticas sobre a definição de topologia apesar de diversas, não são determinísticas, e o processo requer análise exploratória, subjetiva e empírica sobre o tema e problema a ser abordado, todavia, foi notória a eficiência dos modelos de aprendizado de máquina em trabalhos relacionados à restaurantes universitários. Como no ICT - Unifesp não há qualquer modelo atual de previsão e a falta de um modelo causa desperdício de alimentos e prejuízo ao restaurante, a abordagem desta pesquisa e sua continuação com novos métodos torna-se viável.
+        
+        
+\TODOR{Douglas, seu texto precisa ser bem revisado, há uma quantidade de sentenças confusas, longas, etc. Melhorou bastante, mas ainda há espaço para melhorias significativas}
